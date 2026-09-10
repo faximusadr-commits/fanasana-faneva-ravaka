@@ -241,16 +241,16 @@
           <p style="margin:7px 0 0;font-size:13px;line-height:1.65;color:#6E5024;">Répondez s'il vous plaît.<br>Miandry ny valiteninao izahay.</p>
         </div>
         <div style="width:100%;display:flex;flex-direction:column;gap:10px;">
-          <button onClick="{{ pickYes }}" style="min-height:52px;border:1px solid #A9834A;border-radius:10px;background:{{ yesBg }};color:{{ yesFg }};font-family:'Jost',sans-serif;font-size:18px;cursor:pointer;">Afaka</button>
-          <button onClick="{{ pickNo }}" style="min-height:52px;border:1px solid #A9834A;border-radius:10px;background:{{ noBg }};color:{{ noFg }};font-family:'Jost',sans-serif;font-size:18px;cursor:pointer;">Tsy afaka</button>
+          <button onClick="{{ pickYes }}" disabled="{{ locked }}" style="min-height:52px;border:1px solid #A9834A;border-radius:10px;background:{{ yesBg }};color:{{ yesFg }};font-family:'Jost',sans-serif;font-size:18px;cursor:pointer;">Afaka</button>
+          <button onClick="{{ pickNo }}" disabled="{{ locked }}" style="min-height:52px;border:1px solid #A9834A;border-radius:10px;background:{{ noBg }};color:{{ noFg }};font-family:'Jost',sans-serif;font-size:18px;cursor:pointer;">Tsy afaka</button>
         </div>
         <sc-if value="{{ hasChoice }}" hint-placeholder-val="{{ true }}">
           <div style="width:100%;display:flex;flex-direction:column;gap:9px;animation:fadeUp .35s ease both;">
-            <input value="{{ name }}" onChange="{{ setName }}" placeholder="Anarana feno" style="min-height:46px;border:1px solid #DCCDAB;border-radius:6px;background:rgba(255,253,247,.9);padding:0 14px;font-family:'Jost',sans-serif;font-size:15px;color:#6E5024;">
+            <input value="{{ name }}" onChange="{{ setName }}" disabled="{{ locked }}" placeholder="Anarana feno" style="min-height:46px;border:1px solid #DCCDAB;border-radius:6px;background:rgba(255,253,247,.9);padding:0 14px;font-family:'Jost',sans-serif;font-size:15px;color:#6E5024;">
             <sc-if value="{{ isYes }}" hint-placeholder-val="{{ true }}">
-              <input type="number" min="1" value="{{ guests }}" onChange="{{ setGuests }}" placeholder="Isan’ny olona" style="min-height:46px;border:1px solid #DCCDAB;border-radius:6px;background:rgba(255,253,247,.9);padding:0 14px;font-family:'Jost',sans-serif;font-size:15px;color:#6E5024;">
+              <input type="number" min="1" value="{{ guests }}" onChange="{{ setGuests }}" disabled="{{ locked }}" placeholder="Isan’ny olona" style="min-height:46px;border:1px solid #DCCDAB;border-radius:6px;background:rgba(255,253,247,.9);padding:0 14px;font-family:'Jost',sans-serif;font-size:15px;color:#6E5024;">
             </sc-if>
-            <textarea value="{{ msg }}" onChange="{{ setMsg }}" rows="2" placeholder="Hafatra ho an’ny mpivady" style="border:1px solid #DCCDAB;border-radius:6px;background:rgba(255,253,247,.9);padding:11px 14px;font-family:'Jost',sans-serif;font-size:14px;color:#6E5024;resize:none;"></textarea>
+            <textarea value="{{ msg }}" onChange="{{ setMsg }}" disabled="{{ locked }}" rows="2" placeholder="Hafatra ho an’ny mpivady" style="border:1px solid #DCCDAB;border-radius:6px;background:rgba(255,253,247,.9);padding:11px 14px;font-family:'Jost',sans-serif;font-size:14px;color:#6E5024;resize:none;"></textarea>
           </div>
         </sc-if>
         <div style="width:100%;">
@@ -258,6 +258,10 @@
           <p style="margin:2px 0 11px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;letter-spacing:.04em;color:#6E5024;">1 OKTOBRA 2026</p>
           <button onClick="{{ submit }}" disabled="{{ cantSubmit }}" style="width:100%;min-height:52px;border:1px solid #A9834A;border-radius:10px;background:{{ submitBg }};color:{{ submitFg }};font-family:'Jost',sans-serif;font-size:16px;line-height:1.3;cursor:pointer;animation:ctaGlow 4.5s ease-in-out infinite;">Fifalianay ny fahatongavanao</button>
           <p style="margin:8px 0 0;font-size:11.5px;color:#B39A6E;">{{ hint }}</p>
+          <sc-if value="{{ locked }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:10px 0 0;border:1px solid #DCCDAB;border-radius:8px;background:rgba(255,253,247,.86);padding:11px 13px;font-size:12px;line-height:1.65;color:#8A6C40;">{{ lockNote }}</p>
+          </sc-if>
+          <button onClick="{{ askRemind }}" style="margin-top:12px;width:100%;min-height:46px;border:1px solid #C6AC7C;border-radius:10px;background:rgba(255,253,247,.7);font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:.2em;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">{{ remindLabel }}</button>
         </div>
       </div>
     </div>
@@ -269,6 +273,11 @@
         <img src="assets/p-heart.png" alt="" style="width:48px;height:auto;">
         <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:21px;letter-spacing:.05em;color:#6E5024;line-height:1.5;">Voaray ny valiteninao</h2>
         <p style="margin:0;font-size:13.5px;line-height:1.8;color:#8A6C40;max-width:290px;">{{ doneBody }}</p>
+        <div style="align-self:stretch;display:flex;flex-direction:column;gap:8px;">
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.2em;color:#A9834A;">ALEFA AMIN’NY WHATSAPP</p>
+          <a href="{{ waA }}" target="_blank" rel="noopener" style="min-height:46px;border-radius:10px;background:#7A5A28;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:14px;color:#FFFDF7;" style-hover="background:#6E5024;">034 43 335 60</a>
+          <a href="{{ waB }}" target="_blank" rel="noopener" style="min-height:46px;border-radius:10px;border:1px solid #A9834A;background:rgba(255,253,247,.8);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:14px;color:#7A5A28;" style-hover="background:#7A5A28;color:#FFFDF7;">034 54 300 93</a>
+        </div>
         <img src="assets/p-flourish.png" alt="" style="width:58%;max-width:200px;height:auto;opacity:.85;">
         <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;color:#8A6C40;">Tahian'ny Tompo</p>
         <button onClick="{{ reopen }}" style="margin-top:4px;background:none;border:1px solid #C6AC7C;border-radius:6px;padding:13px 22px;min-height:48px;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">HIVERINA AMIN’NY FANASANA</button>
@@ -330,7 +339,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:440,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { origin: '', geo: null, map: null, dir: 1, music: false, picked: 0, night: null, intro: true, opening: false, i: 0, done: false, choice: null, name: '', guests: '2', msg: '', now: Date.now() };
+  state = { remindOn: false, origin: '', geo: null, map: null, dir: 1, music: false, picked: 0, night: null, intro: true, opening: false, i: 0, done: false, choice: null, name: '', guests: '2', msg: '', now: Date.now() };
   LAST = 5;
   FAMILIES_NEW = [
     ['Loko ny tany mena — ny fototra sy ny fianakaviana.', [['#674231', 'Terre cuite'], ['#6d3b24', 'Rouille'], ['#5b2525', 'Bordeaux']]],
@@ -386,6 +395,8 @@ class Component extends DCLogic {
       if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.6) this.go(this.state.i + (dx < 0 ? 1 : -1));
       this.sx = null;
     };
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+    if ('Notification' in window && Notification.permission === 'granted') setTimeout(this.fire, 1800);
     document.addEventListener('keydown', this.onKey);
     document.addEventListener('touchstart', this.onDown, { passive: true });
     document.addEventListener('touchend', this.onUp, { passive: true });
@@ -407,6 +418,61 @@ class Component extends DCLogic {
   }
 
   toggleSkin = () => this.setState({ night: !this.isNight() });
+
+  DEADLINE = new Date('2026-10-01T23:59:59+03:00').getTime();
+  WEDDING = new Date('2026-11-13T09:00:00+03:00').getTime();
+  WA = ['261344333560', '261345430093'];
+
+  waLink = (n) => {
+    const st = this.state;
+    const lines = [
+      'FANASANA — Faneva sy Ravaka (13 Novambra 2026)',
+      'Valiteny: ' + (st.choice === 'yes' ? 'AFAKA' : 'TSY AFAKA'),
+      'Anarana: ' + st.name.trim()
+    ];
+    if (st.choice === 'yes') lines.push('Isan’ny olona: ' + (st.guests || '1'));
+    if (st.msg.trim()) lines.push('Hafatra: ' + st.msg.trim());
+    return 'https://wa.me/' + this.WA[n] + '?text=' + encodeURIComponent(lines.join('\n'));
+  };
+
+  daysLeft = () => Math.max(0, Math.ceil((this.WEDDING - Date.now()) / 864e5));
+
+  fire = async () => {
+    const today = new Date().toDateString();
+    let last = null;
+    try { last = localStorage.getItem('fr-remind-v2'); } catch (e) {}
+    if (last === today) { this.setState({ remindOn: true }); return true; }
+    const d = this.daysLeft();
+    const title = 'Mariage de Faneva & Ravaka';
+    const opts = {
+      body: d > 0 ? 'Le 13 Novambra 2026 — ' + d + ' andro sisa.' : 'Anio no andro lehibe. 13 Novambra 2026.',
+      tag: 'fr-wedding'
+    };
+    let ok = false;
+    try {
+      const reg = navigator.serviceWorker && (await navigator.serviceWorker.getRegistration());
+      if (reg && reg.showNotification) { await reg.showNotification(title, opts); ok = true; }
+    } catch (e) {}
+    if (!ok) {
+      try { new Notification(title, opts); ok = true; } catch (e) { ok = false; }
+    }
+    if (ok) {
+      try { localStorage.setItem('fr-remind-v2', today); } catch (e) {}
+      this.setState({ remindOn: true });
+    } else {
+      this.setState({ remindOn: false, remindFail: true });
+    }
+    return ok;
+  };
+
+  remind = () => {
+    if (!('Notification' in window)) { this.setState({ remindFail: true }); return; }
+    if (Notification.permission === 'granted') { this.fire(); return; }
+    if (Notification.permission === 'denied') { this.setState({ remindFail: true }); return; }
+    Notification.requestPermission().then((p) => {
+      if (p === 'granted') this.fire(); else this.setState({ remindFail: true });
+    }).catch(() => this.setState({ remindFail: true }));
+  };
 
   MAPS = {
     a: { title: 'FJKM Amparibe Famonjena', src: 'assets/map-fjkm.png', dest: 'FJKM Amparibe Famonjena, Antananarivo, Madagascar' },
@@ -471,7 +537,8 @@ class Component extends DCLogic {
   renderVals() {
     const st = this.state;
     const yes = st.choice === 'yes', no = st.choice === 'no';
-    const ready = !!st.choice && st.name.trim().length > 1;
+    const locked = Date.now() > this.DEADLINE;
+    const ready = !!st.choice && st.name.trim().length > 1 && !locked;
     const labels = ['Fanasana', 'Ray aman-dreny', 'Fandaharam-potoana', 'Toerana', 'Dress code', 'RSVP'];
     const night = this.isNight();
     return {
@@ -562,21 +629,33 @@ class Component extends DCLogic {
       noBg: no ? '#7A5A28' : 'rgba(255,253,247,.9)', noFg: no ? '#FFFDF7' : '#6E5024',
       hasChoice: !!st.choice, isYes: yes,
       name: st.name, guests: st.guests, msg: st.msg,
-      setName: (e) => this.setState({ name: e.target.value }),
-      setGuests: (e) => this.setState({ guests: e.target.value }),
-      setMsg: (e) => this.setState({ msg: e.target.value }),
+      setName: (e) => { if (!locked) this.setState({ name: e.target.value }); },
+      setGuests: (e) => { if (!locked) this.setState({ guests: e.target.value }); },
+      setMsg: (e) => { if (!locked) this.setState({ msg: e.target.value }); },
       cantSubmit: !ready,
       submitBg: ready ? '#7A5A28' : 'rgba(239,231,213,.85)',
       submitFg: ready ? '#FFFDF7' : '#B39A6E',
       hint: !st.choice ? 'Fidio “Afaka” na “Tsy afaka”.' : (ready ? '' : 'Ampidiro ny anaranao.'),
       submit: () => {
-        if (!ready) return;
-        try { localStorage.setItem('fr-rsvp-v2', JSON.stringify({ choice: st.choice, name: st.name, guests: st.guests, msg: st.msg })); } catch (e) {}
+        if (!ready || locked) return;
+        try { localStorage.setItem('fr-rsvp-v2', JSON.stringify({ choice: st.choice, name: st.name, guests: st.guests, msg: st.msg, at: Date.now() })); } catch (e) {}
         this.setState({ done: true });
+        const w = window.open(this.waLink(0), '_blank');
+        if (!w) location.href = this.waLink(0);
       },
-      pickYes: () => this.setState({ choice: 'yes' }),
-      pickNo: () => this.setState({ choice: 'no' }),
+      waA: this.waLink(0),
+      waB: this.waLink(1),
+      locked: locked,
+      lockNote: locked
+        ? 'Nifarana ny 1 Oktobra 2026 ny fe-potoana famaliana. Tsy azo ovaina intsony ny valiteny.'
+        : '',
+      pickYes: () => { if (!locked) this.setState({ choice: 'yes' }); },
+      pickNo: () => { if (!locked) this.setState({ choice: 'no' }); },
       reopen: () => this.setState({ done: false, i: 0, intro: false }),
+      askRemind: this.remind,
+      remindLabel: st.remindOn
+        ? 'FAMPAHATSIAHIVANA VOASOKATRA'
+        : (st.remindFail ? 'TSY MISY FAMPAHATSIAHIVANA ETO' : 'FAMPAHATSIAHIVANA ISAN’ANDRO'),
       doneBody: yes
         ? 'Misaotra ' + (st.name.trim() || 'anao') + '. Fifalianay ny fahatongavanao ny 13 Novambra 2026.'
         : 'Misaotra ' + (st.name.trim() || 'anao') + ' amin’ny valiteny. Ho tsaroanay ianao amin’io andro io.'
