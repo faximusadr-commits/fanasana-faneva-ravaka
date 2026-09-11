@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#EAE3D4"/><circle cx="100" cy="100" r="52" fill="none" stroke="#A9834A" stroke-width="2"/><text x="100" y="118" text-anchor="middle" font-family="Georgia,serif" font-size="46" fill="#7A5A28">FR</text></svg></template>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; padding:0; background:#F4EEDF; }
+  a { color:#7A5A28; text-decoration:none; }
+  a:hover { color:#A9834A; }
+</style>
+</helmet>
+<div style="min-height:100dvh;background:#F4EEDF;font-family:'Jost',sans-serif;color:#4A3A22;padding:28px 20px 60px;">
+  <div style="max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:18px;">
+
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.32em;color:#A9834A;text-transform:uppercase;">Faneva &amp; Ravaka — 13 Novambra 2026</p>
+      <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;letter-spacing:.03em;color:#6E5024;">Générateur de liens personnalisés</h1>
+      <p style="margin:0;font-size:13.5px;line-height:1.7;color:#8A6C40;max-width:640px;">Chargez votre classeur Google Sheets, ou collez les colonnes depuis Excel. Le nom, le nombre d'invités et le numéro WhatsApp sont reconnus automatiquement par le titre de leur colonne.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF7;border:1px solid #DCCDAB;border-radius:10px;padding:16px;">
+      <label for="base" style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#A9834A;text-transform:uppercase;">Adresse de l'invitation en ligne</label>
+      <input id="base" value="{{ base }}" onChange="{{ setBase }}" placeholder="https://moncompte.github.io/fanasana/" style="min-height:46px;border:1px solid #DCCDAB;border-radius:7px;background:#FAF6EC;padding:0 13px;font-family:'Jost',sans-serif;font-size:14px;color:#4A3A22;">
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF7;border:1px solid #DCCDAB;border-radius:10px;padding:16px;">
+      <label for="sheet" style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#A9834A;text-transform:uppercase;">1 · Depuis Google Sheets</label>
+      <input id="sheet" value="{{ sheetUrl }}" onChange="{{ setSheetUrl }}" placeholder="https://docs.google.com/spreadsheets/d/…/edit" style="min-height:46px;border:1px solid #DCCDAB;border-radius:7px;background:#FAF6EC;padding:0 13px;font-family:'Jost',sans-serif;font-size:14px;color:#4A3A22;">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+        <input value="{{ tab }}" onChange="{{ setTab }}" placeholder="Nom de l'onglet" style="flex:1;min-width:180px;min-height:44px;border:1px solid #DCCDAB;border-radius:7px;background:#FAF6EC;padding:0 13px;font-family:'Jost',sans-serif;font-size:14px;color:#4A3A22;">
+        <button onClick="{{ load }}" style="border:1px solid #A9834A;border-radius:22px;background:#7A5A28;padding:11px 22px;min-height:44px;font-family:'Jost',sans-serif;font-size:13px;color:#FFFDF7;cursor:pointer;" style-hover="background:#6E5024;">{{ loadLabel }}</button>
+      </div>
+      <p style="margin:0;font-size:12px;line-height:1.65;color:{{ statusColor }};">{{ status }}</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:9px;background:#FFFDF7;border:1px solid #DCCDAB;border-radius:10px;padding:16px;">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;">
+        <label for="paste" style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#A9834A;text-transform:uppercase;">2 · Ou collez depuis Excel</label>
+        <button onClick="{{ demo }}" style="border:1px solid #DCCDAB;border-radius:18px;background:#FAF6EC;padding:7px 14px;min-height:36px;font-family:'Jost',sans-serif;font-size:12px;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">Exemple</button>
+      </div>
+      <textarea id="paste" value="{{ raw }}" onChange="{{ setRaw }}" rows="7" placeholder="Nom	Nombre	Téléphone&#10;Rakoto Jean	2	0341234567" style="border:1px solid #DCCDAB;border-radius:7px;background:#FAF6EC;padding:12px 13px;font-family:'Jost',sans-serif;font-size:14px;line-height:1.6;color:#4A3A22;resize:vertical;"></textarea>
+      <p style="margin:0;font-size:12px;color:#B39A6E;">Séparateur : tabulation, point-virgule ou virgule. Colonnes reconnues : nom / nombre de personnes / téléphone.</p>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#6E5024;">{{ count }}</span>
+      <button onClick="{{ copyAll }}" style="border:1px solid #A9834A;border-radius:22px;background:#7A5A28;padding:11px 20px;min-height:44px;font-family:'Jost',sans-serif;font-size:13px;color:#FFFDF7;cursor:pointer;" style-hover="background:#6E5024;">{{ copyAllLabel }}</button>
+      <button onClick="{{ dlCsv }}" style="border:1px solid #A9834A;border-radius:22px;background:#FFFDF7;padding:11px 20px;min-height:44px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">Télécharger le CSV</button>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="3">
+        <div style="background:#FFFDF7;border:1px solid #DCCDAB;border-radius:10px;padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;">
+          <div style="min-width:0;display:flex;flex-direction:column;gap:4px;">
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:17px;color:#6E5024;">{{ r.name }}</p>
+            <p style="margin:0;font-size:12px;letter-spacing:.14em;color:#A9834A;">{{ r.meta }}</p>
+            <p style="margin:2px 0 0;font-size:12px;color:#8A6C40;word-break:break-all;">{{ r.url }}</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <button onClick="{{ r.copy }}" style="border:1px solid #DCCDAB;border-radius:18px;background:#FAF6EC;padding:9px 16px;min-height:40px;font-family:'Jost',sans-serif;font-size:12px;color:#7A5A28;white-space:nowrap;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">{{ r.copyLabel }}</button>
+            <a href="{{ r.wa }}" target="_blank" rel="noopener" style="border:1px solid #A9834A;border-radius:18px;background:#7A5A28;padding:9px 16px;min-height:40px;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:12px;color:#FFFDF7;white-space:nowrap;" style-hover="background:#6E5024;">{{ r.waLabel }}</a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="background:#FFFDF7;border:1px dashed #C6AC7C;border-radius:10px;padding:16px;">
+      <p style="margin:0 0 8px;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#A9834A;text-transform:uppercase;">Comment ça marche</p>
+      <p style="margin:0;font-size:13px;line-height:1.8;color:#6E5024;">Chaque lien se termine par <strong>?n=4&amp;g=Rasoa%20Hery</strong> : <strong>n</strong> fixe le nombre d'invités affiché dans la boîte cadeau et pré-remplit le formulaire, <strong>g</strong> affiche le nom de l'invité en haut de la carte. Si le chargement Google échoue, ouvrez le classeur, menu Fichier ▸ Partager ▸ Publier sur le web, onglet concerné au format CSV, puis collez cette adresse ici — ou copiez simplement les colonnes dans la zone 2.</p>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:920,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { base: 'https://votre-compte.github.io/fanasana/', sheetUrl: '', tab: 'Liste invités', raw: '', status: '', ok: true, busy: false, copied: null, copiedAll: false };
+
+  componentDidMount() {
+    try {
+      const s = {};
+      ['base', 'sheetUrl', 'tab', 'raw'].forEach((k) => {
+        const v = localStorage.getItem('fr-gen-' + k);
+        if (v) s[k] = v;
+      });
+      if (Object.keys(s).length) this.setState(s);
+    } catch (e) {}
+  }
+
+  save = (k, v) => { try { localStorage.setItem('fr-gen-' + k, v); } catch (e) {} };
+
+  splitCsv(text) {
+    const rows = [];
+    let row = [], cell = '', q = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (q) {
+        if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+        else if (c === '"') q = false;
+        else cell += c;
+      } else if (c === '"') q = true;
+      else if (c === ',') { row.push(cell); cell = ''; }
+      else if (c === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+      else if (c !== '\r') cell += c;
+    }
+    row.push(cell); rows.push(row);
+    return rows.filter((r) => r.some((x) => x.trim() !== ''));
+  }
+
+  splitPasted(text) {
+    const sep = text.indexOf('\t') >= 0 ? '\t' : (text.indexOf(';') >= 0 ? ';' : ',');
+    return text.split(/\r?\n/).filter((l) => l.trim() !== '').map((l) => l.split(sep));
+  }
+
+  mapRows(grid) {
+    if (!grid.length) return [];
+    const norm = (s) => (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+    let head = -1, idx = { name: -1, n: -1, tel: -1, who: -1 };
+    const bad = (c) => /(calcul|adulte|enfant|confirm|refus|attente|statut|table)/.test(c);
+    for (let r = 0; r < Math.min(grid.length, 12); r++) {
+      const cells = grid[r].map(norm);
+      const nameAt = cells.findIndex((c) => /^(nom|nom complet|invite|invites?|nom de l.invite|famille|sous-famille|sous famille|groupe)/.test(c));
+      if (nameAt < 0) continue;
+      head = r;
+      idx.name = nameAt;
+      idx.n = cells.findIndex((c, i) => i !== nameAt && !bad(c) && /^(nb|nombre)\b|^(nb|nombre)$|(nombre de|effectif|places|couverts|pax)/.test(c));
+      if (idx.n < 0) idx.n = cells.findIndex((c, i) => i !== nameAt && !bad(c) && /(nb|nombre|pers)/.test(c));
+      idx.tel = cells.findIndex((c) => /(tel|phone|whatsapp|contact|num(ero)?)/.test(c) && !/nb|nombre/.test(c));
+      idx.who = cells.findIndex((c) => /(personnes? list|liste des personnes|membres|composition)/.test(c));
+      break;
+    }
+    const body = head >= 0 ? grid.slice(head + 1) : grid;
+    return body.map((cells) => {
+      let name = '', n = '', tel = '', who = '';
+      if (head >= 0) {
+        name = (cells[idx.name] || '').trim();
+        n = idx.n >= 0 ? (cells[idx.n] || '').toString().trim() : '';
+        tel = idx.tel >= 0 ? (cells[idx.tel] || '').toString().trim() : '';
+        who = idx.who >= 0 ? (cells[idx.who] || '').toString().trim() : '';
+      } else {
+        const parts = cells.map((c) => (c || '').trim()).filter((c) => c !== '');
+        for (let i = parts.length - 1; i >= 0; i--) {
+          const d = parts[i].replace(/[\s.+]/g, '');
+          if (/^\d{9,13}$/.test(d)) { tel = parts.splice(i, 1)[0]; break; }
+        }
+        for (let i = parts.length - 1; i >= 0; i--) {
+          if (/^\d{1,3}$/.test(parts[i])) { n = parts.splice(i, 1)[0]; break; }
+        }
+        name = parts.join(' ');
+      }
+      const num = (n.match(/\d{1,3}/) || [''])[0];
+      return { name: name.replace(/\s+/g, ' ').trim(), n: num, tel: tel, who: who.replace(/\s+/g, ' ').trim() };
+    }).filter((r) => r.name && !/^(total|nom)$/i.test(r.name));
+  }
+
+  grid() {
+    const t = this.state.raw;
+    if (!t.trim()) return [];
+    return this.csvMode ? this.splitCsv(t) : this.splitPasted(t);
+  }
+
+  load = async () => {
+    const u = this.state.sheetUrl.trim();
+    if (!u) { this.setState({ status: 'Collez d’abord l’adresse du classeur.', ok: false }); return; }
+    this.setState({ busy: true, status: 'Chargement…', ok: true });
+    const id = (u.match(/\/d\/([a-zA-Z0-9-_]+)/) || [])[1];
+    const tab = encodeURIComponent(this.state.tab.trim());
+    const tries = [];
+    if (/\/pub\?|output=csv/.test(u)) tries.push(u.includes('output=csv') ? u : u + '&output=csv');
+    if (id) {
+      tries.push('https://docs.google.com/spreadsheets/d/' + id + '/gviz/tq?tqx=out:csv&sheet=' + tab);
+      tries.push('https://docs.google.com/spreadsheets/d/' + id + '/export?format=csv&sheet=' + tab);
+    }
+    for (const url of tries) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) continue;
+        const text = await res.text();
+        if (/<html/i.test(text.slice(0, 400))) continue;
+        this.csvMode = true;
+        this.setState({ raw: text, busy: false, ok: true, status: 'Classeur chargé (onglet « ' + this.state.tab + ' »).' });
+        this.save('raw', text);
+        return;
+      } catch (e) {}
+    }
+    this.setState({ busy: false, ok: false, status: 'Google a refusé la lecture directe. Publiez l’onglet au format CSV (Fichier ▸ Partager ▸ Publier sur le web) et collez cette adresse, ou copiez les colonnes dans la zone 2.' });
+  };
+
+  url(r) {
+    let b = this.state.base.trim() || './';
+    b = b.split('?')[0];
+    const q = [];
+    if (r.n) q.push('n=' + encodeURIComponent(r.n));
+    if (r.name) q.push('g=' + encodeURIComponent(r.name));
+    return b + (q.length ? '?' + q.join('&') : '');
+  }
+
+  phone(t) {
+    const d = (t || '').replace(/\D/g, '');
+    if (!d) return '';
+    if (d.startsWith('261')) return d;
+    if (d.startsWith('0')) return '261' + d.slice(1);
+    if (d.length === 9) return '261' + d;
+    return d;
+  }
+
+  copy = (text, key) => {
+    const done = () => { this.setState(key === '*' ? { copiedAll: true } : { copied: key }); setTimeout(() => this.setState({ copied: null, copiedAll: false }), 1600); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(() => {});
+    else {
+      const ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  };
+
+  renderVals() {
+    const st = this.state;
+    const list = this.mapRows(this.grid());
+    const msg = (r) => 'Salama ' + r.name + ',\nManasa anao izahay amin’ny fampakaram-badinay ny 13 Novambra 2026.\nIty ny fanasana manokana ho anao : ' + this.url(r);
+    return {
+      base: st.base, sheetUrl: st.sheetUrl, tab: st.tab, raw: st.raw,
+      setBase: (e) => { const v = e.target.value; this.setState({ base: v }); this.save('base', v); },
+      setSheetUrl: (e) => { const v = e.target.value; this.setState({ sheetUrl: v }); this.save('sheetUrl', v); },
+      setTab: (e) => { const v = e.target.value; this.setState({ tab: v }); this.save('tab', v); },
+      setRaw: (e) => { const v = e.target.value; this.csvMode = false; this.setState({ raw: v }); this.save('raw', v); },
+      demo: () => { this.csvMode = false; const v = 'Nom\tNombre\tTéléphone\nRakoto Jean\t2\t0341234567\nRasoa Hery\t4\t0329876543\nFamille Andry\t5\t'; this.setState({ raw: v }); this.save('raw', v); },
+      load: this.load,
+      loadLabel: st.busy ? 'Chargement…' : 'Charger l’onglet',
+      status: st.status,
+      statusColor: st.ok ? '#8A6C40' : '#8C4A2F',
+      count: list.length ? list.length + ' invitation(s) générée(s)' : 'Aucune ligne pour le moment',
+      copyAllLabel: st.copiedAll ? 'Copié ✓' : 'Copier tous les liens',
+      copyAll: () => this.copy(list.map((r) => r.name + '\t' + (r.n || '') + '\t' + this.url(r)).join('\n'), '*'),
+      dlCsv: () => {
+        const csv = 'Nom;Nombre;Telephone;Lien\n' + list.map((r) => '"' + r.name.replace(/"/g, '""') + '";' + (r.n || '') + ';' + (r.tel || '') + ';' + this.url(r)).join('\n');
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' }));
+        a.download = 'invitations-faneva-ravaka.csv';
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+      },
+      rows: list.map((r, i) => {
+        const p = this.phone(r.tel);
+        return {
+          name: r.name,
+          meta: (r.n ? r.n + ' olona' : 'nombre non précisé') + (p ? ' · +' + p : '') + (r.who ? ' · ' + r.who : ''),
+          url: this.url(r),
+          copy: () => this.copy(this.url(r), i),
+          copyLabel: st.copied === i ? 'Copié ✓' : 'Copier le lien',
+          wa: 'https://wa.me/' + p + '?text=' + encodeURIComponent(msg(r)),
+          waLabel: p ? 'WhatsApp' : 'Partager'
+        };
+      })
+    };
+  }
+}
+
+</script>
+</body>
+</html>
