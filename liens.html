@@ -24,7 +24,7 @@
     <div style="display:flex;flex-direction:column;gap:6px;">
       <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.32em;color:#A9834A;text-transform:uppercase;">Faneva &amp; Ravaka — 13 Novambra 2026</p>
       <h1 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px;letter-spacing:.03em;color:#6E5024;">Générateur de liens personnalisés</h1>
-      <p style="margin:0;font-size:13.5px;line-height:1.7;color:#8A6C40;max-width:640px;">Chargez votre classeur Google Sheets, ou collez les colonnes depuis Excel. Le nom, le nombre d'invités et le numéro WhatsApp sont reconnus automatiquement par le titre de leur colonne.</p>
+      <p style="margin:0;font-size:13.5px;line-height:1.7;color:#8A6C40;max-width:640px;">Chargez votre classeur Google Sheets, collez les colonnes depuis Excel, ou saisissez les invités un par un. Le nom, le nombre d'invités et le numéro WhatsApp sont reconnus automatiquement par le titre de leur colonne.</p>
     </div>
 
     <div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF7;border:1px solid #DCCDAB;border-radius:10px;padding:16px;">
@@ -49,6 +49,17 @@
       </div>
       <textarea id="paste" value="{{ raw }}" onChange="{{ setRaw }}" rows="7" placeholder="Nom	Nombre	Téléphone&#10;Rakoto Jean	2	0341234567" style="border:1px solid #DCCDAB;border-radius:7px;background:#FAF6EC;padding:12px 13px;font-family:'Jost',sans-serif;font-size:14px;line-height:1.6;color:#4A3A22;resize:vertical;"></textarea>
       <p style="margin:0;font-size:12px;color:#B39A6E;">Séparateur : tabulation, point-virgule ou virgule. Colonnes reconnues : nom / nombre de personnes / téléphone.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF7;border:1px solid #DCCDAB;border-radius:10px;padding:16px;">
+      <label for="mname" style="font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:.24em;color:#A9834A;text-transform:uppercase;">3 · Ou saisissez à la main</label>
+      <div style="display:grid;grid-template-columns:minmax(0,2fr) 96px minmax(0,1.3fr) auto;gap:10px;align-items:center;">
+        <input id="mname" value="{{ mName }}" onChange="{{ setMName }}" onKeyDown="{{ mKey }}" placeholder="Nom de la famille ou de l'invité" style="min-width:0;min-height:44px;border:1px solid #DCCDAB;border-radius:7px;background:#FAF6EC;padding:0 13px;font-family:'Jost',sans-serif;font-size:14px;color:#4A3A22;">
+        <input value="{{ mN }}" onChange="{{ setMN }}" onKeyDown="{{ mKey }}" placeholder="Nombre" style="min-width:0;min-height:44px;border:1px solid #DCCDAB;border-radius:7px;background:#FAF6EC;padding:0 13px;font-family:'Jost',sans-serif;font-size:14px;color:#4A3A22;">
+        <input value="{{ mTel }}" onChange="{{ setMTel }}" onKeyDown="{{ mKey }}" placeholder="Téléphone" style="min-width:0;min-height:44px;border:1px solid #DCCDAB;border-radius:7px;background:#FAF6EC;padding:0 13px;font-family:'Jost',sans-serif;font-size:14px;color:#4A3A22;">
+        <button onClick="{{ addManual }}" style="border:1px solid #A9834A;border-radius:22px;background:#7A5A28;padding:11px 20px;min-height:44px;font-family:'Jost',sans-serif;font-size:13px;color:#FFFDF7;white-space:nowrap;cursor:pointer;" style-hover="background:#6E5024;">Ajouter</button>
+      </div>
+      <p style="margin:0;font-size:12px;color:#B39A6E;">Entrée valide la ligne. Chaque ajout s'écrit dans la zone 2, où vous pouvez encore corriger ou supprimer une ligne.</p>
     </div>
 
     <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
@@ -84,7 +95,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:920,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { base: 'https://votre-compte.github.io/fanasana/', sheetUrl: '', tab: 'Liste invités', raw: '', status: '', ok: true, busy: false, copied: null, copiedAll: false };
+  state = { base: 'https://votre-compte.github.io/fanasana/', sheetUrl: '', tab: 'Liste invités', raw: '', status: '', ok: true, busy: false, copied: null, copiedAll: false, mName: '', mN: '', mTel: '' };
 
   componentDidMount() {
     try {
@@ -225,6 +236,23 @@ class Component extends DCLogic {
     }
   };
 
+  addManual = () => {
+    const name = this.state.mName.trim();
+    if (!name) return;
+    const line = [name, this.state.mN.trim(), this.state.mTel.trim()].join('\t');
+    let base = this.state.raw;
+    if (this.csvMode) {
+      base = 'Nom\tNombre\tTéléphone\n' + this.mapRows(this.grid()).map((r) => [r.name, r.n, r.tel].join('\t')).join('\n');
+      this.csvMode = false;
+    } else if (!base.trim()) {
+      base = 'Nom\tNombre\tTéléphone';
+    }
+    const v = base.replace(/\s+$/, '') + '\n' + line;
+    this.setState({ raw: v, mName: '', mN: '', mTel: '' });
+    this.save('raw', v);
+    try { const el = document.getElementById('mname'); if (el) el.focus(); } catch (e) {}
+  };
+
   renderVals() {
     const st = this.state;
     const list = this.mapRows(this.grid());
@@ -235,6 +263,12 @@ class Component extends DCLogic {
       setSheetUrl: (e) => { const v = e.target.value; this.setState({ sheetUrl: v }); this.save('sheetUrl', v); },
       setTab: (e) => { const v = e.target.value; this.setState({ tab: v }); this.save('tab', v); },
       setRaw: (e) => { const v = e.target.value; this.csvMode = false; this.setState({ raw: v }); this.save('raw', v); },
+      mName: st.mName, mN: st.mN, mTel: st.mTel,
+      setMName: (e) => this.setState({ mName: e.target.value }),
+      setMN: (e) => this.setState({ mN: e.target.value }),
+      setMTel: (e) => this.setState({ mTel: e.target.value }),
+      mKey: (e) => { if (e.key === 'Enter') this.addManual(); },
+      addManual: this.addManual,
       demo: () => { this.csvMode = false; const v = 'Nom\tNombre\tTéléphone\nRakoto Jean\t2\t0341234567\nRasoa Hery\t4\t0329876543\nFamille Andry\t5\t'; this.setState({ raw: v }); this.save('raw', v); },
       load: this.load,
       loadLabel: st.busy ? 'Chargement…' : 'Charger l’onglet',
