@@ -576,6 +576,7 @@ class Component extends DCLogic {
       const n = this.Q('n');
       if (n && /^\d{1,3}$/.test(n)) this.setState({ guests: n });
       const isAdmin = this.Q('admin') === '1' || location.hash === '#admin';
+      if (isAdmin) { try { localStorage.setItem('fr-admin-ok', '1'); } catch (e) {} }
       if (isAdmin) {
         let base = '';
         try { base = localStorage.getItem('fr-admin-base') || ''; } catch (e) {}
@@ -695,6 +696,29 @@ class Component extends DCLogic {
   TONES = [["t3","Tena mafonja"],["t2","Mafonja"],["t1","Malefaka"],["t0","Manaja"]];
   TCODES = ["t3","t2","t1","t0"];
   RESPECT = ["rah","rap","raf"];
+  VOC = { fam: 'Ry havana', ftam: 'Ry iray tampo', nam: 'Ry namana', ntam: 'Ry namana iray tampo', rah: 'Ry ray aman-dreny hajaina', rap: 'Ry ray aman-dreny ara-panahy', raf: 'Ry ray aman-dreny akaiky ny fo', mpi: 'Ry mpiara-miasa', ofi: 'Tompoko hajaina' };
+  WAOPEN = {
+    t3: 'Tsy ho feno ny fifalianay raha tsy eo {you} 🥹💛',
+    t2: 'Misy anjara toerana manokana ho {an} eo 💛',
+    t1: 'Sitrakay indrindra ny fahatongavan{ao} 🤍',
+    t0: 'Faly izahay raha afaka manatrika {you} 🤍'
+  };
+
+  waText = (r, url) => {
+    const pl = (r.n && parseInt(r.n, 10) > 1) || this.RESPECT.indexOf(r.rel) >= 0;
+    const you = pl ? 'ianareo' : 'ianao';
+    const an = pl ? 'anareo' : 'anao';
+    const ao = pl ? 'areo' : 'ao';
+    const voc = this.VOC[r.rel] || 'Tompoko';
+    const line = (this.WAOPEN[r.tone] || this.WAOPEN.t1).split('{you}').join(you).split('{an}').join(an).split('{ao}').join(ao);
+    return '💌 ' + voc + ' ' + r.name + ' !\n\n'
+      + 'Misy taratasy manokana natokanay ho ' + an + ' 🌾\n'
+      + 'Misy andro lehibe ho avy… fa mbola tsinjo eto 🤫\n'
+      + 'Nanorina ny dianay teo ambanin’ny fitahian’ny Tompo izahay 🙏\n'
+      + line + '\n\n'
+      + 'Tsindrio ity rohy ity hisokatra ny taratasinao 👇\n' + url + '\n\n'
+      + 'Andrasanay ' + you + ' ! ✨';
+  };
   DEFTONE = { fam: 't2', ftam: 't3', nam: 't2', ntam: 't3', rah: 't2', rap: 't2', raf: 't3', mpi: 't1', ofi: 't0' };
 
   toneCode = () => {
@@ -723,7 +747,12 @@ class Component extends DCLogic {
     this.setState({ admin: true, adBase: base, adRaw: raw });
   };
 
-  adHoldStart = () => { this.adHold = setTimeout(() => { this.adHeld = true; this.adOpen(); }, 900); };
+  adAllowed = () => { try { return localStorage.getItem('fr-admin-ok') === '1'; } catch (e) { return false; } };
+
+  adHoldStart = () => {
+    if (!this.adAllowed()) return;
+    this.adHold = setTimeout(() => { this.adHeld = true; this.adOpen(); }, 900);
+  };
   adHoldEnd = () => { clearTimeout(this.adHold); };
 
   adSave = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
@@ -1064,7 +1093,7 @@ class Component extends DCLogic {
           url: url,
           copy: () => this.adCopy(url, k),
           copyLabel: st.adCopied === k ? 'Voadika ✓' : 'Adikao ny rohy',
-          wa: 'https://wa.me/?text=' + encodeURIComponent('Ry ' + r.name + ', faly izahay manasa anao. Tsindrio ity rohy ity : ' + (hasBase ? this.adLink(r) : ''))
+          wa: 'https://wa.me/?text=' + encodeURIComponent(this.waText(r, hasBase ? this.adLink(r) : ''))
         };
       }),
       askRemind: this.remind,
