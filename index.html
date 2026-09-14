@@ -89,7 +89,7 @@
 
   <sc-if value="{{ intro }}" hint-placeholder-val="{{ true }}">
     <div style="position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,253,247,.6),rgba(247,242,231,.5));animation:softIn .9s ease both;">
-      <div style="margin:auto 0;width:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:28px;padding:44px 30px 10px;text-align:center;">
+      <div style="position:relative;z-index:1;margin:auto 0 0;width:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:28px;padding:44px 30px 8px;text-align:center;">
       <p style="margin: 0; font-family: 'Cormorant Garamond',serif; font-size: 25px; letter-spacing: .28em; white-space: nowrap; color: #A9834A; text-transform: uppercase; animation: riseIn .9s ease both">Fanasana<br>manokana</p>
       <button onClick="{{ openSeal }}" aria-label="Sokafy ny fanasana" style="border:none;background:none;padding:0;cursor:pointer;animation:{{ sealAnim }};">
         <img src="assets/wax-seal.png" alt="Tombo-kase FR" style="width:172px;height:auto;display:block;filter:drop-shadow(0 16px 24px rgba(90,60,30,.22));">
@@ -103,14 +103,14 @@
                   <p style="margin: 0; font-family: 'Cormorant Garamond',serif; font-size: 18px; letter-spacing: 0.18em; color: #6E5024; max-width: 340px; align-self: stretch; text-align: center; line-height: 1.75; border-radius: 0px; overflow: visible; transform: translate(24px, 0px)">Misy taratasy ho anareo.<br>Tsindrio ny tombo-kase hanokafana azy.</p>
         </sc-if>
         <button onClick="{{ openSeal }}" style="border:1px solid #A9834A;border-radius:26px;background:rgba(255,253,247,.9);color:#7A5A28;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.28em;text-transform:uppercase;padding:15px 30px;min-height:50px;cursor:pointer;animation:ctaGlow 4s ease-in-out infinite;" style-hover="background:#7A5A28;color:#FFFDF7;">Sokafy</button>
-      </div><img src="assets/p-wheatfield.png" alt="" style="width:150%;max-width:none;margin:6px -25% 0;height:auto;opacity:.78;transform-origin:bottom center;animation:breeze 13s cubic-bezier(.45,.05,.55,.95) infinite;">
+      </div><img src="assets/p-wheatfield.png" alt="" style="display:block;width:120%;max-width:none;margin:auto -10% -1px;height:auto;opacity:.78;pointer-events:none;transform-origin:bottom center;animation:breeze 13s cubic-bezier(.45,.05,.55,.95) infinite;">
       </div>
     </div>
   </sc-if>
 
   <sc-if value="{{ s0 }}" hint-placeholder-val="{{ false }}">
     <div style="position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,253,247,.72),rgba(244,238,223,.58));animation:softIn .8s ease both;">
-      <div style="margin:auto 0;width:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:24px;padding:36px 32px 106px;text-align:center;">
+      <div style="position:relative;z-index:1;margin:auto 0 0;width:100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:24px;padding:36px 32px 8px;text-align:center;">
         <img src="assets/p-mono.png" alt="Faneva &amp; Ravaka" style="width:96px;height:auto;">
         <div style="align-self:stretch;display:flex;flex-direction:column;gap:8px;">
           <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:14px;line-height:1.85;letter-spacing:.11em;color:#8A6C40;text-transform:uppercase;">“Izay halehanao no halehako,<br>ary izay honenanao no honenako.”</p>
@@ -118,7 +118,7 @@
         </div>
         <img src="assets/p-names.png" alt="Faneva &amp; Ravaka" style="width:76%;max-width:280px;height:auto;">
         <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:16.5px;letter-spacing:.4em;color:#7A5A28;">13 NOVAMBRA 2026</p>
-        <img src="assets/p-wheatfield.png" alt="" style="width:150%;max-width:none;margin:0 -25%;height:auto;opacity:.9;transform-origin:bottom center;animation:breeze 11s cubic-bezier(.45,.05,.55,.95) infinite;">
+        <img src="assets/p-wheatfield.png" alt="" style="display:block;width:120%;max-width:none;margin:auto -10% -1px;height:auto;opacity:.9;pointer-events:none;transform-origin:bottom center;animation:breeze 11s cubic-bezier(.45,.05,.55,.95) infinite;">
       </div>
     </div>
   </sc-if>
@@ -281,7 +281,7 @@
         </sc-if>
         <div style="width:100%;">
           <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;color:#8A6C40;">VALIO ALOHAN’NY</p>
-          <p style="margin:2px 0 8px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;letter-spacing:.04em;color:#6E5024;">13 OKTOBRA 2026</p>
+          <p style="margin:2px 0 8px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;letter-spacing:.04em;color:#6E5024;">26 OKTOBRA 2026</p>
           <sc-if value="{{ showCountdown }}" hint-placeholder-val="{{ false }}">
             <p style="margin:0 0 11px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Jost',sans-serif;font-size:14.5px;letter-spacing:.08em;color:{{ countdownColor }};">
               <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:{{ countdownColor }};animation:ctaGlow 2.4s ease-in-out infinite;"></span>{{ countdownLabel }}</p>
@@ -465,6 +465,22 @@
     </div>
   </sc-if>
 
+  <sc-if value="{{ adminLock }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;inset:0;z-index:61;background:#FAF6EC;display:flex;align-items:center;justify-content:center;padding:26px 22px;">
+      <div style="width:100%;max-width:320px;display:flex;flex-direction:column;gap:13px;text-align:center;">
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">Ho an’ny mpampakatra</p>
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;color:#6E5024;">Teny miafina</p>
+        <input type="{{ adPassType }}" value="{{ adPass }}" onChange="{{ setAdPass }}" onKeyDown="{{ adPassKey }}" placeholder="Teny miafina" style="min-height:48px;border:1px solid #DCCDAB;border-radius:8px;background:#FFFDF7;padding:0 14px;text-align:center;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
+        <button onClick="{{ adPassShow }}" style="align-self:center;border:none;background:none;padding:6px 4px;min-height:36px;font-family:'Jost',sans-serif;font-size:12.5px;color:#A9834A;cursor:pointer;" style-hover="color:#7A5A28;">{{ adPassShowLabel }}</button>
+        <sc-if value="{{ adPassBad }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;font-size:13px;color:#B4562A;">Diso ny teny miafina.</p>
+        </sc-if>
+        <button onClick="{{ adPassOk }}" style="min-height:48px;border:1px solid #A9834A;border-radius:24px;background:#7A5A28;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.22em;color:#FFFDF7;cursor:pointer;" style-hover="background:#6E5024;">HIDITRA</button>
+        <button onClick="{{ adminClose }}" style="min-height:44px;border:none;background:none;font-family:'Jost',sans-serif;font-size:13px;color:#B39A6E;cursor:pointer;" style-hover="color:#7A5A28;">Hiala</button>
+      </div>
+    </div>
+  </sc-if>
+
   <sc-if value="{{ admin }}" hint-placeholder-val="{{ false }}">
     <div style="position:absolute;inset:0;z-index:60;overflow-y:auto;background:#FAF6EC;padding:22px 18px 40px;box-sizing:border-box;">
       <div style="display:flex;flex-direction:column;gap:18px;max-width:520px;margin:0 auto;">
@@ -500,9 +516,25 @@
             <input value="{{ adN }}" onChange="{{ setAdN }}" onKeyDown="{{ adKey }}" placeholder="Isany" style="min-width:0;min-height:46px;border:1px solid #DCCDAB;border-radius:8px;background:#FAF6EC;padding:0 12px;font-family:'Jost',sans-serif;font-size:14px;color:#4A3A22;">
             <button onClick="{{ adAdd }}" style="border:1px solid #A9834A;border-radius:23px;background:#7A5A28;padding:11px 20px;min-height:46px;font-family:'Jost',sans-serif;font-size:13px;color:#FFFDF7;cursor:pointer;white-space:nowrap;" style-hover="background:#6E5024;">Ampio</button>
           </div>
+          <sc-if value="{{ adNoteOn }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;border:1px solid #DCCDAB;border-radius:8px;background:#FAF6EC;padding:9px 12px;font-family:'Jost',sans-serif;font-size:13px;color:{{ adNoteFg }};">{{ adNote }}</p>
+          </sc-if>
           <p style="margin:0;font-size:12.5px;line-height:1.6;color:#B39A6E;">Ny taratasy ao anaty fanomezana dia miova arakaraka ny fifandraisana voafidy. Na apetaho eto ambany : Anarana / Isany / kodra fifandraisana (fam, ftam, nam, ntam, rah, rap, raf, mpi, ofi) / kodra hamafy (t3, t2, t1, t0), tsanganana iray isaky ny fianakaviana.</p>
           <textarea value="{{ adRaw }}" onChange="{{ setAdRaw }}" rows="5" placeholder="Fianakaviana Rakoto&#9;4&#9;ftam&#9;t3&#10;Ramatoa Soa&#9;2&#9;ofi&#9;t0" style="width:100%;box-sizing:border-box;border:1px solid #DCCDAB;border-radius:8px;background:#FAF6EC;padding:11px 12px;font-family:'Jost',sans-serif;font-size:13.5px;line-height:1.6;color:#4A3A22;resize:vertical;"></textarea>
         </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="background:#FFFDF7;border:1px solid #DCCDAB;border-radius:10px;padding:12px 14px;">
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:.2em;color:#A9834A;text-transform:uppercase;">Fanasana</p>
+            <p style="margin:3px 0 0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#6E5024;">{{ adTotalCards }}</p>
+          </div>
+          <div style="background:#FFFDF7;border:1px solid #DCCDAB;border-radius:10px;padding:12px 14px;">
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:11.5px;letter-spacing:.2em;color:#A9834A;text-transform:uppercase;">Olona</p>
+            <p style="margin:3px 0 0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#6E5024;">{{ adTotalGuests }}</p>
+          </div>
+        </div>
+
+        <input value="{{ adSearch }}" onChange="{{ setAdSearch }}" placeholder="Hikaroka anarana…" style="min-height:46px;border:1px solid #DCCDAB;border-radius:8px;background:#FFFDF7;padding:0 14px;font-family:'Jost',sans-serif;font-size:14px;color:#4A3A22;">
 
         <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
           <span style="font-family:'Cormorant Garamond',serif;font-size:16px;color:#6E5024;">{{ adCount }}</span>
@@ -535,7 +567,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:440,&quot;height&quot;:900},&quot;nombre&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Invitation&quot;}}">
 class Component extends DCLogic {
-  state = { remindOn: false, origin: '', geo: null, map: null, dir: 1, music: false, picked: 0, night: null, intro: true, opening: false, giftLift: false, giftOpen: false, i: 0, done: false, choice: null, name: '', guests: '2', msg: '', now: Date.now(), admin: false, adBase: '', adName: '', adN: '', adRaw: '', adRel: 'fam', adTone: '', adCopied: null, adCopiedAll: false };
+  state = { remindOn: false, origin: '', geo: null, map: null, dir: 1, music: false, picked: 0, night: null, intro: true, opening: false, giftLift: false, giftOpen: false, i: 0, done: false, choice: null, name: '', guests: '2', msg: '', now: Date.now(), admin: false, adBase: '', adName: '', adN: '', adRaw: '', adRel: 'fam', adTone: '', adPass: '', adPassBad: false, adPassShown: false, adAuth: false, adSearch: '', adNote: '', adNoteBad: false, adCopied: null, adCopiedAll: false };
   LAST = 5;
   FAMILIES_NEW = [
     ['Loko ny tany mena — ny fototra sy ny fianakaviana.', [['#674231', 'Terre cuite'], ['#6d3b24', 'Rouille'], ['#5b2525', 'Bordeaux']]],
@@ -576,13 +608,12 @@ class Component extends DCLogic {
       const n = this.Q('n');
       if (n && /^\d{1,3}$/.test(n)) this.setState({ guests: n });
       const isAdmin = this.Q('admin') === '1' || location.hash === '#admin';
-      if (isAdmin) { try { localStorage.setItem('fr-admin-ok', '1'); } catch (e) {} }
       if (isAdmin) {
         let base = '';
         try { base = localStorage.getItem('fr-admin-base') || ''; } catch (e) {}
             let raw = '';
         try { raw = localStorage.getItem('fr-admin-raw') || ''; } catch (e) {}
-        this.setState({ admin: true, adBase: base, adRaw: raw });
+        this.setState({ admin: true, adAuth: this.adAllowed(), adBase: base, adRaw: raw });
       }
     } catch (e) {}
     try {
@@ -617,6 +648,7 @@ class Component extends DCLogic {
     if (this.audio) this.audio.pause();
     clearInterval(this.t);
     clearTimeout(this.seal);
+    clearTimeout(this.seal2);
     clearTimeout(this.giftT);
     document.removeEventListener('keydown', this.onKey);
     document.removeEventListener('touchstart', this.onDown);
@@ -633,7 +665,7 @@ class Component extends DCLogic {
 
   daysToDeadline = () => Math.max(0, Math.ceil((this.DEADLINE - Date.now()) / 864e5));
 
-  DEADLINE = new Date('2026-10-13T23:59:59+03:00').getTime();
+  DEADLINE = new Date('2026-10-26T23:59:59+03:00').getTime();
   WEDDING = new Date('2026-11-13T09:00:00+03:00').getTime();
   WA = ['261344333560', '261345430093'];
 
@@ -744,13 +776,22 @@ class Component extends DCLogic {
     try { base = localStorage.getItem('fr-admin-base') || ''; } catch (e) {}
     let raw = '';
     try { raw = localStorage.getItem('fr-admin-raw') || ''; } catch (e) {}
-    this.setState({ admin: true, adBase: base, adRaw: raw });
+    this.setState({ admin: true, adAuth: this.adAllowed(), adBase: base, adRaw: raw });
   };
 
-  adAllowed = () => { try { return localStorage.getItem('fr-admin-ok') === '1'; } catch (e) { return false; } };
+  PASS = 'jesosy no ivo';
+  adAllowed = () => { try { return localStorage.getItem('fr-admin-ok-v2') === '1'; } catch (e) { return false; } };
+  adTry = () => {
+    const v = this.state.adPass.trim().toLowerCase().replace(/\s+/g, ' ');
+    if (v === this.PASS) {
+      try { localStorage.setItem('fr-admin-ok-v2', '1'); } catch (e) {}
+      this.setState({ adAuth: true, adPass: '', adPassBad: false });
+    } else {
+      this.setState({ adPassBad: true });
+    }
+  };
 
   adHoldStart = () => {
-    if (!this.adAllowed()) return;
     this.adHold = setTimeout(() => { this.adHeld = true; this.adOpen(); }, 900);
   };
   adHoldEnd = () => { clearTimeout(this.adHold); };
@@ -780,10 +821,15 @@ class Component extends DCLogic {
   adAdd = () => {
     const name = this.state.adName.trim();
     if (!name) return;
+    const key = name.toLowerCase().replace(/\s+/g, ' ');
+    if (this.adParse().some((r) => r.name.toLowerCase().replace(/\s+/g, ' ') === key)) {
+      this.setState({ adNote: '« ' + name + ' » efa voasoratra.', adNoteBad: true });
+      return;
+    }
     const tone = this.state.adTone || this.DEFTONE[this.state.adRel] || 't1';
     const line = [name, this.state.adN.trim(), this.state.adRel, tone].filter((x) => x !== '').join('\t');
     const v = (this.state.adRaw.replace(/\s+$/, '') + '\n' + line).replace(/^\n/, '');
-    this.setState({ adRaw: v, adName: '', adN: '' });
+    this.setState({ adRaw: v, adName: '', adN: '', adNote: '« ' + name + ' » voasoratra.', adNoteBad: false });
     this.adSave('fr-admin-raw', v);
     try { const el = document.getElementById('ad-name'); if (el) el.focus(); } catch (e) {}
   };
@@ -984,6 +1030,7 @@ class Component extends DCLogic {
       guestHello: this.Q('g').trim() ? (plural ? 'Ho anareo ity, ' : 'Ho anao ity, ') + this.Q('g').trim() : '',
       hasGuestHello: !!this.Q('g').trim(),
       guestTitle: this.Q('g').trim() || (plural ? 'Ho anareo manokana' : 'Ho anao manokana'),
+      opening: st.opening,
       sealAnim: st.opening ? 'sealOpen .8s cubic-bezier(.4,0,.6,1) both' : 'sealIdle 5.5s ease-in-out infinite',
       s0: !st.intro && !st.done && st.i === 0, s1: !st.intro && !st.done && st.i === 1, s2: !st.intro && !st.done && st.i === 2,
       s3: !st.intro && !st.done && st.i === 3, s4: !st.intro && !st.done && st.i === 4, s5: !st.intro && !st.done && st.i === 5,
@@ -1045,16 +1092,24 @@ class Component extends DCLogic {
       countdownLabel: this.daysToDeadline() === 0 ? 'Anio no farany' : 'Sisa ' + this.daysToDeadline() + ' andro',
       countdownColor: this.daysToDeadline() <= 7 ? '#8A4E1E' : '#A9834A',
       lockNote: locked
-        ? 'Nifarana ny 13 Oktobra 2026 ny fe-potoana famaliana. Tsy azo ovaina intsony ny valiteny.'
+        ? 'Nifarana ny 26 Oktobra 2026 ny fe-potoana famaliana. Tsy azo ovaina intsony ny valiteny.'
         : '',
       pickYes: () => { if (!locked) this.setState({ choice: 'yes' }); },
       pickNo: () => { if (!locked) this.setState({ choice: 'no' }); },
       reopen: () => this.setState({ done: false, i: 0, intro: false }),
-      admin: st.admin,
+      admin: st.admin && st.adAuth,
+      adminLock: st.admin && !st.adAuth,
+      adPass: st.adPass, adPassBad: st.adPassBad,
+      adPassType: st.adPassShown ? 'text' : 'password',
+      adPassShowLabel: st.adPassShown ? 'Afeno ny teny miafina' : 'Asehoy ny teny miafina',
+      adPassShow: () => this.setState({ adPassShown: !st.adPassShown }),
+      setAdPass: (e) => this.setState({ adPass: e.target.value, adPassBad: false }),
+      adPassKey: (e) => { if (e.key === 'Enter') this.adTry(); },
+      adPassOk: this.adTry,
 
       adHoldStart: this.adHoldStart,
       adHoldEnd: this.adHoldEnd,
-      adminClose: () => { this.setState({ admin: false }); try { history.replaceState(null, '', location.pathname); } catch (e) {} },
+      adminClose: () => { this.setState({ admin: false, adPass: '', adPassBad: false }); try { history.replaceState(null, '', location.pathname); } catch (e) {} },
       adBase: st.adBase, adName: st.adName, adN: st.adN, adRaw: st.adRaw,
       setAdBase: (e) => { this.setState({ adBase: e.target.value }); this.adSave('fr-admin-base', e.target.value); },
       setAdName: (e) => this.setState({ adName: e.target.value }),
@@ -1073,9 +1128,19 @@ class Component extends DCLogic {
       }),
       adClear: () => { this.setState({ adRaw: '' }); this.adSave('fr-admin-raw', ''); },
       adCount: (() => { const k = this.adParse().length; return k === 0 ? 'Mbola tsy misy anarana' : k + ' rohy vonona'; })(),
+      adTotalCards: String(this.adParse().length),
+      adTotalGuests: String(this.adParse().reduce((s, r) => s + (parseInt(r.n, 10) || 1), 0)),
+      adSearch: st.adSearch,
+      setAdSearch: (e) => this.setState({ adSearch: e.target.value }),
+      adNote: st.adNote,
+      adNoteOn: !!st.adNote,
+      adNoteFg: st.adNoteBad ? '#B4562A' : '#6E5024',
       adCopyAllLabel: st.adCopiedAll ? 'Voadika ✓' : 'Adikao daholo',
       adCopyAll: () => this.adCopy(this.adParse().map((r) => [r.name, r.n || '', r.rel, r.tone, this.adLink(r)].join('\t')).join('\n'), '__all'),
-      adRows: this.adParse().map((r, k) => {
+      adRows: this.adParse().map((r, k) => ({ r: r, k: k })).filter(({ r }) => {
+        const q = st.adSearch.trim().toLowerCase();
+        return !q || r.name.toLowerCase().indexOf(q) >= 0;
+      }).map(({ r, k }) => {
         const hasBase = !!(this.state.adBase || '').trim();
         const url = hasBase ? this.adLink(r) : 'Fenoy ny rohy fototra etsy ambony';
         return {
