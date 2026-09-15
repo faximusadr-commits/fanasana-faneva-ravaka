@@ -151,7 +151,7 @@
     <div data-fit="1" style="margin:auto;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:clamp(7px,1.5vh,20px);padding:46px 22px 86px;">
 
         <sc-if value="{{ hasGuestHello }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 auto;max-width:250px;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.04em;line-height:1.55;color:#7A5A28;text-align:center;text-wrap:pretty;animation:fadeUp .5s ease both;">{{ guestHello }}</p>
+          <p style="margin:0 auto;max-width:300px;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.04em;line-height:1.55;color:#7A5A28;text-align:center;text-wrap:pretty;animation:fadeUp .5s ease both;"><span style="display:block;">{{ guestGreet }}</span><span style="display:block;">{{ guestName }}</span></p>
         </sc-if>
 
         <img src="assets/p-flourish.png" alt="" style="display:block;width:clamp(150px,42vw,214px);height:auto;opacity:.92;flex:0 0 auto;">
@@ -1194,6 +1194,8 @@ class Component extends DCLogic {
       T0One: tc === 't0' && !plural,
       T0Many: tc === 't0' && plural,
       guestHello: this.Q('g').trim() ? (plural ? 'Ho anareo ity, ' : 'Ho anao ity, ') + this.Q('g').trim() : '',
+      guestGreet: plural ? 'Ho anareo ity,' : 'Ho anao ity,',
+      guestName: this.Q('g').trim(),
       hasGuestHello: !!this.Q('g').trim(),
       guestTitle: this.Q('g').trim() || (plural ? 'Ho anareo manokana' : 'Ho anao manokana'),
       opening: st.opening,
