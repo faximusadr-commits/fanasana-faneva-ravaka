@@ -658,6 +658,8 @@
         <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
           <span style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#6E5024;">{{ adCount }}</span>
           <button onClick="{{ adCopyAll }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(255,253,247,.9);padding:9px 16px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">{{ adCopyAllLabel }}</button>
+          <button onClick="{{ adLockToggle }}" style="border:1px solid {{ adLockBd }};border-radius:999px;background:{{ adLockBg }};padding:9px 16px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:{{ adLockFg }};cursor:pointer;">{{ adLockLabel }}</button>
+          <button onClick="{{ adTidy }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(255,253,247,.9);padding:9px 16px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">Diovina</button>
           <button onClick="{{ adClear }}" style="border:1px solid #E0D2B4;border-radius:999px;background:none;padding:9px 16px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:#B39A6E;cursor:pointer;" style-hover="color:#7A5A28;">Foanana</button>
         </div>
 
@@ -704,7 +706,7 @@
             <div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF7;border:1px solid #E0D2B4;border-radius:2px;padding:15px;">
               <label style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">Fampidirana be dia be</label>
           <p style="margin:0;font-size:13px;line-height:1.6;color:#B39A6E;">Ny taratasy ao anaty fanomezana dia miova arakaraka ny fifandraisana voafidy. Na apetaho eto ambany : Anarana / Isany / kodra fifandraisana (fam, ftam, nam, ntam, rah, rap, raf, mpi, ofi) / kodra hamafy (t3, t2, t1, t0), tsanganana iray isaky ny fianakaviana.</p>
-          <textarea value="{{ adRaw }}" onChange="{{ setAdRaw }}" onBlur="{{ adRawBlur }}" rows="6" data-grow="1" wrap="off" placeholder="Fianakaviana Rakoto&#9;4&#9;ftam&#9;t3&#10;Ramatoa Soa&#9;2&#9;ofi&#9;t0" style="width:100%;box-sizing:border-box;border:1px solid #E0D2B4;border-radius:2px;background:#FAF6EC;padding:11px 12px;font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;font-size:11.5px;line-height:1.85;letter-spacing:0;color:#4A3A22;resize:vertical;overflow:auto;-webkit-overflow-scrolling:touch;tab-size:6;-moz-tab-size:6;max-height:62vh;"></textarea>
+          <textarea value="{{ adRaw }}" onChange="{{ setAdRaw }}" onBlur="{{ adRawBlur }}" readOnly="{{ adLocked }}" rows="6" data-grow="1" wrap="off" placeholder="Fianakaviana Rakoto&#9;4&#9;ftam&#9;t3&#10;Ramatoa Soa&#9;2&#9;ofi&#9;t0" style="width:100%;box-sizing:border-box;border:1px solid #E0D2B4;border-radius:2px;background:#FAF6EC;padding:11px 12px;font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;font-size:11.5px;line-height:1.85;letter-spacing:0;color:#4A3A22;resize:vertical;overflow:auto;-webkit-overflow-scrolling:touch;tab-size:6;-moz-tab-size:6;max-height:62vh;"></textarea>
         </div>
             </div>
           </div>
@@ -718,7 +720,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:440,&quot;height&quot;:900},&quot;nombre&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Invitation&quot;}}">
 class Component extends DCLogic {
-  state = { adTab: 'add', adSide: 'faneva', adFilter: 'all', adDelK: null, adUndo: null, sbUrl: '', sbKey: '', sbState: 'off', remindOn: false, origin: '', geo: null, map: null, dir: 1, music: false, picked: 0, night: null, intro: true, opening: false, giftLift: false, giftOpen: false, i: 0, done: false, choice: null, name: '', guests: '2', msg: '', now: Date.now(), admin: false, adBase: '', adName: '', adN: '', adRaw: '', adRel: 'fam', adTone: '', adPass: '', adPassBad: false, adPassShown: false, adAuth: false, adSearch: '', adNote: '', adNoteBad: false, epiPos: null, adCopied: null, adCopiedAll: false };
+  state = { adTab: 'add', adLock: false, adSide: 'faneva', adFilter: 'all', adDelK: null, adUndo: null, sbUrl: '', sbKey: '', sbState: 'off', remindOn: false, origin: '', geo: null, map: null, dir: 1, music: false, picked: 0, night: null, intro: true, opening: false, giftLift: false, giftOpen: false, i: 0, done: false, choice: null, name: '', guests: '2', msg: '', now: Date.now(), admin: false, adBase: '', adName: '', adN: '', adRaw: '', adRel: 'fam', adTone: '', adPass: '', adPassBad: false, adPassShown: false, adAuth: false, adSearch: '', adNote: '', adNoteBad: false, epiPos: null, adCopied: null, adCopiedAll: false };
   LAST = 5;
   FAMILIES_NEW = [
     ['Loko ny tany mena — ny fototra sy ny fianakaviana.', [['#674231', 'Terre cuite'], ['#6d3b24', 'Rouille'], ['#5b2525', 'Bordeaux']]],
@@ -779,6 +781,7 @@ class Component extends DCLogic {
     this.t = setInterval(() => this.setState({ now: Date.now() }), 1000);
     this.fitSoon();
     try {
+      if (localStorage.getItem('fr-admin-lock')) this.setState({ adLock: true });
       const u = localStorage.getItem('fr-sb-url') || '';
       const k = localStorage.getItem('fr-sb-key') || '';
       if (u || k) this.setState({ sbUrl: u, sbKey: k }, this.sbPull);
@@ -1076,6 +1079,7 @@ class Component extends DCLogic {
 
   adSided = (f) => this.adParse().filter((r) => f === 'all' || (f === 'none' ? !r.side : r.side === f));
   adAssign = (side) => {
+    if (this.locked()) return;
     const all = this.adParse();
     let n = 0;
     this.adRewrite(all.map((r) => { if (r.side) return r; n++; return Object.assign({}, r, { side: side }); }));
@@ -1087,6 +1091,12 @@ class Component extends DCLogic {
     return { title: title, people: String(people), cards: rows.length + ' fanasana', bd: f === 'all' ? '#C6AC7C' : '#E0D2B4' };
   };
 
+  locked = () => {
+    if (!this.state.adLock) return false;
+    this.setState({ adNote: 'Voahidy ny lisitra. Vahao aloha raha tena tianao hanova.', adNoteBad: true });
+    return true;
+  };
+
   adRewrite = (rows) => {
     const v = rows.map((r) => [r.name, r.n || '', r.rel, r.tone, r.side || ''].filter((x) => x !== '').join('\t')).join('\n');
     clearTimeout(this.sbDeb);
@@ -1096,6 +1106,7 @@ class Component extends DCLogic {
   };
 
   adDel = (k) => {
+    if (this.locked()) return;
     if (this.state.adDelK !== k) {
       this.setState({ adDelK: k, adNote: 'Tsindrio indray mba hanamafisana ny famafana.', adNoteBad: true });
       return;
@@ -1117,6 +1128,7 @@ class Component extends DCLogic {
   };
 
   adEdit = (k) => {
+    if (this.locked()) return;
     const all = this.adParse();
     const r = all[k];
     if (!r) return;
@@ -1184,7 +1196,7 @@ class Component extends DCLogic {
     this.sbBase = now;
     if (!added.length && !gone.length) return;
     this.sbRun(async () => {
-      if (gone.length) await this.sbDelete(c, gone);
+      if (gone.length && !this.state.adLock) await this.sbDelete(c, gone);
       if (added.length) await this.sbInsert(c, added);
       this.setState({ sbState: 'ok' });
     });
@@ -1207,7 +1219,14 @@ class Component extends DCLogic {
     const tone = (c.slice(1).map((x) => x.toLowerCase()).find((x) => this.TCODES.indexOf(x) >= 0) || this.DEFTONE[rel] || 't1');
     const side = (c.slice(1).map((x) => x.toLowerCase()).find((x) => this.SCODES.indexOf(x) >= 0) || '');
     return { name: name.slice(0, 60), n: num, rel: rel, tone: tone, side: side };
-  }).filter(Boolean);
+  }).filter(Boolean).reduce((out, r) => {
+    const key = r.name.toLowerCase().replace(/\s+/g, ' ');
+    const prev = out.map[key];
+    if (!prev) { out.map[key] = r; out.list.push(r); return out; }
+    if (!prev.side && r.side) prev.side = r.side;
+    if ((parseInt(r.n, 10) || 1) > (parseInt(prev.n, 10) || 1)) prev.n = r.n;
+    return out;
+  }, { map: {}, list: [] }).list;
 
   adLink = (r) => {
     const b = (this.state.adBase || '').trim().replace(/[?#].*$/, '');
@@ -1219,6 +1238,7 @@ class Component extends DCLogic {
   };
 
   adAdd = () => {
+    if (this.locked()) return;
     const name = this.state.adName.trim();
     if (!name) return;
     const key = name.toLowerCase().replace(/\s+/g, ' ');
@@ -1523,6 +1543,18 @@ class Component extends DCLogic {
       setSbUrl: (e) => { this.setState({ sbUrl: e.target.value }); this.adSave('fr-sb-url', e.target.value); },
       setSbKey: (e) => { this.setState({ sbKey: e.target.value }); this.adSave('fr-sb-key', e.target.value); },
       sbSync: this.sbPull,
+      adLocked: st.adLock,
+      adLockLabel: st.adLock ? 'Voahidy ✓' : 'Hidiana ny lisitra',
+      adLockBd: st.adLock ? '#A9834A' : '#E0D2B4',
+      adLockBg: st.adLock ? '#7A5A28' : 'none',
+      adLockFg: st.adLock ? '#FFFDF7' : '#8A6C40',
+      adLockToggle: () => { const v = !st.adLock; this.setState({ adLock: v, adDelK: null, adNote: v ? 'Voahidy ny lisitra.' : 'Vahana ny lisitra.', adNoteBad: false }); this.adSave('fr-admin-lock', v ? '1' : ''); },
+      adTidy: () => {
+        if (this.locked()) return;
+        const rows = this.adParse();
+        this.adRewrite(rows);
+        this.setState({ adUndo: null, adDelK: null, adNote: rows.length + ' fanasana voadio, nesorina ny mitovy.', adNoteBad: false });
+      },
       adUndoOn: !!st.adUndo,
       adUndo: this.adUndoDo,
       sbLabel: { off: 'Tsy mizara', sync: 'Mampifanaraka…', ok: 'Mizara ✓', err: 'Tsy tafita' }[st.sbState] || '',
@@ -1530,7 +1562,7 @@ class Component extends DCLogic {
       setAdBase: (e) => { this.setState({ adBase: e.target.value }); this.adSave('fr-admin-base', e.target.value); },
       setAdName: (e) => this.setState({ adName: e.target.value }),
       setAdN: (e) => this.setState({ adN: e.target.value }),
-      setAdRaw: (e) => { const v = e.target.value; this.setState({ adRaw: v }, this.sbWrite); this.adSave('fr-admin-raw', v); },
+      setAdRaw: (e) => { if (this.state.adLock) return; const v = e.target.value; this.setState({ adRaw: v }, this.sbWrite); this.adSave('fr-admin-raw', v); },
       adRawBlur: () => { clearTimeout(this.sbDeb); this.sbDirty = false; this.sbFlush(); },
       adKey: (e) => { if (e.key === 'Enter') this.adAdd(); },
       adAdd: this.adAdd,
@@ -1543,7 +1575,7 @@ class Component extends DCLogic {
         const on = eff === code;
         return { label: label, bd: on ? '#A9834A' : '#E0D2B4', bg: on ? '#8A6C40' : 'rgba(250,246,236,.9)', fg: on ? '#FFFDF7' : '#8A6C40', pick: () => this.setState({ adTone: code }) };
       }),
-      adClear: () => { clearTimeout(this.sbDeb); this.sbDirty = false; this.setState({ adRaw: '' }, this.sbFlush); this.adSave('fr-admin-raw', ''); },
+      adClear: () => { if (this.locked()) return; clearTimeout(this.sbDeb); this.sbDirty = false; this.setState({ adRaw: '' }, this.sbFlush); this.adSave('fr-admin-raw', ''); },
       adCount: (() => { const k = this.adParse().length; return k === 0 ? 'Mbola tsy misy anarana' : k + ' rohy vonona'; })(),
       adHasData: this.adParse().length > 0,
       adTable: this.adSided(st.adFilter).map((r, k) => ({
