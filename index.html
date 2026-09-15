@@ -549,25 +549,21 @@
           <button onClick="{{ adminClose }}" style="border:1px solid #E0D2B4;border-radius:999px;background:rgba(255,253,247,.9);padding:9px 16px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;white-space:nowrap;" style-hover="background:#7A5A28;color:#FFFDF7;">Hidina</button>
         </div>
 
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <label style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">1 · Rohy fototra</label>
-          <p style="margin:0;font-size:13px;line-height:1.6;color:#B39A6E;">Adikao eto ny adiresy misy ny fanasana rehefa tafapetraka (GitHub Pages). Raha tsy feno ity, tsy mandeha ny rohy.</p>
-          <input value="{{ adBase }}" onChange="{{ setAdBase }}" placeholder="https://votre-compte.github.io/fanasana/" style="min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:0 13px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
+        <div style="display:flex;gap:7px;">
+          <button onClick="{{ tabA.pick }}" style="flex:1 1 0;min-width:0;min-height:44px;border:1px solid {{ tabA.bd }};border-radius:999px;background:{{ tabA.bg }};font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.14em;color:{{ tabA.fg }};text-transform:uppercase;cursor:pointer;">Ampio</button>
+          <button onClick="{{ tabB.pick }}" style="flex:1 1 0;min-width:0;min-height:44px;border:1px solid {{ tabB.bd }};border-radius:999px;background:{{ tabB.bg }};font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.14em;color:{{ tabB.fg }};text-transform:uppercase;cursor:pointer;">Lisitra</button>
+          <button onClick="{{ tabC.pick }}" style="flex:1 1 0;min-width:0;min-height:44px;border:1px solid {{ tabC.bd }};border-radius:999px;background:{{ tabC.bg }};font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.14em;color:{{ tabC.fg }};text-transform:uppercase;cursor:pointer;">Fandrindrana</button>
         </div>
 
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;justify-content:space-between;">
-            <label style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">1 bis · Fizarana Supabase</label>
-            <span style="font-family:'Jost',sans-serif;font-size:13px;color:{{ sbFg }};">{{ sbLabel }}</span>
+        <sc-if value="{{ tabAdd }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF7;border:1px solid #E0D2B4;border-radius:2px;padding:15px;">
+          <label style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">Avy amin’iza</label>
+          <div style="display:flex;gap:7px;">
+            <sc-for list="{{ adSideOpts }}" as="o" hint-placeholder-count="2">
+              <button onClick="{{ o.pick }}" style="flex:1 1 0;min-width:0;border:1px solid {{ o.bd }};border-radius:999px;background:{{ o.bg }};padding:9px 14px;min-height:44px;font-family:'Jost',sans-serif;font-size:13px;color:{{ o.fg }};cursor:pointer;">{{ o.label }}</button>
+            </sc-for>
           </div>
-          <p style="margin:0;font-size:13px;line-height:1.6;color:#B39A6E;">Atsofoho eto ny Project URL sy ny cle anon avy ao amin’ny Supabase. Rehefa feno, mizara base iray ianareo roa : ny anarana ampidirin’ny iray dia hita eo amin’ny hafa.</p>
-          <input value="{{ sbUrl }}" onChange="{{ setSbUrl }}" placeholder="https://xxxx.supabase.co" style="min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:0 13px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
-          <input value="{{ sbKey }}" onChange="{{ setSbKey }}" placeholder="Anon public key (eyJ…)" style="min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:0 13px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
-          <button onClick="{{ sbSync }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(255,253,247,.9);padding:9px 16px;min-height:44px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;align-self:flex-start;" style-hover="background:#7A5A28;color:#FFFDF7;">Avereno alaina</button>
-        </div>
-
-        <div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF7;border:1px solid #E0D2B4;border-radius:2px;padding:15px;">
-          <label style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">2 · Anarana sy isan’ny olona</label>
+          <label style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">Anarana sy isan’ny olona</label>
           <div style="display:flex;flex-wrap:wrap;gap:7px;">
             <sc-for list="{{ adRelOpts }}" as="o" hint-placeholder-count="4">
               <button onClick="{{ o.pick }}" style="border:1px solid {{ o.bd }};border-radius:999px;background:{{ o.bg }};padding:9px 14px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:{{ o.fg }};cursor:pointer;">{{ o.label }}</button>
@@ -587,20 +583,49 @@
           <sc-if value="{{ adNoteOn }}" hint-placeholder-val="{{ false }}">
             <p style="margin:0;border:1px solid #E0D2B4;border-radius:2px;background:#FAF6EC;padding:9px 12px;font-family:'Jost',sans-serif;font-size:13px;color:{{ adNoteFg }};">{{ adNote }}</p>
           </sc-if>
-          <p style="margin:0;font-size:13px;line-height:1.6;color:#B39A6E;">Ny taratasy ao anaty fanomezana dia miova arakaraka ny fifandraisana voafidy. Na apetaho eto ambany : Anarana / Isany / kodra fifandraisana (fam, ftam, nam, ntam, rah, rap, raf, mpi, ofi) / kodra hamafy (t3, t2, t1, t0), tsanganana iray isaky ny fianakaviana.</p>
-          <textarea value="{{ adRaw }}" onChange="{{ setAdRaw }}" onBlur="{{ adRawBlur }}" rows="6" data-grow="1" wrap="off" placeholder="Fianakaviana Rakoto&#9;4&#9;ftam&#9;t3&#10;Ramatoa Soa&#9;2&#9;ofi&#9;t0" style="width:100%;box-sizing:border-box;border:1px solid #E0D2B4;border-radius:2px;background:#FAF6EC;padding:11px 12px;font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;font-size:11.5px;line-height:1.85;letter-spacing:0;color:#4A3A22;resize:vertical;overflow:auto;-webkit-overflow-scrolling:touch;tab-size:6;-moz-tab-size:6;max-height:62vh;"></textarea>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ tabList }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:16px;">
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;">
+          <div style="background:#FFFDF7;border:1px solid {{ sumF.bd }};border-radius:2px;padding:12px 13px;">
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.18em;color:#A9834A;text-transform:uppercase;">{{ sumF.title }}</p>
+            <p style="margin:3px 0 0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;line-height:1.1;color:#6E5024;">{{ sumF.people }}</p>
+            <p style="margin:2px 0 0;font-family:'Jost',sans-serif;font-size:12px;color:#8A6C40;">{{ sumF.cards }}</p>
+          </div>
+          <div style="background:#FFFDF7;border:1px solid {{ sumR.bd }};border-radius:2px;padding:12px 13px;">
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.18em;color:#A9834A;text-transform:uppercase;">{{ sumR.title }}</p>
+            <p style="margin:3px 0 0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;line-height:1.1;color:#6E5024;">{{ sumR.people }}</p>
+            <p style="margin:2px 0 0;font-family:'Jost',sans-serif;font-size:12px;color:#8A6C40;">{{ sumR.cards }}</p>
+          </div>
+          <div style="background:#FFFDF7;border:1px solid {{ sumT.bd }};border-radius:2px;padding:12px 13px;">
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.18em;color:#A9834A;text-transform:uppercase;">{{ sumT.title }}</p>
+            <p style="margin:3px 0 0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;line-height:1.1;color:#6E5024;">{{ sumT.people }}</p>
+            <p style="margin:2px 0 0;font-family:'Jost',sans-serif;font-size:12px;color:#8A6C40;">{{ sumT.cards }}</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:7px;">
+          <sc-for list="{{ adFilterOpts }}" as="o" hint-placeholder-count="3">
+            <button onClick="{{ o.pick }}" style="flex:1 1 0;min-width:0;border:1px solid {{ o.bd }};border-radius:999px;background:{{ o.bg }};padding:9px 12px;min-height:44px;font-family:'Jost',sans-serif;font-size:13px;color:{{ o.fg }};cursor:pointer;">{{ o.label }}</button>
+          </sc-for>
+        </div>
+
           <sc-if value="{{ adHasData }}" hint-placeholder-val="{{ false }}">
             <div style="border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;overflow:hidden;">
-              <div style="display:grid;grid-template-columns:minmax(0,1fr) 36px 52px 42px;gap:8px;padding:9px 12px;border-bottom:1px solid #E0D2B4;background:#FAF6EC;">
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) 30px 36px 52px 42px;gap:8px;padding:9px 12px;border-bottom:1px solid #E0D2B4;background:#FAF6EC;">
                 <span style="font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:500;letter-spacing:.18em;color:#A9834A;text-transform:uppercase;">Anarana</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:500;letter-spacing:.18em;color:#A9834A;text-transform:uppercase;text-align:center;">Avy</span>
                 <span style="font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:500;letter-spacing:.18em;color:#A9834A;text-transform:uppercase;text-align:center;">Isa</span>
                 <span style="font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:500;letter-spacing:.18em;color:#A9834A;text-transform:uppercase;text-align:center;">Fifan.</span>
                 <span style="font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:500;letter-spacing:.18em;color:#A9834A;text-transform:uppercase;text-align:center;">Ham.</span>
               </div>
               <div style="max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch;">
                 <sc-for list="{{ adTable }}" as="t" hint-placeholder-count="3">
-                  <div style="display:grid;grid-template-columns:minmax(0,1fr) 36px 52px 42px;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid #F0E7D4;background:{{ t.bg }};">
+                  <div style="display:grid;grid-template-columns:minmax(0,1fr) 30px 36px 52px 42px;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid #F0E7D4;background:{{ t.bg }};">
                     <span style="min-width:0;font-family:'Jost',sans-serif;font-size:13px;line-height:1.4;color:#4A3A22;overflow-wrap:anywhere;">{{ t.name }}</span>
+                    <span style="text-align:center;font-family:'Jost',sans-serif;font-size:13px;font-weight:500;color:{{ t.sideFg }};">{{ t.sideTag }}</span>
                     <span style="text-align:center;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;">{{ t.n }}</span>
                     <span style="text-align:center;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.04em;color:#8A6C40;">{{ t.rel }}</span>
                     <span style="text-align:center;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8A6C40;">{{ t.tone }}</span>
@@ -609,18 +634,16 @@
               </div>
             </div>
           </sc-if>
-        </div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div style="background:#FFFDF7;border:1px solid #E0D2B4;border-radius:2px;padding:12px 14px;">
-            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;color:#A9834A;text-transform:uppercase;">Fanasana</p>
-            <p style="margin:3px 0 0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#6E5024;">{{ adTotalCards }}</p>
+
+        <sc-if value="{{ adNoteOn }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:11px 13px;">
+            <span style="flex:1 1 140px;min-width:0;font-family:'Jost',sans-serif;font-size:13px;line-height:1.5;color:{{ adNoteFg }};">{{ adNote }}</span>
+            <sc-if value="{{ adUndoOn }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ adUndo }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(250,246,236,.9);padding:9px 15px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;white-space:nowrap;" style-hover="background:#7A5A28;color:#FFFDF7;">Averina</button>
+            </sc-if>
           </div>
-          <div style="background:#FFFDF7;border:1px solid #E0D2B4;border-radius:2px;padding:12px 14px;">
-            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;color:#A9834A;text-transform:uppercase;">Olona</p>
-            <p style="margin:3px 0 0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#6E5024;">{{ adTotalGuests }}</p>
-          </div>
-        </div>
+        </sc-if>
 
         <input value="{{ adSearch }}" onChange="{{ setAdSearch }}" placeholder="Hikaroka anarana…" style="min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:0 14px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
 
@@ -641,11 +664,43 @@
               <div style="display:flex;flex-wrap:wrap;gap:8px;">
                 <button onClick="{{ r.copy }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(250,246,236,.9);padding:9px 15px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">{{ r.copyLabel }}</button>
                 <button onClick="{{ r.test }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(250,246,236,.9);padding:9px 15px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">Hijery</button>
+                <button onClick="{{ r.edit }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(250,246,236,.9);padding:9px 15px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">Ovay</button>
+                <button onClick="{{ r.del }}" style="border:1px solid {{ r.delBd }};border-radius:999px;background:{{ r.delBg }};padding:9px 15px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:{{ r.delFg }};cursor:pointer;">{{ r.delLabel }}</button>
                 <a href="{{ r.wa }}" target="_blank" rel="noopener" style="border:1px solid #A9834A;border-radius:999px;background:#7A5A28;padding:0 16px;min-height:40px;display:inline-flex;align-items:center;font-family:'Jost',sans-serif;font-size:13px;color:#FFFDF7;text-decoration:none;" style-hover="background:#6E5024;">WhatsApp</a>
               </div>
             </div>
           </sc-for>
         </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ tabConf }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:18px;">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <label style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">Rohy fototra</label>
+          <p style="margin:0;font-size:13px;line-height:1.6;color:#B39A6E;">Adikao eto ny adiresy misy ny fanasana rehefa tafapetraka (GitHub Pages). Raha tsy feno ity, tsy mandeha ny rohy.</p>
+          <input value="{{ adBase }}" onChange="{{ setAdBase }}" placeholder="https://votre-compte.github.io/fanasana/" style="min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:0 13px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;justify-content:space-between;">
+            <label style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">Fizarana Supabase</label>
+            <span style="font-family:'Jost',sans-serif;font-size:13px;color:{{ sbFg }};">{{ sbLabel }}</span>
+          </div>
+          <p style="margin:0;font-size:13px;line-height:1.6;color:#B39A6E;">Atsofoho eto ny Project URL sy ny cle anon avy ao amin’ny Supabase. Rehefa feno, mizara base iray ianareo roa : ny anarana ampidirin’ny iray dia hita eo amin’ny hafa.</p>
+          <input value="{{ sbUrl }}" onChange="{{ setSbUrl }}" placeholder="https://xxxx.supabase.co" style="min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:0 13px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
+          <input value="{{ sbKey }}" onChange="{{ setSbKey }}" placeholder="Anon public key (eyJ…)" style="min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:0 13px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
+          <button onClick="{{ sbSync }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(255,253,247,.9);padding:9px 16px;min-height:44px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;align-self:flex-start;" style-hover="background:#7A5A28;color:#FFFDF7;">Avereno alaina</button>
+        </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF7;border:1px solid #E0D2B4;border-radius:2px;padding:15px;">
+              <label style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">Fampidirana be dia be</label>
+          <p style="margin:0;font-size:13px;line-height:1.6;color:#B39A6E;">Ny taratasy ao anaty fanomezana dia miova arakaraka ny fifandraisana voafidy. Na apetaho eto ambany : Anarana / Isany / kodra fifandraisana (fam, ftam, nam, ntam, rah, rap, raf, mpi, ofi) / kodra hamafy (t3, t2, t1, t0), tsanganana iray isaky ny fianakaviana.</p>
+          <textarea value="{{ adRaw }}" onChange="{{ setAdRaw }}" onBlur="{{ adRawBlur }}" rows="6" data-grow="1" wrap="off" placeholder="Fianakaviana Rakoto&#9;4&#9;ftam&#9;t3&#10;Ramatoa Soa&#9;2&#9;ofi&#9;t0" style="width:100%;box-sizing:border-box;border:1px solid #E0D2B4;border-radius:2px;background:#FAF6EC;padding:11px 12px;font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;font-size:11.5px;line-height:1.85;letter-spacing:0;color:#4A3A22;resize:vertical;overflow:auto;-webkit-overflow-scrolling:touch;tab-size:6;-moz-tab-size:6;max-height:62vh;"></textarea>
+        </div>
+            </div>
+          </div>
+        </sc-if>
       </div>
     </div>
   </sc-if>
@@ -655,7 +710,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:440,&quot;height&quot;:900},&quot;nombre&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Invitation&quot;}}">
 class Component extends DCLogic {
-  state = { sbUrl: '', sbKey: '', sbState: 'off', remindOn: false, origin: '', geo: null, map: null, dir: 1, music: false, picked: 0, night: null, intro: true, opening: false, giftLift: false, giftOpen: false, i: 0, done: false, choice: null, name: '', guests: '2', msg: '', now: Date.now(), admin: false, adBase: '', adName: '', adN: '', adRaw: '', adRel: 'fam', adTone: '', adPass: '', adPassBad: false, adPassShown: false, adAuth: false, adSearch: '', adNote: '', adNoteBad: false, epiPos: null, adCopied: null, adCopiedAll: false };
+  state = { adTab: 'add', adSide: 'faneva', adFilter: 'all', adDelK: null, adUndo: null, sbUrl: '', sbKey: '', sbState: 'off', remindOn: false, origin: '', geo: null, map: null, dir: 1, music: false, picked: 0, night: null, intro: true, opening: false, giftLift: false, giftOpen: false, i: 0, done: false, choice: null, name: '', guests: '2', msg: '', now: Date.now(), admin: false, adBase: '', adName: '', adN: '', adRaw: '', adRel: 'fam', adTone: '', adPass: '', adPassBad: false, adPassShown: false, adAuth: false, adSearch: '', adNote: '', adNoteBad: false, epiPos: null, adCopied: null, adCopiedAll: false };
   LAST = 5;
   FAMILIES_NEW = [
     ['Loko ny tany mena — ny fototra sy ny fianakaviana.', [['#674231', 'Terre cuite'], ['#6d3b24', 'Rouille'], ['#5b2525', 'Bordeaux']]],
@@ -971,6 +1026,8 @@ class Component extends DCLogic {
   };
 
   CODES = ["fam","ftam","nam","ntam","rah","rap","raf","mpi","ofi"];
+  SIDES = [["faneva","Faneva"],["ravaka","Ravaka"]];
+  SCODES = ["faneva","ravaka"];
 
   many = () => (parseInt(this.nombre(), 10) || 1) > 1;
 
@@ -1008,6 +1065,57 @@ class Component extends DCLogic {
   adHoldEnd = () => { clearTimeout(this.adHold); };
 
   adSave = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+
+  adSided = (f) => this.adParse().filter((r) => f === 'all' || r.side === f);
+  adSum = (f, title) => {
+    const rows = this.adSided(f);
+    const people = rows.reduce((s, r) => s + (parseInt(r.n, 10) || 1), 0);
+    return { title: title, people: String(people), cards: rows.length + ' fanasana', bd: f === 'all' ? '#C6AC7C' : '#E0D2B4' };
+  };
+
+  adRewrite = (rows) => {
+    const v = rows.map((r) => [r.name, r.n || '', r.rel, r.tone, r.side || ''].filter((x) => x !== '').join('\t')).join('\n');
+    clearTimeout(this.sbDeb);
+    this.sbDirty = false;
+    this.setState({ adRaw: v }, this.sbFlush);
+    this.adSave('fr-admin-raw', v);
+  };
+
+  adDel = (k) => {
+    if (this.state.adDelK !== k) {
+      this.setState({ adDelK: k, adNote: 'Tsindrio indray mba hanamafisana ny famafana.', adNoteBad: true });
+      return;
+    }
+    const all = this.adParse();
+    const r = all[k];
+    if (!r) return;
+    this.adRewrite(all.filter((x, i) => i !== k));
+    this.setState({ adDelK: null, adUndo: { r: r, k: k }, adNote: '« ' + r.name + ' » voafafa.', adNoteBad: false });
+  };
+
+  adUndoDo = () => {
+    const u = this.state.adUndo;
+    if (!u) return;
+    const all = this.adParse();
+    all.splice(Math.min(u.k, all.length), 0, u.r);
+    this.adRewrite(all);
+    this.setState({ adUndo: null, adNote: '« ' + u.r.name + ' » naverina.', adNoteBad: false });
+  };
+
+  adEdit = (k) => {
+    const all = this.adParse();
+    const r = all[k];
+    if (!r) return;
+    this.adRewrite(all.filter((x, i) => i !== k));
+    this.setState({ adDelK: null, adUndo: null, adTab: 'add', adSide: r.side || 'faneva', adName: r.name, adN: r.n || '', adRel: r.rel, adTone: r.tone, adNote: 'Ovao eto ny « ' + r.name + ' » dia tsindrio Ampio.', adNoteBad: false });
+  };
+
+  tabStyle = (id, cur) => ({
+    pick: () => this.setState({ adTab: id }),
+    bd: cur === id ? '#A9834A' : '#E0D2B4',
+    bg: cur === id ? '#7A5A28' : 'rgba(255,253,247,.9)',
+    fg: cur === id ? '#FFFDF7' : '#8A6C40'
+  });
 
   sbCfg = () => {
     const u = String(this.state.sbUrl || '').trim().replace(/\/+$/, '');
@@ -1083,7 +1191,8 @@ class Component extends DCLogic {
     const num = (c.slice(1).find((x) => /^\d{1,3}$/.test(x)) || '').trim();
     const rel = (c.slice(1).map((x) => x.toLowerCase()).find((x) => this.CODES.indexOf(x) >= 0) || 'ofi');
     const tone = (c.slice(1).map((x) => x.toLowerCase()).find((x) => this.TCODES.indexOf(x) >= 0) || this.DEFTONE[rel] || 't1');
-    return { name: name.slice(0, 60), n: num, rel: rel, tone: tone };
+    const side = (c.slice(1).map((x) => x.toLowerCase()).find((x) => this.SCODES.indexOf(x) >= 0) || '');
+    return { name: name.slice(0, 60), n: num, rel: rel, tone: tone, side: side };
   }).filter(Boolean);
 
   adLink = (r) => {
@@ -1104,7 +1213,7 @@ class Component extends DCLogic {
       return;
     }
     const tone = this.state.adTone || this.DEFTONE[this.state.adRel] || 't1';
-    const line = [name, this.state.adN.trim(), this.state.adRel, tone].filter((x) => x !== '').join('\t');
+    const line = [name, this.state.adN.trim(), this.state.adRel, tone, this.state.adSide].filter((x) => x !== '').join('\t');
     const v = (this.state.adRaw.replace(/\s+$/, '') + '\n' + line).replace(/^\n/, '');
     clearTimeout(this.sbDeb);
     this.sbDirty = false;
@@ -1393,11 +1502,15 @@ class Component extends DCLogic {
       adHoldStart: this.adHoldStart,
       adHoldEnd: this.adHoldEnd,
       adminClose: () => { this.setState({ admin: false, adPass: '', adPassBad: false }); try { history.replaceState(null, '', location.pathname); } catch (e) {} },
+      tabAdd: st.adTab === 'add', tabList: st.adTab === 'list', tabConf: st.adTab === 'conf',
+      tabA: this.tabStyle('add', st.adTab), tabB: this.tabStyle('list', st.adTab), tabC: this.tabStyle('conf', st.adTab),
       adBase: st.adBase, adName: st.adName, adN: st.adN, adRaw: st.adRaw,
       sbUrl: st.sbUrl, sbKey: st.sbKey,
       setSbUrl: (e) => { this.setState({ sbUrl: e.target.value }); this.adSave('fr-sb-url', e.target.value); },
       setSbKey: (e) => { this.setState({ sbKey: e.target.value }); this.adSave('fr-sb-key', e.target.value); },
       sbSync: this.sbPull,
+      adUndoOn: !!st.adUndo,
+      adUndo: this.adUndoDo,
       sbLabel: { off: 'Tsy mizara', sync: 'Mampifanaraka…', ok: 'Mizara ✓', err: 'Tsy tafita' }[st.sbState] || '',
       sbFg: { off: '#8A6C40', sync: '#A9834A', ok: '#6E5024', err: '#B4553C' }[st.sbState] || '#B39A6E',
       setAdBase: (e) => { this.setState({ adBase: e.target.value }); this.adSave('fr-admin-base', e.target.value); },
@@ -1419,7 +1532,23 @@ class Component extends DCLogic {
       adClear: () => { clearTimeout(this.sbDeb); this.sbDirty = false; this.setState({ adRaw: '' }, this.sbFlush); this.adSave('fr-admin-raw', ''); },
       adCount: (() => { const k = this.adParse().length; return k === 0 ? 'Mbola tsy misy anarana' : k + ' rohy vonona'; })(),
       adHasData: this.adParse().length > 0,
-      adTable: this.adParse().map((r, k) => ({ name: r.name, n: r.n || '—', rel: r.rel, tone: r.tone, bg: k % 2 ? '#FDFAF2' : '#FFFDF7' })),
+      adTable: this.adSided(st.adFilter).map((r, k) => ({
+        name: r.name, n: r.n || '—', rel: r.rel, tone: r.tone,
+        sideTag: r.side === 'ravaka' ? 'R' : (r.side === 'faneva' ? 'F' : '—'),
+        sideFg: r.side ? '#7A5A28' : '#B39A6E',
+        bg: k % 2 ? '#FDFAF2' : '#FFFDF7'
+      })),
+      sumF: this.adSum('faneva', 'Faneva'),
+      sumR: this.adSum('ravaka', 'Ravaka'),
+      sumT: this.adSum('all', 'Totaliny'),
+      adSideOpts: this.SIDES.map(([code, label]) => {
+        const on = st.adSide === code;
+        return { label: label, bd: on ? '#A9834A' : '#E0D2B4', bg: on ? '#7A5A28' : 'rgba(250,246,236,.9)', fg: on ? '#FFFDF7' : '#8A6C40', pick: () => this.setState({ adSide: code }) };
+      }),
+      adFilterOpts: [['all', 'Daholo'], ['faneva', 'Faneva'], ['ravaka', 'Ravaka']].map(([code, label]) => {
+        const on = st.adFilter === code;
+        return { label: label, bd: on ? '#A9834A' : '#E0D2B4', bg: on ? '#7A5A28' : 'rgba(255,253,247,.9)', fg: on ? '#FFFDF7' : '#8A6C40', pick: () => this.setState({ adFilter: code }) };
+      }),
       adTotalCards: String(this.adParse().length),
       adTotalGuests: String(this.adParse().reduce((s, r) => s + (parseInt(r.n, 10) || 1), 0)),
       adSearch: st.adSearch,
@@ -1431,6 +1560,7 @@ class Component extends DCLogic {
       adCopyAll: () => this.adCopy(this.adParse().map((r) => [r.name, r.n || '', r.rel, r.tone, this.adLink(r)].join('\t')).join('\n'), '__all'),
       adRows: this.adParse().map((r, k) => ({ r: r, k: k })).filter(({ r }) => {
         const q = st.adSearch.trim().toLowerCase();
+        if (st.adFilter !== 'all' && r.side !== st.adFilter) return false;
         return !q || r.name.toLowerCase().indexOf(q) >= 0;
       }).map(({ r, k }) => {
         const hasBase = !!(this.state.adBase || '').trim();
@@ -1448,6 +1578,12 @@ class Component extends DCLogic {
           name: r.name,
           badge: (r.n ? r.n + ' olona · ' : '') + (this.RELS.filter((x) => x[0] === r.rel)[0] || ['', ''])[1] + ' · ' + (this.TONES.filter((x) => x[0] === r.tone)[0] || ['', ''])[1],
           url: url,
+          edit: () => this.adEdit(k),
+          del: () => this.adDel(k),
+          delLabel: st.adDelK === k ? 'Hamafisina ?' : 'Fafao',
+          delBd: st.adDelK === k ? '#9E5334' : '#E0D2B4',
+          delBg: st.adDelK === k ? '#9E5334' : 'none',
+          delFg: st.adDelK === k ? '#FFFDF7' : '#9E5334',
           copy: () => this.adCopy(url, k),
           copyLabel: st.adCopied === k ? 'Voadika ✓' : 'Adikao ny rohy',
           wa: 'https://wa.me/?text=' + encodeURIComponent(this.waText(r, hasBase ? this.adLink(r) : ''))
