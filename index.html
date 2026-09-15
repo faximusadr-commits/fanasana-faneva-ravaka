@@ -11,7 +11,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=Jost:wght@300;400;500&amp;family=Pinyon+Script&amp;display=swap" rel="stylesheet">
 <style>
   html, body { margin:0; padding:0; background:#DED6C6; }
   a { color:#7A5A28; text-decoration:none; }
@@ -111,20 +111,20 @@
 
   <sc-if value="{{ intro }}" hint-placeholder-val="{{ true }}">
     <div style="position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,253,247,.6),rgba(247,242,231,.5));animation:softIn .9s ease both;">
-      <div style="position:relative;z-index:1;margin:auto auto 0;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:28px;padding:44px 30px 8px;text-align:center;">
-      <p style="margin: 0; font-family: 'Cormorant Garamond',serif; font-size: 25px; letter-spacing: .28em; white-space: nowrap; color: #A9834A; text-transform: uppercase; animation: riseIn .9s ease both">Fanasana<br>manokana</p>
+      <div data-fit="1" style="position:relative;z-index:1;margin:auto auto 0;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:28px;padding:44px 30px 8px;text-align:center;">
+      <p style="margin: 0; font-family: 'Cormorant Garamond',serif; font-size:24px; letter-spacing:.26em; white-space: nowrap; color: #A9834A; text-transform: uppercase; animation: riseIn .9s ease both">Fanasana<br>manokana</p>
       <button onClick="{{ openSeal }}" aria-label="Sokafy ny fanasana" style="border:none;background:none;padding:0;cursor:pointer;animation:{{ sealAnim }};">
         <img src="assets/wax-seal.png" alt="Tombo-kase FR" style="width:172px;height:auto;display:block;filter:drop-shadow(0 16px 24px rgba(90,60,30,.22));">
       </button>
       
       <div style="align-self:stretch;display:flex;flex-direction:column;gap:14px;align-items:center;animation:riseIn 1.1s ease both;">
 <sc-if value="{{ sealOne }}" hint-placeholder-val="{{ true }}">
-                  <p style="margin: 0; font-family: 'Cormorant Garamond',serif; font-size: 18px; letter-spacing: 0.18em; color: #6E5024; max-width: 340px; margin-inline: auto; align-self: center; text-align: center; line-height: 1.75">Misy taratasy ho anao.<br>Tsindrio ny tombo-kase hanokafana azy.</p>
+                  <p style="margin: 0; font-family: 'Cormorant Garamond',serif; font-size:17px; letter-spacing:.2em; color: #6E5024; max-width: 340px; margin-inline: auto; align-self: center; text-align: center; line-height: 1.75">Misy taratasy ho anao.<br>Tsindrio ny tombo-kase hanokafana azy.</p>
         </sc-if>
         <sc-if value="{{ sealMany }}" hint-placeholder-val="{{ false }}">
-                  <p style="margin: 0; font-family: 'Cormorant Garamond',serif; font-size: 18px; letter-spacing: 0.18em; color: #6E5024; max-width: 340px; margin-inline: auto; align-self: center; text-align: center; line-height: 1.75">Misy taratasy ho anareo.<br>Tsindrio ny tombo-kase hanokafana azy.</p>
+                  <p style="margin: 0; font-family: 'Cormorant Garamond',serif; font-size:17px; letter-spacing:.2em; color: #6E5024; max-width: 340px; margin-inline: auto; align-self: center; text-align: center; line-height: 1.75">Misy taratasy ho anareo.<br>Tsindrio ny tombo-kase hanokafana azy.</p>
         </sc-if>
-        <button onClick="{{ openSeal }}" style="border:1px solid #A9834A;border-radius:26px;background:rgba(255,253,247,.9);color:#7A5A28;font-family:'Cormorant Garamond',serif;font-size:15.5px;letter-spacing:.28em;text-transform:uppercase;padding:15px 30px;min-height:50px;cursor:pointer;animation:ctaGlow 4s ease-in-out infinite;" style-hover="background:#7A5A28;color:#FFFDF7;">Sokafy</button>
+        <button onClick="{{ openSeal }}" style="border:1px solid #7A5A28;border-radius:999px;background:#7A5A28;color:#FFFDF7;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.26em;text-transform:uppercase;padding:16px 34px;min-height:52px;cursor:pointer;box-shadow:0 12px 24px -14px rgba(90,60,20,.75);" style-hover="background:#6E5024;">Sokafy</button>
       </div><img src="assets/p-wheatfield.png" alt="" style="display:block;width:120%;max-width:none;margin:auto -10% -1px;height:auto;opacity:.78;pointer-events:none;transform-origin:bottom center;animation:breeze 13s cubic-bezier(.45,.05,.55,.95) infinite;">
       </div>
     </div>
@@ -132,14 +132,14 @@
 
   <sc-if value="{{ s0 }}" hint-placeholder-val="{{ false }}">
     <div style="position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,253,247,.72),rgba(244,238,223,.58));animation:softIn .8s ease both;">
-      <div style="position:relative;z-index:1;margin:auto auto 0;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:24px;padding:36px 32px 8px;text-align:center;">
+      <div data-fit="1" style="position:relative;z-index:1;margin:auto auto 0;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:24px;padding:52px 32px 8px;text-align:center;">
         <img src="assets/p-mono.png" alt="Faneva &amp; Ravaka" style="width:96px;height:auto;">
         <div style="align-self:stretch;display:flex;flex-direction:column;gap:8px;">
-          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:15.5px;line-height:1.85;letter-spacing:.11em;color:#8A6C40;text-transform:uppercase;">“Izay halehanao no halehako,<br>ary izay honenanao no honenako.”</p>
-          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.3em;white-space:nowrap;color:#A9834A;">ROTA 1:16</p>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.85;letter-spacing:.1em;color:#8A6C40;text-transform:uppercase;">“Izay halehanao no halehako,<br>ary izay honenanao no honenako.”</p>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;white-space:nowrap;color:#A9834A;">ROTA 1:16</p>
         </div>
         <img src="assets/p-names.png" alt="Faneva &amp; Ravaka" style="width:76%;max-width:280px;height:auto;">
-        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:16.5px;letter-spacing:.4em;color:#7A5A28;">13 NOVAMBRA 2026</p>
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.34em;color:#7A5A28;">13 NOVAMBRA 2026</p>
         <img src="assets/p-wheatfield.png" alt="" style="display:block;width:120%;max-width:none;margin:auto -10% -1px;height:auto;opacity:.9;pointer-events:none;transform-origin:bottom center;animation:breeze 11s cubic-bezier(.45,.05,.55,.95) infinite;">
       </div>
     </div>
@@ -148,45 +148,66 @@
   <sc-if value="{{ s1 }}" hint-placeholder-val="{{ false }}">
     <div style="position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,253,247,.78),rgba(244,238,223,.6));animation:{{ pageAnim }};">
       
-    <div style="margin:auto;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;padding:56px 20px 92px;">
-        
+    <div data-fit="1" style="margin:auto;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:clamp(7px,1.5vh,20px);padding:46px 22px 86px;">
+
         <sc-if value="{{ hasGuestHello }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 auto;max-width:250px;font-family:'Cormorant Garamond',serif;font-size:16.5px;letter-spacing:.04em;line-height:1.55;color:#7A5A28;text-align:center;text-wrap:pretty;animation:fadeUp .5s ease both;">{{ guestHello }}</p>
+          <p style="margin:0 auto;max-width:250px;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.04em;line-height:1.55;color:#7A5A28;text-align:center;text-wrap:pretty;animation:fadeUp .5s ease both;">{{ guestHello }}</p>
         </sc-if>
-        <img src="assets/p-flourish.png" alt="" style="width: 166px; max-width: 241px; height: 24px; margin: 0 auto; opacity: .85; z-index: auto"><div style="display:grid;grid-template-columns:1fr 1px 1fr;gap:0;">
-          <div style="text-align:center;font-family:'Cormorant Garamond',serif;color:#6E5024;line-height:1.5;padding:0 8px;">
-            <p style="margin:0;font-size:13.5px;font-weight:500;">ANDRIAMAMPIANINA RAHARIJESY</p>
-            <p style="margin:2px 0;font-size:13.5px;font-weight:500;">Miakabola</p>
-            <p style="margin:2px 0;font-size:13.5px;font-weight:500;font-style:italic;">sy</p>
-            <p style="margin:0;font-size:13.5px;font-weight:500;">RAVAONOROSOA Eulalie</p>
+
+        <img src="assets/p-flourish.png" alt="" style="display:block;width:clamp(150px,42vw,214px);height:auto;opacity:.92;flex:0 0 auto;">
+
+        <div style="width:100%;display:grid;grid-template-columns:1fr 1px 1fr;gap:0;align-items:center;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.2vh,14px);text-align:center;padding:0 10px;">
+            <div>
+              <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:500;letter-spacing:.18em;line-height:1.45;color:#6E5024;">ANDRIAMAMPIANINA<br>RAHARIJESY</p>
+              <p style="margin:1px 0 0;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.02em;line-height:1.4;color:#7A5A28;">Miakabola</p>
+            </div>
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:.02em;line-height:1;color:#A9834A;">sy</p>
+            <div>
+              <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:500;letter-spacing:.18em;line-height:1.45;color:#6E5024;">RAVAONOROSOA</p>
+              <p style="margin:1px 0 0;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.02em;line-height:1.4;color:#7A5A28;">Eulalie</p>
+            </div>
           </div>
-          <div style="background:#D9C9A6;"></div>
-          <div style="text-align:center;font-family:'Cormorant Garamond',serif;color:#6E5024;line-height:1.5;padding:0 8px;">
-            <p style="margin:0;font-size:13.5px;font-weight:500;">RATSIRAHONANA Norbert Lala</p>
-            <p style="margin:2px 0;font-size:13.5px;font-weight:500;">RAVELONJATO</p>
-            <p style="margin:0;font-size:13.5px;font-weight:500;">Ramanandraitsiory Mihamina</p>
-            <p style="margin:2px 0;font-size:13.5px;font-weight:500;font-style:italic;">sy</p>
-            <p style="margin:0;font-size:13.5px;font-weight:500;">RATSIRAHONANA</p>
-            <p style="margin:0;font-size:13.5px;font-weight:500;">Sahondranirina Harisoa</p>
+          <div style="align-self:stretch;background:linear-gradient(180deg,rgba(176,140,82,0),#C6AC7C 16%,#C6AC7C 84%,rgba(176,140,82,0));"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.2vh,14px);text-align:center;padding:0 10px;">
+            <div>
+              <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:500;letter-spacing:.18em;line-height:1.45;color:#6E5024;">RATSIRAHONANA</p>
+              <p style="margin:1px 0 0;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.02em;line-height:1.4;color:#7A5A28;">Norbert Lala</p>
+            </div>
+            <span style="width:26px;height:1px;background:#DCC9A2;"></span>
+            <div>
+              <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:500;letter-spacing:.18em;line-height:1.45;color:#6E5024;">RAVELONJATO</p>
+              <p style="margin:1px 0 0;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.02em;line-height:1.4;color:#7A5A28;">Ramanandraitsiory<br>Mihamina</p>
+            </div>
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:.02em;line-height:1;color:#A9834A;">sy</p>
+            <div>
+              <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:500;letter-spacing:.18em;line-height:1.45;color:#6E5024;">RATSIRAHONANA</p>
+              <p style="margin:1px 0 0;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.02em;line-height:1.4;color:#7A5A28;">Sahondranirina<br>Harisoa</p>
+            </div>
           </div>
         </div>
-        <p style="margin:0;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14.5px;letter-spacing:.09em;line-height:1.75;color:#8A6C40;text-transform:uppercase;">Dia faly manasa anareo<br>hanotrona ny fanambadian’ireo<br>zafiny sy zanany</p>
-        
-        <img src="assets/p-fullnames.png" alt="Andriamampianina Faneva Harijesy &amp; Ravelonjato Ravaka Mariolla" style="width:54%;max-width:188px;height:auto;margin:2px auto 0;display:block;"><div style="display:flex;flex-direction:column;align-items:center;gap:5px;margin-top:0;">
-          <button onClick="{{ openGift }}" aria-label="Sokafy ny fanomezana" style="border: none; background: none; padding: 0; cursor: pointer; position: relative; width: 116px; height: 105px; transform: scale(.82); transform-origin: center; animation: {{ giftAnim }}">
-            <span style="position:absolute;left:8px;right:8px;bottom:0;height:70px;border-radius:5px;background:linear-gradient(160deg,#8A6C40,#6E5024);box-shadow:0 12px 22px -12px rgba(70,50,20,.6);"></span>
-            <span style="position:absolute;left:calc(50% - 7px);bottom:0;width:14px;height:70px;background:rgba(255,253,247,.55);"></span>
-            <span style="position:absolute;left:0;right:0;top:26px;height:30px;border-radius:5px;background:linear-gradient(160deg,#A9834A,#7A5A28);box-shadow:0 6px 12px -6px rgba(70,50,20,.5);animation:{{ lidAnim }};"></span>
-            <span style="position:absolute;left:calc(50% - 8px);top:26px;width:16px;height:30px;background:rgba(255,253,247,.6);animation:{{ lidAnim }};"></span>
-            <span style="position: absolute; left: 50%; top: 14px; width: 37px; height: 20px; margin-left: -23px; border: 4px solid #C6AC7C; border-radius: 50% 50% 44% 44%; animation: {{ lidAnim }}"></span>
-            <sc-if value="{{ giftLift }}" hint-placeholder-val="{{ false }}">
-              <span style="position:absolute;left:34%;top:20px;width:7px;height:7px;border-radius:50%;background:#C6AC7C;animation:sparkUp 1.1s ease-out .1s both;"></span>
-              <span style="position:absolute;left:56%;top:14px;width:5px;height:5px;border-radius:50%;background:#A9834A;animation:sparkUp 1.3s ease-out .22s both;"></span>
-              <span style="position:absolute;left:46%;top:24px;width:9px;height:9px;border-radius:50%;background:#DCCDAB;animation:sparkUp 1.2s ease-out 0s both;"></span>
-            </sc-if>
-          </button>
-          
-        </div><p style="margin: 0; font-family: 'Cormorant Garamond',serif; font-size: 14px; letter-spacing: .26em; color: #A9834A; text-transform: uppercase; text-align: center">Tsindrio ny fanomezana</p>
+
+        <div style="width:100%;max-width:340px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;">
+          <span style="height:1px;background:linear-gradient(90deg,rgba(176,140,82,0),#C6AC7C);"></span>
+          <span style="width:7px;height:7px;background:#A9834A;transform:rotate(45deg);"></span>
+          <span style="height:1px;background:linear-gradient(90deg,#C6AC7C,rgba(176,140,82,0));"></span>
+        </div>
+
+        <p style="margin:0;text-align:center;font-family:'Cormorant Garamond',serif;font-size:12.5px;letter-spacing:.18em;line-height:1.75;color:#8A6C40;text-transform:uppercase;">Dia faly manasa anareo<br>hanotrona ny fanambadian’ireo<br>zafiny sy zanany</p>
+
+        <img src="assets/p-couple.svg" alt="Andriamampianina Faneva Harijesy &amp; Ravelonjato Ravaka Mariolla" style="display:block;width:100%;max-width:min(300px,68vw);height:auto;margin:0 auto;">
+
+        <button onClick="{{ openGift }}" aria-label="Sokafy ny fanomezana" style="border:none;background:none;padding:0;margin:4px 0 0;cursor:pointer;display:block;line-height:0;margin:0;animation:{{ giftAnim }};">
+          <svg viewBox="0 0 76 76" style="width:clamp(48px,8vh,70px);height:clamp(48px,8vh,70px);display:block;" fill="none" stroke="#A9834A" stroke-width="1.15" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+            <circle cx="38" cy="38" r="36.4" opacity=".7"></circle>
+            <rect x="25" y="36" width="26" height="17"></rect>
+            <rect x="22.5" y="30.5" width="31" height="5.5"></rect>
+            <path d="M38 30.5V53"></path>
+            <path d="M38 30.5c-2.6-5.4-9.4-6-9.4-2.2 0 1.7 3.8 2.2 9.4 2.2Z"></path>
+            <path d="M38 30.5c2.6-5.4 9.4-6 9.4-2.2 0 1.7-3.8 2.2-9.4 2.2Z"></path>
+          </svg>
+        </button>
+        <p style="margin:-4px 0 0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.22em;color:#A9834A;text-transform:uppercase;text-align: center">Tsindrio ny fanomezana</p>
       </div></div>
   </sc-if>
 
@@ -198,17 +219,17 @@
         <img src="assets/a-sprig-l.png" alt="" style="position:absolute;left:-40px;bottom:64px;width:150px;height:auto;opacity:.26;transform-origin:70% 100%;animation:swayL 12s ease-in-out infinite;">
         <img src="assets/a-sprig-r.png" alt="" style="position:absolute;right:-34px;bottom:70px;width:140px;height:auto;opacity:.26;transform-origin:30% 100%;animation:swayR 10s ease-in-out infinite;">
       </div>
-      <div style="position:relative;margin:auto;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:26px;padding:32px 30px 106px;text-align:center;">
+      <div data-fit="1" style="position:relative;margin:auto;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:26px;padding:52px 30px 106px;text-align:center;">
         <img src="assets/p-h-fandaharam.png" alt="Fandaharam-potoana" style="width:84%;max-width:280px;height:auto;">
         <div style="display:flex;flex-direction:column;align-items:center;gap:9px;">
           <img src="assets/p-church.png" alt="" style="width:70px;height:auto;">
-          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.34em;color:#7A5A28;">09H00</p>
-          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:16.5px;letter-spacing:.22em;color:#8A6C40;">FANAMASINANA</p>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.34em;color:#7A5A28;">09H00</p>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.2em;color:#8A6C40;">FANAMASINANA</p>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:9px;">
           <img src="assets/p-plate.png" alt="" style="width:110px;height:auto;">
-          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.34em;color:#7A5A28;">12H30</p>
-          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:16.5px;letter-spacing:.22em;color:#8A6C40;">FIARAHANA MIFALY</p>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.34em;color:#7A5A28;">12H30</p>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.2em;color:#8A6C40;">FIARAHANA MIFALY</p>
         </div>
         <img src="assets/p-flourish.png" alt="" style="width:66%;max-width:230px;height:auto;opacity:.85;">
       </div>
@@ -217,34 +238,34 @@
 
   <sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
     <div style="position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,253,247,.74),rgba(244,238,223,.6));animation:{{ pageAnim }};">
-      <div style="margin:auto;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:14px;padding:20px 24px 92px;text-align:center;">
+      <div data-fit="1" style="margin:auto;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:14px;padding:52px 24px 92px;text-align:center;">
         <img src="assets/p-h-toerana3.png" alt="Toerana" style="width:66%;max-width:236px;height:auto;">
         <div style="width:100%;display:flex;flex-direction:column;gap:12px;">
-          <div style="border:1px solid #DCCDAB;background:rgba(255,253,247,.8);padding:14px 12px;display:grid;grid-template-columns:118px minmax(0,1fr);gap:12px;align-items:center;">
+          <div style="border:1px solid #E0D2B4;background:rgba(255,253,247,.8);padding:14px 12px;display:grid;grid-template-columns:118px minmax(0,1fr);gap:12px;align-items:center;">
             <img src="assets/p-venue-a.png" alt="" style="width:118px;height:auto;">
             <div style="min-width:0;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;">
               <div style="min-width:0;">
-                <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:16.5px;letter-spacing:.08em;line-height:1.45;color:#6E5024;text-wrap:balance;">FJKM AMPARIBE FAMONJENA</p>
+                <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.1em;line-height:1.45;color:#6E5024;text-wrap:balance;">FJKM AMPARIBE FAMONJENA</p>
                 <p style="margin:4px 0 0;font-family:'Cormorant Garamond',serif;font-size:15px;color:#8A6C40;text-wrap:balance;">Eglise - Antananarivo</p>
               </div>
-              <button onClick="{{ openMapA }}" style="border:1px solid #A9834A;border-radius:20px;background:rgba(255,253,247,.6);padding:9px 20px;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:#7A5A28;min-height:44px;display:flex;align-items:center;white-space:nowrap;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">VOIR MAP</button>
+              <button onClick="{{ openMapA }}" style="border:1px solid #C6AC7C;border-radius:999px;background:none;padding:9px 22px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#7A5A28;min-height:44px;display:flex;align-items:center;white-space:nowrap;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">VOIR MAP</button>
             </div>
           </div>
-          <div style="border:1px solid #DCCDAB;background:rgba(255,253,247,.8);padding:14px 12px;display:grid;grid-template-columns:118px minmax(0,1fr);gap:12px;align-items:center;">
+          <div style="border:1px solid #E0D2B4;background:rgba(255,253,247,.8);padding:14px 12px;display:grid;grid-template-columns:118px minmax(0,1fr);gap:12px;align-items:center;">
             <img src="assets/p-venue-b.png" alt="" style="width:118px;height:auto;">
             <div style="min-width:0;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;">
               <div style="min-width:0;">
-                <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:16.5px;letter-spacing:.08em;line-height:1.45;color:#6E5024;text-wrap:balance;">ESPACE ANTHURIUM ANJOMAKELY</p>
+                <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:17px;letter-spacing:.1em;line-height:1.45;color:#6E5024;text-wrap:balance;">ESPACE ANTHURIUM ANJOMAKELY</p>
                 <p style="margin:4px 0 0;font-family:'Cormorant Garamond',serif;font-size:15px;color:#8A6C40;text-wrap:balance;">Lieu de Reception - Antananarivo</p>
               </div>
-              <button onClick="{{ openMapB }}" style="border:1px solid #A9834A;border-radius:20px;background:rgba(255,253,247,.6);padding:9px 20px;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:#7A5A28;min-height:44px;display:flex;align-items:center;white-space:nowrap;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">VOIR MAP</button>
+              <button onClick="{{ openMapB }}" style="border:1px solid #C6AC7C;border-radius:999px;background:none;padding:9px 22px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#7A5A28;min-height:44px;display:flex;align-items:center;white-space:nowrap;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">VOIR MAP</button>
             </div>
           </div>
         </div>
         <div style="align-self:stretch;">
-          <p style="margin:0 0 4px;font-family:'Cormorant Garamond',serif;font-size:15.5px;letter-spacing:.38em;color:#7A5A28;">13 NOVAMBRA 2026</p>
-          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:36px;letter-spacing:.05em;color:#A9834A;">{{ countdown }}</p>
-          <p style="margin:5px 0 0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.3em;color:#B39A6E;">ANDRO . ORA . MIN . SEG</p>
+          <p style="margin:0 0 4px;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.34em;color:#7A5A28;">13 NOVAMBRA 2026</p>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:38px;letter-spacing:.04em;color:#A9834A;">{{ countdown }}</p>
+          <p style="margin:5px 0 0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.26em;color:#B39A6E;">ANDRO . ORA . MIN . SEG</p>
         </div>
       </div>
     </div>
@@ -252,27 +273,27 @@
 
   <sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
     <div style="position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,253,247,.7),rgba(241,234,218,.62));animation:{{ pageAnim }};">
-      <div style="margin:auto;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:16px;padding:22px 26px 92px;text-align:center;">
-        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:18px;letter-spacing:.24em;white-space:nowrap;color:#6E5024;border-bottom:1px solid #A9834A;padding-bottom:8px;">DRESS CODE</h3>
+      <div data-fit="1" style="margin:auto;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:16px;padding:52px 26px 92px;text-align:center;">
+        <h3 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:17px;letter-spacing:.26em;white-space:nowrap;color:#6E5024;border-bottom:1px solid #A9834A;padding-bottom:8px;">DRESS CODE</h3>
         <div style="width:100%;display:flex;flex-direction:column;gap:8px;filter:{{ counterSkin }};">
           <sc-for list="{{ rows }}" as="row" hint-placeholder-count="4">
             <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;">
               <sc-for list="{{ row.groups }}" as="g" hint-placeholder-count="3">
                 <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;">
                   <sc-for list="{{ g.items }}" as="c" hint-placeholder-count="3">
-                    <button onClick="{{ c.pick }}" aria-label="{{ c.name }}" style="aspect-ratio:1;padding:0;border:none;border-radius:9px;cursor:pointer;background:{{ c.hex }};outline:{{ c.ring }};outline-offset:2px;box-shadow:0 1px 3px rgba(90,70,40,.14);"></button>
+                    <button onClick="{{ c.pick }}" aria-label="{{ c.name }}" style="aspect-ratio:1;padding:0;border:none;border-radius:2px;cursor:pointer;background:{{ c.hex }};outline:{{ c.ring }};outline-offset:2px;box-shadow:0 1px 3px rgba(90,70,40,.14);"></button>
                   </sc-for>
                 </div>
               </sc-for>
             </div>
           </sc-for>
         </div>
-        <div style="align-self:stretch;min-height:96px;border:1px solid #DCCDAB;background:rgba(255,253,247,.72);padding:14px 16px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;">
-          <span style="flex:0 0 auto;width:40px;height:40px;border-radius:8px;background:{{ pickedHex }};filter:{{ counterSkin }};"></span>
+        <div style="align-self:stretch;min-height:96px;border:1px solid #E0D2B4;background:rgba(255,253,247,.72);padding:14px 16px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;">
+          <span style="flex:0 0 auto;width:40px;height:40px;border-radius:2px;background:{{ pickedHex }};filter:{{ counterSkin }};"></span>
           <div style="align-self:stretch;">
-            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:16px;letter-spacing:.1em;color:#6E5024;">{{ pickedName }}</p>
-            <p style="margin:3px 0 0;font-family:'Jost',sans-serif;font-size:14px;letter-spacing:.16em;color:#B39A6E;">{{ pickedHexLabel }}</p>
-            <p style="margin:7px 0 0;font-size:15.5px;line-height:1.6;color:#8A6C40;">{{ pickedMeaning }}</p>
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:15px;letter-spacing:.1em;color:#6E5024;">{{ pickedName }}</p>
+            <p style="margin:3px 0 0;font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.2em;color:#B39A6E;">{{ pickedHexLabel }}</p>
+            <p style="margin:7px 0 0;font-size:15px;line-height:1.6;color:#8A6C40;">{{ pickedMeaning }}</p>
           </div>
         </div>
       </div>
@@ -281,39 +302,39 @@
 
   <sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
     <div style="position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,253,247,.8),rgba(244,238,223,.62)),url('assets/a-pattern-beige.png') no-repeat center;background-size:auto,cover;animation:{{ pageAnim }};">
-      <div style="margin:auto;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 24px 92px;text-align:center;">
+      <div data-fit="1" style="margin:auto;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:10px;padding:52px 24px 92px;text-align:center;">
         <img src="assets/p-mono.png" alt="" style="width:52px;height:auto;">
         <div style="align-self:stretch;">
-          <p style="margin:0 0 5px;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.36em;color:#8A6C40;">13 NOVAMBRA 2026</p>
-          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px;letter-spacing:.24em;color:#7A5A28;">RSVP</h2>
-          <p style="margin:7px 0 0;font-size:16px;line-height:1.65;color:#6E5024;">Répondez s'il vous plaît.<br>Miandry ny valiteninao izahay.</p>
+          <p style="margin:0 0 5px;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.34em;color:#8A6C40;">13 NOVAMBRA 2026</p>
+          <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:30px;letter-spacing:.26em;color:#7A5A28;">RSVP</h2>
+          <p style="margin:7px 0 0;font-size:15px;line-height:1.65;color:#6E5024;">Répondez s'il vous plaît.<br>Miandry ny valiteninao izahay.</p>
         </div>
         <div style="width:100%;display:flex;flex-direction:column;gap:10px;">
-          <button onClick="{{ pickYes }}" disabled="{{ locked }}" style="min-height:52px;border:1px solid #A9834A;border-radius:10px;background:{{ yesBg }};color:{{ yesFg }};font-family:'Jost',sans-serif;font-size:18px;cursor:pointer;">Afaka</button>
-          <button onClick="{{ pickNo }}" disabled="{{ locked }}" style="min-height:52px;border:1px solid #A9834A;border-radius:10px;background:{{ noBg }};color:{{ noFg }};font-family:'Jost',sans-serif;font-size:18px;cursor:pointer;">Tsy afaka</button>
+          <button onClick="{{ pickYes }}" disabled="{{ locked }}" style="min-height:52px;border:1px solid #A9834A;border-radius:2px;background:{{ yesBg }};color:{{ yesFg }};font-family:'Jost',sans-serif;font-size:17px;cursor:pointer;">Afaka</button>
+          <button onClick="{{ pickNo }}" disabled="{{ locked }}" style="min-height:52px;border:1px solid #A9834A;border-radius:2px;background:{{ noBg }};color:{{ noFg }};font-family:'Jost',sans-serif;font-size:17px;cursor:pointer;">Tsy afaka</button>
         </div>
         <sc-if value="{{ hasChoice }}" hint-placeholder-val="{{ true }}">
           <div style="width:100%;display:flex;flex-direction:column;gap:9px;animation:fadeUp .35s ease both;">
-            <input value="{{ name }}" onChange="{{ setName }}" disabled="{{ locked }}" placeholder="Anarana feno" style="min-height:46px;border:1px solid #DCCDAB;border-radius:6px;background:rgba(255,253,247,.9);padding:0 14px;font-family:'Jost',sans-serif;font-size:16.5px;color:#6E5024;">
+            <input value="{{ name }}" onChange="{{ setName }}" disabled="{{ locked }}" placeholder="Anarana feno" style="min-height:48px;border:none;border-bottom:1px solid #C6AC7C;background:none;padding:0 2px;text-align:center;outline:none;font-family:'Jost',sans-serif;font-size:17px;color:#6E5024;">
             <sc-if value="{{ isYes }}" hint-placeholder-val="{{ true }}">
-              <input type="number" min="1" value="{{ guests }}" onChange="{{ setGuests }}" disabled="{{ locked }}" placeholder="Isan’ny olona" style="min-height:46px;border:1px solid #DCCDAB;border-radius:6px;background:rgba(255,253,247,.9);padding:0 14px;font-family:'Jost',sans-serif;font-size:16.5px;color:#6E5024;">
+              <input type="number" min="1" value="{{ guests }}" onChange="{{ setGuests }}" disabled="{{ locked }}" placeholder="Isan’ny olona" style="min-height:48px;border:none;border-bottom:1px solid #C6AC7C;background:none;padding:0 2px;text-align:center;outline:none;font-family:'Jost',sans-serif;font-size:17px;color:#6E5024;">
             </sc-if>
-            <textarea value="{{ msg }}" onChange="{{ setMsg }}" disabled="{{ locked }}" rows="2" placeholder="Hafatra ho an’ny mpivady" style="border:1px solid #DCCDAB;border-radius:6px;background:rgba(255,253,247,.9);padding:11px 14px;font-family:'Jost',sans-serif;font-size:17px;color:#6E5024;resize:none;"></textarea>
+            <textarea value="{{ msg }}" onChange="{{ setMsg }}" disabled="{{ locked }}" rows="2" placeholder="Hafatra ho an’ny mpivady" style="border:none;border-bottom:1px solid #C6AC7C;background:none;padding:9px 2px;text-align:center;outline:none;font-family:'Jost',sans-serif;font-size:17px;color:#6E5024;resize:none;"></textarea>
           </div>
         </sc-if>
         <div style="width:100%;">
-          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:15.5px;letter-spacing:.2em;color:#8A6C40;">VALIO ALOHAN’NY</p>
-          <p style="margin:2px 0 8px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:23px;letter-spacing:.04em;color:#6E5024;">26 OKTOBRA 2026</p>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.2em;color:#8A6C40;">VALIO ALOHAN’NY</p>
+          <p style="margin:2px 0 8px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;letter-spacing:.04em;color:#6E5024;">26 OKTOBRA 2026</p>
           <sc-if value="{{ showCountdown }}" hint-placeholder-val="{{ false }}">
-            <p style="margin:0 0 11px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Jost',sans-serif;font-size:16px;letter-spacing:.08em;color:{{ countdownColor }};">
+            <p style="margin:0 0 11px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Jost',sans-serif;font-size:15px;letter-spacing:.1em;color:{{ countdownColor }};">
               <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:{{ countdownColor }};animation:ctaGlow 2.4s ease-in-out infinite;"></span>{{ countdownLabel }}</p>
           </sc-if>
-          <button onClick="{{ submit }}" disabled="{{ cantSubmit }}" style="width:100%;min-height:52px;border:1px solid #A9834A;border-radius:10px;background:{{ submitBg }};color:{{ submitFg }};font-family:'Jost',sans-serif;font-size:16px;line-height:1.3;cursor:pointer;animation:ctaGlow 4.5s ease-in-out infinite;">Fifalianay ny fahatongavanao</button>
-          <p style="margin:8px 0 0;font-size:14.5px;color:#B39A6E;">{{ hint }}</p>
+          <button onClick="{{ submit }}" disabled="{{ cantSubmit }}" style="width:100%;min-height:52px;border:1px solid #A9834A;border-radius:2px;background:{{ submitBg }};color:{{ submitFg }};font-family:'Jost',sans-serif;font-size:15px;line-height:1.3;cursor:pointer;animation:ctaGlow 4.5s ease-in-out infinite;">Fifalianay ny fahatongavanao</button>
+          <p style="margin:8px 0 0;font-size:13px;color:#B39A6E;">{{ hint }}</p>
           <sc-if value="{{ locked }}" hint-placeholder-val="{{ false }}">
-            <p style="margin:10px 0 0;border:1px solid #DCCDAB;border-radius:8px;background:rgba(255,253,247,.86);padding:11px 13px;font-size:15px;line-height:1.65;color:#8A6C40;">{{ lockNote }}</p>
+            <p style="margin:10px 0 0;border:1px solid #E0D2B4;border-radius:2px;background:rgba(255,253,247,.86);padding:11px 13px;font-size:15px;line-height:1.65;color:#8A6C40;">{{ lockNote }}</p>
           </sc-if>
-          <button onClick="{{ askRemind }}" style="margin-top:12px;width:100%;min-height:46px;border:1px solid #C6AC7C;border-radius:10px;background:rgba(255,253,247,.7);padding:10px 14px;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.1em;line-height:1.45;text-wrap:pretty;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">{{ remindLabel }}</button>
+          <button onClick="{{ askRemind }}" style="margin-top:12px;width:100%;min-height:46px;border:1px solid #C6AC7C;border-radius:2px;background:rgba(255,253,247,.7);padding:10px 14px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.1em;line-height:1.45;text-wrap:pretty;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">{{ remindLabel }}</button>
         </div>
       </div>
     </div>
@@ -321,18 +342,18 @@
 
   <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
     <div style="position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(255,253,247,.82),rgba(241,234,218,.64)),url('assets/a-pattern-beige.png') no-repeat center;background-size:auto,cover;animation:softIn .5s ease both;">
-      <div style="margin:auto;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:18px;padding:44px 32px;text-align:center;">
+      <div data-fit="1" style="margin:auto;width:100%;max-width:480px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:18px;padding:44px 32px;text-align:center;">
         <img src="assets/p-heart.png" alt="" style="width:48px;height:auto;">
-        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:21px;letter-spacing:.05em;color:#6E5024;line-height:1.5;">Voaray ny valiteninao</h2>
-        <p style="margin:0;font-size:16.5px;line-height:1.8;color:#8A6C40;max-width:290px;">{{ doneBody }}</p>
+        <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:20px;letter-spacing:.04em;color:#6E5024;line-height:1.5;">Voaray ny valiteninao</h2>
+        <p style="margin:0;font-size:17px;line-height:1.8;color:#8A6C40;max-width:290px;">{{ doneBody }}</p>
         <div style="align-self:stretch;display:flex;flex-direction:column;gap:8px;">
-          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.2em;color:#A9834A;">ALEFA AMIN’NY WHATSAPP</p>
-          <a href="{{ waA }}" target="_blank" rel="noopener" style="min-height:46px;border-radius:10px;background:#7A5A28;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:17px;color:#FFFDF7;" style-hover="background:#6E5024;">034 43 335 60</a>
-          <a href="{{ waB }}" target="_blank" rel="noopener" style="min-height:46px;border-radius:10px;border:1px solid #A9834A;background:rgba(255,253,247,.8);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:17px;color:#7A5A28;" style-hover="background:#7A5A28;color:#FFFDF7;">034 54 300 93</a>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#A9834A;">ALEFA AMIN’NY WHATSAPP</p>
+          <a href="{{ waA }}" target="_blank" rel="noopener" style="min-height:46px;border-radius:2px;background:#7A5A28;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:17px;color:#FFFDF7;" style-hover="background:#6E5024;">034 43 335 60</a>
+          <a href="{{ waB }}" target="_blank" rel="noopener" style="min-height:46px;border-radius:2px;border:1px solid #A9834A;background:rgba(255,253,247,.8);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:17px;color:#7A5A28;" style-hover="background:#7A5A28;color:#FFFDF7;">034 54 300 93</a>
         </div>
         <img src="assets/p-flourish.png" alt="" style="width:58%;max-width:200px;height:auto;opacity:.85;">
-        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;color:#8A6C40;">Tahian'ny Tompo</p>
-        <button onClick="{{ reopen }}" style="margin-top:4px;background:none;border:1px solid #C6AC7C;border-radius:6px;padding:13px 22px;min-height:48px;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">HIVERINA AMIN’NY FANASANA</button>
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:#8A6C40;">Tahian'ny Tompo</p>
+        <button onClick="{{ reopen }}" style="margin-top:4px;background:none;border:1px solid #C6AC7C;border-radius:2px;padding:13px 22px;min-height:48px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">HIVERINA AMIN’NY FANASANA</button>
       </div>
     </div>
   </sc-if>
@@ -340,97 +361,97 @@
 
   <sc-if value="{{ giftOpen }}" hint-placeholder-val="{{ false }}">
     <div style="position:absolute;inset:0;z-index:22;background:rgba(52,40,22,.58);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;padding:26px 20px;animation:softIn .3s ease both;">
-      <div style="position:relative;width:100%;max-width:330px;background:#FFFDF7;border:1px solid #DCCDAB;box-shadow:0 26px 48px -22px rgba(60,42,18,.7);padding:34px 26px 30px;text-align:center;animation:cardUnfold .6s cubic-bezier(.22,.61,.36,1) both;">
+      <div style="position:relative;width:100%;max-width:330px;background:#FFFDF7;border:1px solid #E0D2B4;box-shadow:0 26px 48px -22px rgba(60,42,18,.7);padding:34px 26px 30px;text-align:center;animation:cardUnfold .6s cubic-bezier(.22,.61,.36,1) both;">
         <img src="assets/a-sprig-l.png" alt="" style="position:absolute;left:-34px;top:-16px;width:104px;height:auto;opacity:.85;transform-origin:70% 100%;animation:swayL 11s ease-in-out infinite;pointer-events:none;">
         <img src="assets/a-sprig-r.png" alt="" style="position:absolute;right:-30px;top:-10px;width:96px;height:auto;opacity:.85;transform-origin:30% 100%;animation:swayR 13s ease-in-out infinite;pointer-events:none;">
         <img src="assets/a-sprig-r.png" alt="" style="position:absolute;left:-30px;bottom:-14px;width:92px;height:auto;opacity:.7;transform:scaleX(-1);transform-origin:60% 100%;animation:swayL 14s ease-in-out infinite;pointer-events:none;">
         <img src="assets/a-sprig-l.png" alt="" style="position:absolute;right:-28px;bottom:-18px;width:98px;height:auto;opacity:.7;transform:scaleX(-1);transform-origin:40% 100%;animation:swayR 12s ease-in-out infinite;pointer-events:none;">
-        <p style="margin:0 0 14px;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.3em;color:#A9834A;text-transform:uppercase;">{{ guestTitle }}</p>
+        <p style="margin:0 0 14px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">{{ guestTitle }}</p>
         <sc-if value="{{ opFamOne }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Ry havana,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Havana ianao, ka tsy vahiny eto aminay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Ry havana,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Havana ianao, ka tsy vahiny eto aminay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ opFamMany }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Ry havana,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Havana ianareo, ka tsy vahiny eto aminay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Ry havana,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Havana ianareo, ka tsy vahiny eto aminay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ opFtamOne }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Ry iray tampo,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Havana ianao, nefa toy ny iray tampo aminay.<br>Niara-nitombo sy niara-niaina isika.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Ry iray tampo,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Havana ianao, nefa toy ny iray tampo aminay.<br>Niara-nitombo sy niara-niaina isika.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ opFtamMany }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Ry iray tampo,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Havana ianareo, nefa toy ny iray tampo aminay.<br>Niara-nitombo sy niara-niaina isika.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Ry iray tampo,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Havana ianareo, nefa toy ny iray tampo aminay.<br>Niara-nitombo sy niara-niaina isika.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ opNamOne }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Ry namana,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Namana akaiky ianao, ka anisan’ny voalohany<br>tao an-tsainay rehefa nanoratra ity lisitra ity izahay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Ry namana,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Namana akaiky ianao, ka anisan’ny voalohany<br>tao an-tsainay rehefa nanoratra ity lisitra ity izahay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ opNamMany }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Ry namana,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Namana akaiky ianareo, ka anisan’ny voalohany<br>tao an-tsainay rehefa nanoratra ity lisitra ity izahay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Ry namana,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Namana akaiky ianareo, ka anisan’ny voalohany<br>tao an-tsainay rehefa nanoratra ity lisitra ity izahay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ opNtamOne }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Ry namana iray tampo,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Namana ianao, nefa toy ny iray tampo.<br>Niaraka taminay tamin’ny mora sy ny sarotra ianao.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Ry namana iray tampo,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Namana ianao, nefa toy ny iray tampo.<br>Niaraka taminay tamin’ny mora sy ny sarotra ianao.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ opNtamMany }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Ry namana iray tampo,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Namana ianareo, nefa toy ny iray tampo.<br>Niaraka taminay tamin’ny mora sy ny sarotra ianareo.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Ry namana iray tampo,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Namana ianareo, nefa toy ny iray tampo.<br>Niaraka taminay tamin’ny mora sy ny sarotra ianareo.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ opRah }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Ry ray aman-dreny hajaina,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Ianareo no ray aman-dreny nitaiza sy nanoro.<br>Ny tso-dranonareo no hery lehibe ho anay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Ry ray aman-dreny hajaina,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Ianareo no ray aman-dreny nitaiza sy nanoro.<br>Ny tso-dranonareo no hery lehibe ho anay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ opRap }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Ry ray aman-dreny ara-panahy,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Ianareo no nitari-dalana anay tamin’ny finoana.<br>Ny vavaka sy ny fampianaranareo no fototra<br>iorenan’ity tokantrano vaovao ity.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Ry ray aman-dreny ara-panahy,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Ianareo no nitari-dalana anay tamin’ny finoana.<br>Ny vavaka sy ny fampianaranareo no fototra<br>iorenan’ity tokantrano vaovao ity.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ opRaf }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Ry ray aman-dreny akaiky ny fo,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Ray aman-dreny akaiky ny fonay ianareo.<br>Ny fitiavana nasehonareo no nanamora ny dianay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Ry ray aman-dreny akaiky ny fo,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Ray aman-dreny akaiky ny fonay ianareo.<br>Ny fitiavana nasehonareo no nanamora ny dianay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ opMpi }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Ry mpiara-miasa,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Manan-danja aminay ny fiaraha-mandeha<br>sy ny finamanana naorintsika.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Ry mpiara-miasa,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Manan-danja aminay ny fiaraha-mandeha<br>sy ny finamanana naorintsika.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ opOfiOne }}" hint-placeholder-val="{{ true }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Tompoko hajaina,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Raha naharay ity fanasana ity ianao,<br>dia satria manan-danja aminay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Tompoko hajaina,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Raha naharay ity fanasana ity ianao,<br>dia satria manan-danja aminay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ opOfiMany }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.03em;color:#7A5A28;">Tompoko hajaina,</p>
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Raha naharay ity fanasana ity ianareo,<br>dia satria manan-danja aminay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
+          <p style="margin:0 0 6px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;letter-spacing:.04em;color:#7A5A28;">Tompoko hajaina,</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Raha naharay ity fanasana ity ianareo,<br>dia satria manan-danja aminay.<br>Ity fanasana ity dia natokana ho an’olona {{ nombre }}.</p>
         </sc-if>
         <sc-if value="{{ T3One }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Tsy ho feno ny fifalianay raha tsy eo ianao.<br>Ny fisianao no hahatonga ity andro ity<br>ho tsy hay hadinoina,<br>ka andrasanay am-pitiavana lalina ianao,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Tsy ho feno ny fifalianay raha tsy eo ianao.<br>Ny fisianao no hahatonga ity andro ity<br>ho tsy hay hadinoina,<br>ka andrasanay am-pitiavana lalina ianao,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
         </sc-if>
         <sc-if value="{{ T3Many }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Tsy ho feno ny fifalianay raha tsy eo ianareo.<br>Ny fisianareo no hahatonga ity andro ity<br>ho tsy hay hadinoina,<br>ka andrasanay am-pitiavana lalina ianareo,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Tsy ho feno ny fifalianay raha tsy eo ianareo.<br>Ny fisianareo no hahatonga ity andro ity<br>ho tsy hay hadinoina,<br>ka andrasanay am-pitiavana lalina ianareo,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
         </sc-if>
         <sc-if value="{{ T2One }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Sitrakay lalina ny fahatongavanao,<br>fa misy anjara toerana manokana ho anao eo,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Sitrakay lalina ny fahatongavanao,<br>fa misy anjara toerana manokana ho anao eo,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
         </sc-if>
         <sc-if value="{{ T2Many }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Sitrakay lalina ny fahatongavanareo,<br>fa misy anjara toerana manokana ho anareo eo,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Sitrakay lalina ny fahatongavanareo,<br>fa misy anjara toerana manokana ho anareo eo,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
         </sc-if>
         <sc-if value="{{ T1One }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Sitrakay indrindra ny fahatongavanao,<br>mba hiarahantsika mankalaza am-pifaliana<br>ity andro lehibe ity,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Sitrakay indrindra ny fahatongavanao,<br>mba hiarahantsika mankalaza am-pifaliana<br>ity andro lehibe ity,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
         </sc-if>
         <sc-if value="{{ T1Many }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Sitrakay indrindra ny fahatongavanareo,<br>mba hiarahantsika mankalaza am-pifaliana<br>ity andro lehibe ity,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Sitrakay indrindra ny fahatongavanareo,<br>mba hiarahantsika mankalaza am-pifaliana<br>ity andro lehibe ity,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
         </sc-if>
         <sc-if value="{{ T0One }}" hint-placeholder-val="{{ true }}">
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Faly izahay raha afaka manatrika ianao<br>ity andro lehibe ity,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Faly izahay raha afaka manatrika ianao<br>ity andro lehibe ity,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
         </sc-if>
         <sc-if value="{{ T0Many }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0;font-size:15.5px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Faly izahay raha afaka manatrika ianareo<br>ity andro lehibe ity,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
+          <p style="margin:0;font-size:15px;line-height:1.9;color:#6E5024;text-wrap:pretty;">Faly izahay raha afaka manatrika ianareo<br>ity andro lehibe ity,<br>eo amin’ny fanatrehan’Andriamanitra.</p>
         </sc-if>
-        <div style="margin-top:16px;display:inline-flex;align-items:baseline;gap:9px;border:1px solid #DCCDAB;border-radius:22px;padding:9px 18px;">
-          <span style="font-family:'Cormorant Garamond',serif;font-size:13.5px;letter-spacing:.24em;color:#A9834A;">ISAN’NY OLONA</span>
-          <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:#7A5A28;">{{ nombre }}</span>
+        <div style="margin-top:16px;display:inline-flex;align-items:baseline;gap:9px;border:1px solid #E0D2B4;border-radius:999px;padding:9px 18px;">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;">ISAN’NY OLONA</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#7A5A28;">{{ nombre }}</span>
         </div>
-        <button onClick="{{ closeGift }}" style="display:block;margin:18px auto 0;border:1px solid #C6AC7C;border-radius:24px;background:none;padding:12px 26px;min-height:46px;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.24em;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">MISAOTRA</button>
+        <button onClick="{{ closeGift }}" style="display:block;margin:18px auto 0;border:1px solid #C6AC7C;border-radius:999px;background:none;padding:12px 26px;min-height:46px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">MISAOTRA</button>
       </div>
     </div>
   </sc-if>
@@ -439,17 +460,17 @@
     <div style="position:absolute;inset:0;z-index:20;background:rgba(52,40,22,.62);backdrop-filter:blur(4px);display:flex;flex-direction:column;padding:20px 18px;gap:12px;animation:softIn .28s ease both;">
       <div style="display:flex;flex-direction:column;gap:9px;">
         <div style="display:flex;align-items:center;gap:10px;">
-          <div style="flex:1;min-width:0;border-radius:24px;background:#FFFDF7;padding:9px 14px;min-height:48px;display:flex;flex-direction:column;justify-content:center;">
-            <label for="dep" style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#A9834A;">TOERANA FIAINGANA</label>
+          <div style="flex:1;min-width:0;border-radius:999px;background:#FFFDF7;padding:9px 14px;min-height:48px;display:flex;flex-direction:column;justify-content:center;">
+            <label for="dep" style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;color:#A9834A;">TOERANA FIAINGANA</label>
             <input id="dep" value="{{ origin }}" onChange="{{ setOrigin }}" placeholder="ex. Analakely, Antananarivo" style="border:none;outline:none;background:none;padding:0;font-family:'Jost',sans-serif;font-size:17px;color:#4A3A22;min-width:0;">
           </div>
           <button onClick="{{ closeMap }}" aria-label="Akatona" style="flex:0 0 auto;width:48px;height:48px;border:1px solid rgba(255,253,247,.5);border-radius:50%;background:rgba(255,253,247,.9);font-size:20px;line-height:1;color:#7A5A28;cursor:pointer;" style-hover="background:#FFFDF7;">×</button>
         </div>
         <div style="display:flex;gap:8px;">
-          <a href="{{ mapDir }}" target="_blank" rel="noopener" style="flex:1;min-width:0;border-radius:22px;background:#7A5A28;padding:11px 14px;min-height:44px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:14.5px;letter-spacing:.2em;color:#FFFDF7;text-align:center;" style-hover="background:#6E5024;">ITINERAIRE GOOGLE MAPS</a>
+          <a href="{{ mapDir }}" target="_blank" rel="noopener" style="flex:1;min-width:0;border-radius:999px;background:#7A5A28;padding:11px 14px;min-height:44px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#FFFDF7;text-align:center;" style-hover="background:#6E5024;">ITINERAIRE GOOGLE MAPS</a>
         </div>
       </div>
-      <div style="flex:1;min-height:0;border-radius:6px;overflow:hidden;background:#F4EEDF;display:flex;">
+      <div style="flex:1;min-height:0;border-radius:2px;overflow:hidden;background:#F4EEDF;display:flex;">
         <sc-if value="{{ isMapA }}" hint-placeholder-val="{{ false }}">
           <img src="assets/map-fjkm.png" alt="FJKM Amparibe Famonjena" style="width:100%;height:100%;object-fit:contain;display:block;">
         </sc-if>
@@ -457,7 +478,7 @@
           <img src="assets/map-anthurium.png" alt="Espace Anthurium Anjomakely" style="width:100%;height:100%;object-fit:contain;display:block;">
         </sc-if>
       </div>
-      <p style="margin:0;text-align:center;font-family:'Cormorant Garamond',serif;font-size:14.5px;letter-spacing:.18em;color:rgba(255,253,247,.86);">{{ mapTitle }}</p>
+      <p style="margin:0;text-align:center;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:rgba(255,253,247,.86);">{{ mapTitle }}</p>
     </div>
   </sc-if>
   <audio ref="{{ audioRef }}" src="assets/music.mp3" loop="{{ true }}" preload="none"></audio>
@@ -469,6 +490,12 @@
     <span style="display:block;width:15px;height:15px;border-radius:50%;background:{{ orbDot }};box-shadow:{{ orbDotShadow }};"></span>
   </button>
 
+  <div style="position:absolute;inset:13px;z-index:4;pointer-events:none;border:1px solid rgba(169,131,74,.3);">
+    <div style="position:absolute;inset:5px;border:1px solid rgba(169,131,74,.13);"></div>
+  </div>
+  <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+    <p style="position:absolute;top:27px;left:0;right:0;z-index:4;margin:0;text-align:center;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.34em;color:#B39A6E;text-transform:uppercase;pointer-events:none;">{{ folio }}</p>
+  </sc-if>
   <div style="position:absolute;inset:0;z-index:5;overflow:hidden;pointer-events:none;">
     <sc-for list="{{ epis }}" as="e" hint-placeholder-count="3">
       <div ref="{{ e.ref }}" style="position:absolute;left:{{ e.l }};top:{{ e.t }};width:{{ e.w }};pointer-events:none;filter:drop-shadow(0 6px 10px rgba(90,70,40,.18));transform-origin:bottom center;will-change:transform;">
@@ -482,8 +509,8 @@
   </sc-if>
 
   <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
-    <div style="position:absolute;left:0;right:0;bottom:0;height:82px;display:grid;grid-template-columns:56px 1fr 56px;align-items:center;padding:0 14px;background:linear-gradient(180deg,rgba(250,246,236,0),rgba(250,246,236,.94) 46%);pointer-events:none;">
-      <button onClick="{{ prev }}" disabled="{{ atStart }}" style="width:44px;height:44px;border:1px solid #DCCDAB;border-radius:50%;background:rgba(255,253,247,.9);color:{{ prevFg }};font-size:17px;cursor:pointer;pointer-events:auto;" style-hover="background:#7A5A28;color:#FFFDF7;">‹</button>
+    <div style="position:absolute;left:0;right:0;bottom:0;z-index:7;height:82px;display:grid;grid-template-columns:56px 1fr 56px;align-items:center;padding:0 14px;background:linear-gradient(180deg,rgba(250,246,236,0),rgba(250,246,236,.94) 46%);pointer-events:none;">
+      <button onClick="{{ prev }}" disabled="{{ atStart }}" style="width:44px;height:44px;border:1px solid #E0D2B4;border-radius:50%;background:rgba(255,253,247,.9);color:{{ prevFg }};font-size:17px;cursor:pointer;pointer-events:auto;" style-hover="background:#7A5A28;color:#FFFDF7;">‹</button>
       <div style="display:flex;justify-content:center;align-items:center;gap:9px;pointer-events:auto;">
         <sc-for list="{{ dots }}" as="d" hint-placeholder-count="6">
           <button onClick="{{ d.go }}" aria-label="{{ d.label }}" style="width:26px;height:26px;padding:0;border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;">
@@ -498,15 +525,15 @@
   <sc-if value="{{ adminLock }}" hint-placeholder-val="{{ false }}">
     <div style="position:absolute;inset:0;z-index:61;background:#FAF6EC;display:flex;align-items:center;justify-content:center;padding:26px 22px;">
       <div style="width:100%;max-width:320px;display:flex;flex-direction:column;gap:13px;text-align:center;">
-        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13.5px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">Ho an’ny mpampakatra</p>
-        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;color:#6E5024;">Teny miafina</p>
-        <input type="{{ adPassType }}" value="{{ adPass }}" onChange="{{ setAdPass }}" onKeyDown="{{ adPassKey }}" placeholder="Teny miafina" style="min-height:48px;border:1px solid #DCCDAB;border-radius:8px;background:#FFFDF7;padding:0 14px;text-align:center;font-family:'Jost',sans-serif;font-size:16.5px;color:#4A3A22;">
-        <button onClick="{{ adPassShow }}" style="align-self:center;border:none;background:none;padding:6px 4px;min-height:36px;font-family:'Jost',sans-serif;font-size:14px;color:#A9834A;cursor:pointer;" style-hover="color:#7A5A28;">{{ adPassShowLabel }}</button>
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">Ho an’ny mpampakatra</p>
+        <p style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;color:#6E5024;">Teny miafina</p>
+        <input type="{{ adPassType }}" value="{{ adPass }}" onChange="{{ setAdPass }}" onKeyDown="{{ adPassKey }}" placeholder="Teny miafina" style="min-height:48px;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:0 14px;text-align:center;font-family:'Jost',sans-serif;font-size:17px;color:#4A3A22;">
+        <button onClick="{{ adPassShow }}" style="align-self:center;border:none;background:none;padding:6px 4px;min-height:36px;font-family:'Jost',sans-serif;font-size:13px;color:#A9834A;cursor:pointer;" style-hover="color:#7A5A28;">{{ adPassShowLabel }}</button>
         <sc-if value="{{ adPassBad }}" hint-placeholder-val="{{ false }}">
-          <p style="margin:0;font-size:14.5px;color:#B4562A;">Diso ny teny miafina.</p>
+          <p style="margin:0;font-size:13px;color:#B4562A;">Diso ny teny miafina.</p>
         </sc-if>
-        <button onClick="{{ adPassOk }}" style="min-height:48px;border:1px solid #A9834A;border-radius:24px;background:#7A5A28;font-family:'Cormorant Garamond',serif;font-size:14.5px;letter-spacing:.22em;color:#FFFDF7;cursor:pointer;" style-hover="background:#6E5024;">HIDITRA</button>
-        <button onClick="{{ adminClose }}" style="min-height:44px;border:none;background:none;font-family:'Jost',sans-serif;font-size:14.5px;color:#B39A6E;cursor:pointer;" style-hover="color:#7A5A28;">Hiala</button>
+        <button onClick="{{ adPassOk }}" style="min-height:48px;border:1px solid #A9834A;border-radius:999px;background:#7A5A28;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#FFFDF7;cursor:pointer;" style-hover="background:#6E5024;">HIDITRA</button>
+        <button onClick="{{ adminClose }}" style="min-height:44px;border:none;background:none;font-family:'Jost',sans-serif;font-size:13px;color:#B39A6E;cursor:pointer;" style-hover="color:#7A5A28;">Hiala</button>
       </div>
     </div>
   </sc-if>
@@ -516,74 +543,74 @@
       <div style="display:flex;flex-direction:column;gap:18px;max-width:520px;margin:0 auto;">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
           <div>
-            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13.5px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">Ho an’ny mpampakatra</p>
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">Ho an’ny mpampakatra</p>
             <p style="margin:4px 0 0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#6E5024;">Mpamorona rohy</p>
           </div>
-          <button onClick="{{ adminClose }}" style="border:1px solid #DCCDAB;border-radius:20px;background:rgba(255,253,247,.9);padding:9px 16px;min-height:40px;font-family:'Jost',sans-serif;font-size:14.5px;color:#7A5A28;cursor:pointer;white-space:nowrap;" style-hover="background:#7A5A28;color:#FFFDF7;">Hidina</button>
+          <button onClick="{{ adminClose }}" style="border:1px solid #E0D2B4;border-radius:999px;background:rgba(255,253,247,.9);padding:9px 16px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;white-space:nowrap;" style-hover="background:#7A5A28;color:#FFFDF7;">Hidina</button>
         </div>
 
         <div style="display:flex;flex-direction:column;gap:8px;">
-          <label style="font-family:'Cormorant Garamond',serif;font-size:13.5px;letter-spacing:.24em;color:#A9834A;text-transform:uppercase;">1 · Rohy fototra</label>
-          <p style="margin:0;font-size:14px;line-height:1.6;color:#B39A6E;">Adikao eto ny adiresy misy ny fanasana rehefa tafapetraka (GitHub Pages). Raha tsy feno ity, tsy mandeha ny rohy.</p>
-          <input value="{{ adBase }}" onChange="{{ setAdBase }}" placeholder="https://votre-compte.github.io/fanasana/" style="min-height:46px;border:1px solid #DCCDAB;border-radius:8px;background:#FFFDF7;padding:0 13px;font-family:'Jost',sans-serif;font-size:15.5px;color:#4A3A22;">
+          <label style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">1 · Rohy fototra</label>
+          <p style="margin:0;font-size:13px;line-height:1.6;color:#B39A6E;">Adikao eto ny adiresy misy ny fanasana rehefa tafapetraka (GitHub Pages). Raha tsy feno ity, tsy mandeha ny rohy.</p>
+          <input value="{{ adBase }}" onChange="{{ setAdBase }}" placeholder="https://votre-compte.github.io/fanasana/" style="min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:0 13px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
         </div>
 
-        <div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF7;border:1px solid #DCCDAB;border-radius:10px;padding:15px;">
-          <label style="font-family:'Cormorant Garamond',serif;font-size:13.5px;letter-spacing:.24em;color:#A9834A;text-transform:uppercase;">2 · Anarana sy isan’ny olona</label>
+        <div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF7;border:1px solid #E0D2B4;border-radius:2px;padding:15px;">
+          <label style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">2 · Anarana sy isan’ny olona</label>
           <div style="display:flex;flex-wrap:wrap;gap:7px;">
             <sc-for list="{{ adRelOpts }}" as="o" hint-placeholder-count="4">
-              <button onClick="{{ o.pick }}" style="border:1px solid {{ o.bd }};border-radius:19px;background:{{ o.bg }};padding:9px 14px;min-height:40px;font-family:'Jost',sans-serif;font-size:14px;color:{{ o.fg }};cursor:pointer;">{{ o.label }}</button>
+              <button onClick="{{ o.pick }}" style="border:1px solid {{ o.bd }};border-radius:999px;background:{{ o.bg }};padding:9px 14px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:{{ o.fg }};cursor:pointer;">{{ o.label }}</button>
             </sc-for>
           </div>
-          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13.5px;letter-spacing:.24em;color:#A9834A;text-transform:uppercase;">Hamafin’ny hafatra</p>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">Hamafin’ny hafatra</p>
           <div style="display:flex;flex-wrap:wrap;gap:7px;">
             <sc-for list="{{ adToneOpts }}" as="o" hint-placeholder-count="4">
-              <button onClick="{{ o.pick }}" style="border:1px solid {{ o.bd }};border-radius:19px;background:{{ o.bg }};padding:9px 14px;min-height:40px;font-family:'Jost',sans-serif;font-size:14px;color:{{ o.fg }};cursor:pointer;">{{ o.label }}</button>
+              <button onClick="{{ o.pick }}" style="border:1px solid {{ o.bd }};border-radius:999px;background:{{ o.bg }};padding:9px 14px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:{{ o.fg }};cursor:pointer;">{{ o.label }}</button>
             </sc-for>
           </div>
           <div style="display:grid;grid-template-columns:minmax(0,1fr) 88px auto;gap:9px;align-items:center;">
-            <input id="ad-name" value="{{ adName }}" onChange="{{ setAdName }}" onKeyDown="{{ adKey }}" placeholder="Anarana hiseho" style="min-width:0;min-height:46px;border:1px solid #DCCDAB;border-radius:8px;background:#FAF6EC;padding:0 12px;font-family:'Jost',sans-serif;font-size:15.5px;color:#4A3A22;">
-            <input value="{{ adN }}" onChange="{{ setAdN }}" onKeyDown="{{ adKey }}" placeholder="Isany" style="min-width:0;min-height:46px;border:1px solid #DCCDAB;border-radius:8px;background:#FAF6EC;padding:0 12px;font-family:'Jost',sans-serif;font-size:15.5px;color:#4A3A22;">
-            <button onClick="{{ adAdd }}" style="border:1px solid #A9834A;border-radius:23px;background:#7A5A28;padding:11px 20px;min-height:46px;font-family:'Jost',sans-serif;font-size:14.5px;color:#FFFDF7;cursor:pointer;white-space:nowrap;" style-hover="background:#6E5024;">Ampio</button>
+            <input id="ad-name" value="{{ adName }}" onChange="{{ setAdName }}" onKeyDown="{{ adKey }}" placeholder="Anarana hiseho" style="min-width:0;min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FAF6EC;padding:0 12px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
+            <input value="{{ adN }}" onChange="{{ setAdN }}" onKeyDown="{{ adKey }}" placeholder="Isany" style="min-width:0;min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FAF6EC;padding:0 12px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
+            <button onClick="{{ adAdd }}" style="border:1px solid #A9834A;border-radius:999px;background:#7A5A28;padding:11px 20px;min-height:46px;font-family:'Jost',sans-serif;font-size:13px;color:#FFFDF7;cursor:pointer;white-space:nowrap;" style-hover="background:#6E5024;">Ampio</button>
           </div>
           <sc-if value="{{ adNoteOn }}" hint-placeholder-val="{{ false }}">
-            <p style="margin:0;border:1px solid #DCCDAB;border-radius:8px;background:#FAF6EC;padding:9px 12px;font-family:'Jost',sans-serif;font-size:14.5px;color:{{ adNoteFg }};">{{ adNote }}</p>
+            <p style="margin:0;border:1px solid #E0D2B4;border-radius:2px;background:#FAF6EC;padding:9px 12px;font-family:'Jost',sans-serif;font-size:13px;color:{{ adNoteFg }};">{{ adNote }}</p>
           </sc-if>
-          <p style="margin:0;font-size:14px;line-height:1.6;color:#B39A6E;">Ny taratasy ao anaty fanomezana dia miova arakaraka ny fifandraisana voafidy. Na apetaho eto ambany : Anarana / Isany / kodra fifandraisana (fam, ftam, nam, ntam, rah, rap, raf, mpi, ofi) / kodra hamafy (t3, t2, t1, t0), tsanganana iray isaky ny fianakaviana.</p>
-          <textarea value="{{ adRaw }}" onChange="{{ setAdRaw }}" rows="5" placeholder="Fianakaviana Rakoto&#9;4&#9;ftam&#9;t3&#10;Ramatoa Soa&#9;2&#9;ofi&#9;t0" style="width:100%;box-sizing:border-box;border:1px solid #DCCDAB;border-radius:8px;background:#FAF6EC;padding:11px 12px;font-family:'Jost',sans-serif;font-size:15px;line-height:1.6;color:#4A3A22;resize:vertical;"></textarea>
+          <p style="margin:0;font-size:13px;line-height:1.6;color:#B39A6E;">Ny taratasy ao anaty fanomezana dia miova arakaraka ny fifandraisana voafidy. Na apetaho eto ambany : Anarana / Isany / kodra fifandraisana (fam, ftam, nam, ntam, rah, rap, raf, mpi, ofi) / kodra hamafy (t3, t2, t1, t0), tsanganana iray isaky ny fianakaviana.</p>
+          <textarea value="{{ adRaw }}" onChange="{{ setAdRaw }}" rows="5" placeholder="Fianakaviana Rakoto&#9;4&#9;ftam&#9;t3&#10;Ramatoa Soa&#9;2&#9;ofi&#9;t0" style="width:100%;box-sizing:border-box;border:1px solid #E0D2B4;border-radius:2px;background:#FAF6EC;padding:11px 12px;font-family:'Jost',sans-serif;font-size:15px;line-height:1.6;color:#4A3A22;resize:vertical;"></textarea>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div style="background:#FFFDF7;border:1px solid #DCCDAB;border-radius:10px;padding:12px 14px;">
-            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#A9834A;text-transform:uppercase;">Fanasana</p>
-            <p style="margin:3px 0 0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#6E5024;">{{ adTotalCards }}</p>
+          <div style="background:#FFFDF7;border:1px solid #E0D2B4;border-radius:2px;padding:12px 14px;">
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;color:#A9834A;text-transform:uppercase;">Fanasana</p>
+            <p style="margin:3px 0 0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#6E5024;">{{ adTotalCards }}</p>
           </div>
-          <div style="background:#FFFDF7;border:1px solid #DCCDAB;border-radius:10px;padding:12px 14px;">
-            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#A9834A;text-transform:uppercase;">Olona</p>
-            <p style="margin:3px 0 0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:#6E5024;">{{ adTotalGuests }}</p>
+          <div style="background:#FFFDF7;border:1px solid #E0D2B4;border-radius:2px;padding:12px 14px;">
+            <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;color:#A9834A;text-transform:uppercase;">Olona</p>
+            <p style="margin:3px 0 0;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:#6E5024;">{{ adTotalGuests }}</p>
           </div>
         </div>
 
-        <input value="{{ adSearch }}" onChange="{{ setAdSearch }}" placeholder="Hikaroka anarana…" style="min-height:46px;border:1px solid #DCCDAB;border-radius:8px;background:#FFFDF7;padding:0 14px;font-family:'Jost',sans-serif;font-size:15.5px;color:#4A3A22;">
+        <input value="{{ adSearch }}" onChange="{{ setAdSearch }}" placeholder="Hikaroka anarana…" style="min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:0 14px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
 
         <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
-          <span style="font-family:'Cormorant Garamond',serif;font-size:16px;color:#6E5024;">{{ adCount }}</span>
-          <button onClick="{{ adCopyAll }}" style="border:1px solid #C6AC7C;border-radius:20px;background:rgba(255,253,247,.9);padding:9px 16px;min-height:40px;font-family:'Jost',sans-serif;font-size:14.5px;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">{{ adCopyAllLabel }}</button>
-          <button onClick="{{ adClear }}" style="border:1px solid #DCCDAB;border-radius:20px;background:none;padding:9px 16px;min-height:40px;font-family:'Jost',sans-serif;font-size:14.5px;color:#B39A6E;cursor:pointer;" style-hover="color:#7A5A28;">Foanana</button>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#6E5024;">{{ adCount }}</span>
+          <button onClick="{{ adCopyAll }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(255,253,247,.9);padding:9px 16px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">{{ adCopyAllLabel }}</button>
+          <button onClick="{{ adClear }}" style="border:1px solid #E0D2B4;border-radius:999px;background:none;padding:9px 16px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:#B39A6E;cursor:pointer;" style-hover="color:#7A5A28;">Foanana</button>
         </div>
 
         <div style="display:flex;flex-direction:column;gap:10px;">
           <sc-for list="{{ adRows }}" as="r" hint-placeholder-count="2">
-            <div style="display:flex;flex-direction:column;gap:8px;background:#FFFDF7;border:1px solid #DCCDAB;border-radius:10px;padding:13px 14px;">
+            <div style="display:flex;flex-direction:column;gap:8px;background:#FFFDF7;border:1px solid #E0D2B4;border-radius:2px;padding:13px 14px;">
               <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;justify-content:space-between;">
                 <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:17px;color:#6E5024;">{{ r.name }}</span>
-                <span style="font-family:'Jost',sans-serif;font-size:14px;letter-spacing:.1em;color:#A9834A;">{{ r.badge }}</span>
+                <span style="font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.1em;color:#A9834A;">{{ r.badge }}</span>
               </div>
-                  <p style="margin:0;word-break:break-all;font-family:'Jost',sans-serif;font-size:14px;line-height:1.55;color:{{ r.urlFg }};">{{ r.url }}</p>
+                  <p style="margin:0;word-break:break-all;font-family:'Jost',sans-serif;font-size:13px;line-height:1.55;color:{{ r.urlFg }};">{{ r.url }}</p>
               <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                <button onClick="{{ r.copy }}" style="border:1px solid #C6AC7C;border-radius:19px;background:rgba(250,246,236,.9);padding:9px 15px;min-height:40px;font-family:'Jost',sans-serif;font-size:14px;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">{{ r.copyLabel }}</button>
-                <button onClick="{{ r.test }}" style="border:1px solid #C6AC7C;border-radius:19px;background:rgba(250,246,236,.9);padding:9px 15px;min-height:40px;font-family:'Jost',sans-serif;font-size:14px;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">Hijery</button>
-                <a href="{{ r.wa }}" target="_blank" rel="noopener" style="border:1px solid #A9834A;border-radius:19px;background:#7A5A28;padding:0 16px;min-height:40px;display:inline-flex;align-items:center;font-family:'Jost',sans-serif;font-size:14px;color:#FFFDF7;text-decoration:none;" style-hover="background:#6E5024;">WhatsApp</a>
+                <button onClick="{{ r.copy }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(250,246,236,.9);padding:9px 15px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">{{ r.copyLabel }}</button>
+                <button onClick="{{ r.test }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(250,246,236,.9);padding:9px 15px;min-height:40px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">Hijery</button>
+                <a href="{{ r.wa }}" target="_blank" rel="noopener" style="border:1px solid #A9834A;border-radius:999px;background:#7A5A28;padding:0 16px;min-height:40px;display:inline-flex;align-items:center;font-family:'Jost',sans-serif;font-size:13px;color:#FFFDF7;text-decoration:none;" style-hover="background:#6E5024;">WhatsApp</a>
               </div>
             </div>
           </sc-for>
@@ -630,8 +657,29 @@ class Component extends DCLogic {
   PALETTE = this.FAMILIES_NEW.flatMap(([meaning, entries]) =>
     entries.map(([hex, name]) => ({ hex, meaning, name })));
 
+  fit = () => {
+    const els = document.querySelectorAll('[data-fit]');
+    for (const el of els) {
+      const p = el.parentElement;
+      if (!p) continue;
+      el.style.zoom = '1';
+      const avail = p.clientHeight;
+      const need = el.scrollHeight;
+      if (!avail || !need) continue;
+      const z = Math.min(1, Math.max(0.58, (avail - 1) / need));
+      el.style.zoom = z < 0.995 ? String(Math.round(z * 1000) / 1000) : '1';
+    }
+  };
+  fitSoon = () => {
+    cancelAnimationFrame(this.fitRaf);
+    this.fitRaf = requestAnimationFrame(this.fit);
+  };
+  componentDidUpdate() { this.fitSoon(); }
   componentDidMount() {
     this.t = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    this.fitSoon();
+    window.addEventListener('resize', this.fitSoon);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(this.fitSoon);
     try {
       const g = this.Q('g').trim();
       if (g) this.setState({ name: g.slice(0, 60) });
@@ -679,6 +727,8 @@ class Component extends DCLogic {
     document.addEventListener('touchend', this.onUp, { passive: true });
   }
   componentWillUnmount() {
+    window.removeEventListener('resize', this.fitSoon);
+    cancelAnimationFrame(this.fitRaf);
     clearInterval(this.fade);
     if (this.audio) this.audio.pause();
     clearInterval(this.t);
@@ -756,18 +806,18 @@ class Component extends DCLogic {
   epiSet = (screen) => {
     if (this.epiCache && this.epiCache.k === screen) return this.epiCache.v;
     const r = this.epiRand(screen + 11);
-    const n = 3 + Math.floor(r() * 3);
+    const n = 3;
     const v = [];
     for (let i = 0; i < n; i++) {
-      const left = r() < 0.5;
+      const left = i === 0 ? true : (i === 1 ? false : r() < 0.5);
       v.push({
-        l: (left ? 1 + r() * 15 : 70 + r() * 19).toFixed(1) + '%',
-        t: (6 + r() * 64).toFixed(1) + '%',
-        w: Math.round(60 + r() * 46) + 'px',
-        src: this.EPI_SRC[Math.floor(r() * 2)],
+        l: (left ? -3 + r() * 7 : 80 + r() * 9).toFixed(1) + '%',
+        t: (8 + i * 26 + r() * 14).toFixed(1) + '%',
+        w: Math.round(72 + r() * 28) + 'px',
+        src: left ? this.EPI_SRC[0] : this.EPI_SRC[1],
         ref: this.epiRef(i)
       });
-      this.epiWind[i] = { amp: 5 + r() * 8, rot: 3.2 + r() * 4.6, sp: 0.2 + r() * 0.24, ph: r() * 6.283, lag: 0.5 + r() * 0.7 };
+      this.epiWind[i] = { amp: 2.2 + r() * 2.4, rot: 1.6 + r() * 1.8, sp: 0.1 + r() * 0.1, ph: r() * 6.283, lag: 0.6 + r() * 0.5 };
     }
     this.epiWind.length = n;
     this.epiNodes.length = n;
@@ -807,7 +857,7 @@ class Component extends DCLogic {
 
   epiLoop = () => {
     const t = performance.now() / 1000;
-    const gust = Math.max(0.14, 0.5 + 0.5 * Math.sin(t * 0.17) * Math.sin(t * 0.061 + 1.1) + 0.22 * Math.sin(t * 0.49 + 2.2));
+    const gust = Math.max(0.25, 0.62 + 0.3 * Math.sin(t * 0.11) * Math.sin(t * 0.043 + 1.1) + 0.12 * Math.sin(t * 0.27 + 2.2));
     for (let i = 0; i < this.epiNodes.length; i++) {
       const el = this.epiNodes[i];
       if (!el) continue;
@@ -821,7 +871,7 @@ class Component extends DCLogic {
       const w = this.epiWind[i] || { amp: 6, rot: 4, sp: 0.3, ph: i, lag: 0.6 };
       const p = Math.sin(t * w.sp + w.ph) + 0.32 * Math.sin(t * w.sp * 2.7 + w.ph * 1.7);
       const wx = p * w.amp * gust * w.lag;
-      const wy = -Math.abs(p) * 1.8 * gust;
+      const wy = -Math.abs(p) * 0.7 * gust;
       el.style.transform = 'translate(' + (s.x + wx).toFixed(2) + 'px,' + (s.y + wy).toFixed(2) + 'px) rotate(' + (p * w.rot * gust).toFixed(2) + 'deg)';
     }
     this.epiRaf = requestAnimationFrame(this.epiLoop);
@@ -1151,6 +1201,7 @@ class Component extends DCLogic {
       s0: !st.intro && !st.done && st.i === 0, s1: !st.intro && !st.done && st.i === 1, s2: !st.intro && !st.done && st.i === 2,
       s3: !st.intro && !st.done && st.i === 3, s4: !st.intro && !st.done && st.i === 4, s5: !st.intro && !st.done && st.i === 5,
       done: !st.intro && st.done,
+      folio: ['I','II','III','IV','V','VI'][st.i] || '',
       epis: this.epiSet(st.intro ? -1 : (st.done ? 90 : st.i)),
       showNav: !st.admin && !st.intro && !st.done,
       atStart: st.i === 0,
@@ -1236,12 +1287,12 @@ class Component extends DCLogic {
       adAdd: this.adAdd,
       adRelOpts: this.RELS.map(([code, label]) => {
         const on = st.adRel === code;
-        return { label: label, bd: on ? '#A9834A' : '#DCCDAB', bg: on ? '#7A5A28' : 'rgba(250,246,236,.9)', fg: on ? '#FFFDF7' : '#8A6C40', pick: () => this.setState({ adRel: code, adTone: '' }) };
+        return { label: label, bd: on ? '#A9834A' : '#E0D2B4', bg: on ? '#7A5A28' : 'rgba(250,246,236,.9)', fg: on ? '#FFFDF7' : '#8A6C40', pick: () => this.setState({ adRel: code, adTone: '' }) };
       }),
       adToneOpts: this.TONES.map(([code, label]) => {
         const eff = st.adTone || this.DEFTONE[st.adRel] || 't1';
         const on = eff === code;
-        return { label: label, bd: on ? '#A9834A' : '#DCCDAB', bg: on ? '#8A6C40' : 'rgba(250,246,236,.9)', fg: on ? '#FFFDF7' : '#8A6C40', pick: () => this.setState({ adTone: code }) };
+        return { label: label, bd: on ? '#A9834A' : '#E0D2B4', bg: on ? '#8A6C40' : 'rgba(250,246,236,.9)', fg: on ? '#FFFDF7' : '#8A6C40', pick: () => this.setState({ adTone: code }) };
       }),
       adClear: () => { this.setState({ adRaw: '' }); this.adSave('fr-admin-raw', ''); },
       adCount: (() => { const k = this.adParse().length; return k === 0 ? 'Mbola tsy misy anarana' : k + ' rohy vonona'; })(),
