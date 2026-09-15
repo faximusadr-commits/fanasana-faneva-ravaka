@@ -555,6 +555,17 @@
           <input value="{{ adBase }}" onChange="{{ setAdBase }}" placeholder="https://votre-compte.github.io/fanasana/" style="min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:0 13px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
         </div>
 
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;justify-content:space-between;">
+            <label style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">1 bis · Fizarana Supabase</label>
+            <span style="font-family:'Jost',sans-serif;font-size:13px;color:{{ sbFg }};">{{ sbLabel }}</span>
+          </div>
+          <p style="margin:0;font-size:13px;line-height:1.6;color:#B39A6E;">Atsofoho eto ny Project URL sy ny cle anon avy ao amin’ny Supabase. Rehefa feno, mizara base iray ianareo roa : ny anarana ampidirin’ny iray dia hita eo amin’ny hafa.</p>
+          <input value="{{ sbUrl }}" onChange="{{ setSbUrl }}" placeholder="https://xxxx.supabase.co" style="min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:0 13px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
+          <input value="{{ sbKey }}" onChange="{{ setSbKey }}" placeholder="Anon public key (eyJ…)" style="min-height:46px;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:0 13px;font-family:'Jost',sans-serif;font-size:15px;color:#4A3A22;">
+          <button onClick="{{ sbSync }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(255,253,247,.9);padding:9px 16px;min-height:44px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;align-self:flex-start;" style-hover="background:#7A5A28;color:#FFFDF7;">Avereno alaina</button>
+        </div>
+
         <div style="display:flex;flex-direction:column;gap:10px;background:#FFFDF7;border:1px solid #E0D2B4;border-radius:2px;padding:15px;">
           <label style="font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.26em;color:#A9834A;text-transform:uppercase;">2 · Anarana sy isan’ny olona</label>
           <div style="display:flex;flex-wrap:wrap;gap:7px;">
@@ -577,7 +588,27 @@
             <p style="margin:0;border:1px solid #E0D2B4;border-radius:2px;background:#FAF6EC;padding:9px 12px;font-family:'Jost',sans-serif;font-size:13px;color:{{ adNoteFg }};">{{ adNote }}</p>
           </sc-if>
           <p style="margin:0;font-size:13px;line-height:1.6;color:#B39A6E;">Ny taratasy ao anaty fanomezana dia miova arakaraka ny fifandraisana voafidy. Na apetaho eto ambany : Anarana / Isany / kodra fifandraisana (fam, ftam, nam, ntam, rah, rap, raf, mpi, ofi) / kodra hamafy (t3, t2, t1, t0), tsanganana iray isaky ny fianakaviana.</p>
-          <textarea value="{{ adRaw }}" onChange="{{ setAdRaw }}" rows="5" placeholder="Fianakaviana Rakoto&#9;4&#9;ftam&#9;t3&#10;Ramatoa Soa&#9;2&#9;ofi&#9;t0" style="width:100%;box-sizing:border-box;border:1px solid #E0D2B4;border-radius:2px;background:#FAF6EC;padding:11px 12px;font-family:'Jost',sans-serif;font-size:15px;line-height:1.6;color:#4A3A22;resize:vertical;"></textarea>
+          <textarea value="{{ adRaw }}" onChange="{{ setAdRaw }}" onBlur="{{ adRawBlur }}" rows="6" data-grow="1" wrap="off" placeholder="Fianakaviana Rakoto&#9;4&#9;ftam&#9;t3&#10;Ramatoa Soa&#9;2&#9;ofi&#9;t0" style="width:100%;box-sizing:border-box;border:1px solid #E0D2B4;border-radius:2px;background:#FAF6EC;padding:11px 12px;font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;font-size:11.5px;line-height:1.85;letter-spacing:0;color:#4A3A22;resize:vertical;overflow:auto;-webkit-overflow-scrolling:touch;tab-size:6;-moz-tab-size:6;max-height:62vh;"></textarea>
+          <sc-if value="{{ adHasData }}" hint-placeholder-val="{{ false }}">
+            <div style="border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;overflow:hidden;">
+              <div style="display:grid;grid-template-columns:minmax(0,1fr) 36px 52px 42px;gap:8px;padding:9px 12px;border-bottom:1px solid #E0D2B4;background:#FAF6EC;">
+                <span style="font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:500;letter-spacing:.18em;color:#A9834A;text-transform:uppercase;">Anarana</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:500;letter-spacing:.18em;color:#A9834A;text-transform:uppercase;text-align:center;">Isa</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:500;letter-spacing:.18em;color:#A9834A;text-transform:uppercase;text-align:center;">Fifan.</span>
+                <span style="font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:500;letter-spacing:.18em;color:#A9834A;text-transform:uppercase;text-align:center;">Ham.</span>
+              </div>
+              <div style="max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch;">
+                <sc-for list="{{ adTable }}" as="t" hint-placeholder-count="3">
+                  <div style="display:grid;grid-template-columns:minmax(0,1fr) 36px 52px 42px;gap:8px;align-items:center;padding:10px 12px;border-bottom:1px solid #F0E7D4;background:{{ t.bg }};">
+                    <span style="min-width:0;font-family:'Jost',sans-serif;font-size:13px;line-height:1.4;color:#4A3A22;overflow-wrap:anywhere;">{{ t.name }}</span>
+                    <span style="text-align:center;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;">{{ t.n }}</span>
+                    <span style="text-align:center;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.04em;color:#8A6C40;">{{ t.rel }}</span>
+                    <span style="text-align:center;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8A6C40;">{{ t.tone }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
@@ -624,7 +655,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:440,&quot;height&quot;:900},&quot;nombre&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Invitation&quot;}}">
 class Component extends DCLogic {
-  state = { remindOn: false, origin: '', geo: null, map: null, dir: 1, music: false, picked: 0, night: null, intro: true, opening: false, giftLift: false, giftOpen: false, i: 0, done: false, choice: null, name: '', guests: '2', msg: '', now: Date.now(), admin: false, adBase: '', adName: '', adN: '', adRaw: '', adRel: 'fam', adTone: '', adPass: '', adPassBad: false, adPassShown: false, adAuth: false, adSearch: '', adNote: '', adNoteBad: false, epiPos: null, adCopied: null, adCopiedAll: false };
+  state = { sbUrl: '', sbKey: '', sbState: 'off', remindOn: false, origin: '', geo: null, map: null, dir: 1, music: false, picked: 0, night: null, intro: true, opening: false, giftLift: false, giftOpen: false, i: 0, done: false, choice: null, name: '', guests: '2', msg: '', now: Date.now(), admin: false, adBase: '', adName: '', adN: '', adRaw: '', adRel: 'fam', adTone: '', adPass: '', adPassBad: false, adPassShown: false, adAuth: false, adSearch: '', adNote: '', adNoteBad: false, epiPos: null, adCopied: null, adCopiedAll: false };
   LAST = 5;
   FAMILIES_NEW = [
     ['Loko ny tany mena — ny fototra sy ny fianakaviana.', [['#674231', 'Terre cuite'], ['#6d3b24', 'Rouille'], ['#5b2525', 'Bordeaux']]],
@@ -670,14 +701,26 @@ class Component extends DCLogic {
       el.style.zoom = z < 0.995 ? String(Math.round(z * 1000) / 1000) : '1';
     }
   };
+  grow = () => {
+    for (const el of document.querySelectorAll('textarea[data-grow]')) {
+      el.style.height = 'auto';
+      el.style.height = Math.max(96, el.scrollHeight + 2) + 'px';
+    }
+  };
   fitSoon = () => {
     cancelAnimationFrame(this.fitRaf);
-    this.fitRaf = requestAnimationFrame(this.fit);
+    this.fitRaf = requestAnimationFrame(() => { this.grow(); this.fit(); });
   };
   componentDidUpdate() { this.fitSoon(); }
   componentDidMount() {
     this.t = setInterval(() => this.setState({ now: Date.now() }), 1000);
     this.fitSoon();
+    try {
+      const u = localStorage.getItem('fr-sb-url') || '';
+      const k = localStorage.getItem('fr-sb-key') || '';
+      if (u || k) this.setState({ sbUrl: u, sbKey: k }, this.sbPull);
+    } catch (e) {}
+    this.sbT = setInterval(() => { if (this.state.admin && this.state.adAuth) this.sbPull(); }, 12000);
     window.addEventListener('resize', this.fitSoon);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(this.fitSoon);
     try {
@@ -691,7 +734,7 @@ class Component extends DCLogic {
         try { base = localStorage.getItem('fr-admin-base') || ''; } catch (e) {}
             let raw = '';
         try { raw = localStorage.getItem('fr-admin-raw') || ''; } catch (e) {}
-        this.setState({ admin: true, adAuth: this.adAllowed(), adBase: base, adRaw: raw });
+        this.setState({ admin: true, adAuth: this.adAllowed(), adBase: base, adRaw: raw }, this.sbPull);
       }
     } catch (e) {}
     try {
@@ -727,6 +770,8 @@ class Component extends DCLogic {
     document.addEventListener('touchend', this.onUp, { passive: true });
   }
   componentWillUnmount() {
+    clearInterval(this.sbT);
+    clearTimeout(this.sbDeb);
     window.removeEventListener('resize', this.fitSoon);
     cancelAnimationFrame(this.fitRaf);
     clearInterval(this.fade);
@@ -942,7 +987,7 @@ class Component extends DCLogic {
     try { base = localStorage.getItem('fr-admin-base') || ''; } catch (e) {}
     let raw = '';
     try { raw = localStorage.getItem('fr-admin-raw') || ''; } catch (e) {}
-    this.setState({ admin: true, adAuth: this.adAllowed(), adBase: base, adRaw: raw });
+    this.setState({ admin: true, adAuth: this.adAllowed(), adBase: base, adRaw: raw }, this.sbPull);
   };
 
   PASS = 'jesosy no ivo';
@@ -963,6 +1008,72 @@ class Component extends DCLogic {
   adHoldEnd = () => { clearTimeout(this.adHold); };
 
   adSave = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+
+  sbCfg = () => {
+    const u = String(this.state.sbUrl || '').trim().replace(/\/+$/, '');
+    const k = String(this.state.sbKey || '').trim();
+    return /^https?:\/\//.test(u) && k.length > 20 ? { u: u, k: k } : null;
+  };
+  sbHead = (k, extra) => Object.assign({ apikey: k, Authorization: 'Bearer ' + k, 'Content-Type': 'application/json' }, extra || {});
+  sbLines = (v) => String(v === undefined ? this.state.adRaw : v).split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
+
+  sbInsert = (c, lines) => lines.length ? fetch(c.u + '/rest/v1/guestlist', {
+    method: 'POST',
+    headers: this.sbHead(c.k, { Prefer: 'resolution=ignore-duplicates,return=minimal' }),
+    body: JSON.stringify(lines.map((l) => ({ line: l })))
+  }) : Promise.resolve();
+
+  sbDelete = (c, lines) => Promise.all(lines.map((l) =>
+    fetch(c.u + '/rest/v1/guestlist?line=eq.' + encodeURIComponent(l), { method: 'DELETE', headers: this.sbHead(c.k) })));
+
+  sbPull = async () => {
+    const c = this.sbCfg();
+    if (!c) { if (this.state.sbState !== 'off') this.setState({ sbState: 'off' }); return; }
+    if (this.sbBusy || this.sbDirty) return;
+    this.sbBusy = true;
+    this.setState({ sbState: 'sync' });
+    try {
+      const r = await fetch(c.u + '/rest/v1/guestlist?select=line&order=line.asc', { headers: this.sbHead(c.k) });
+      if (!r.ok) throw new Error(r.status);
+      const remote = (await r.json()).map((x) => String(x.line || '').trim()).filter(Boolean);
+      const local = this.sbLines();
+      const union = local.slice();
+      for (const l of remote) if (union.indexOf(l) < 0) union.push(l);
+      const missing = local.filter((l) => remote.indexOf(l) < 0);
+      if (missing.length) await this.sbRun(() => this.sbInsert(c, missing));
+      const v = union.join('\n');
+      this.sbBase = union;
+      if (v !== this.state.adRaw) { this.setState({ adRaw: v }); this.adSave('fr-admin-raw', v); }
+      this.setState({ sbState: 'ok' });
+    } catch (e) { this.setState({ sbState: 'err' }); }
+    this.sbBusy = false;
+  };
+
+  sbQ = Promise.resolve();
+  sbRun = (fn) => { this.sbQ = this.sbQ.then(fn).catch(() => this.setState({ sbState: 'err' })); return this.sbQ; };
+
+  sbFlush = () => {
+    const c = this.sbCfg();
+    if (!c) return;
+    const base = this.sbBase === undefined ? [] : this.sbBase;
+    const now = this.sbLines();
+    const added = now.filter((l) => base.indexOf(l) < 0);
+    const gone = base.filter((l) => now.indexOf(l) < 0);
+    this.sbBase = now;
+    if (!added.length && !gone.length) return;
+    this.sbRun(async () => {
+      if (gone.length) await this.sbDelete(c, gone);
+      if (added.length) await this.sbInsert(c, added);
+      this.setState({ sbState: 'ok' });
+    });
+  };
+
+  sbWrite = () => {
+    if (!this.sbCfg()) return;
+    this.sbDirty = true;
+    clearTimeout(this.sbDeb);
+    this.sbDeb = setTimeout(() => { this.sbDirty = false; this.sbFlush(); }, 1500);
+  };
 
   adParse = () => this.state.adRaw.split(/\r?\n/).map((l) => {
     const c = l.split(/\t|;|,|\s{2,}/).map((x) => x.trim()).filter((x) => x !== '');
@@ -995,7 +1106,9 @@ class Component extends DCLogic {
     const tone = this.state.adTone || this.DEFTONE[this.state.adRel] || 't1';
     const line = [name, this.state.adN.trim(), this.state.adRel, tone].filter((x) => x !== '').join('\t');
     const v = (this.state.adRaw.replace(/\s+$/, '') + '\n' + line).replace(/^\n/, '');
-    this.setState({ adRaw: v, adName: '', adN: '', adNote: '« ' + name + ' » voasoratra.', adNoteBad: false });
+    clearTimeout(this.sbDeb);
+    this.sbDirty = false;
+    this.setState({ adRaw: v, adName: '', adN: '', adNote: '« ' + name + ' » voasoratra.', adNoteBad: false }, this.sbFlush);
     this.adSave('fr-admin-raw', v);
     try { const el = document.getElementById('ad-name'); if (el) el.focus(); } catch (e) {}
   };
@@ -1281,10 +1394,17 @@ class Component extends DCLogic {
       adHoldEnd: this.adHoldEnd,
       adminClose: () => { this.setState({ admin: false, adPass: '', adPassBad: false }); try { history.replaceState(null, '', location.pathname); } catch (e) {} },
       adBase: st.adBase, adName: st.adName, adN: st.adN, adRaw: st.adRaw,
+      sbUrl: st.sbUrl, sbKey: st.sbKey,
+      setSbUrl: (e) => { this.setState({ sbUrl: e.target.value }); this.adSave('fr-sb-url', e.target.value); },
+      setSbKey: (e) => { this.setState({ sbKey: e.target.value }); this.adSave('fr-sb-key', e.target.value); },
+      sbSync: this.sbPull,
+      sbLabel: { off: 'Tsy mizara', sync: 'Mampifanaraka…', ok: 'Mizara ✓', err: 'Tsy tafita' }[st.sbState] || '',
+      sbFg: { off: '#8A6C40', sync: '#A9834A', ok: '#6E5024', err: '#B4553C' }[st.sbState] || '#B39A6E',
       setAdBase: (e) => { this.setState({ adBase: e.target.value }); this.adSave('fr-admin-base', e.target.value); },
       setAdName: (e) => this.setState({ adName: e.target.value }),
       setAdN: (e) => this.setState({ adN: e.target.value }),
-      setAdRaw: (e) => { this.setState({ adRaw: e.target.value }); this.adSave('fr-admin-raw', e.target.value); },
+      setAdRaw: (e) => { const v = e.target.value; this.setState({ adRaw: v }, this.sbWrite); this.adSave('fr-admin-raw', v); },
+      adRawBlur: () => { clearTimeout(this.sbDeb); this.sbDirty = false; this.sbFlush(); },
       adKey: (e) => { if (e.key === 'Enter') this.adAdd(); },
       adAdd: this.adAdd,
       adRelOpts: this.RELS.map(([code, label]) => {
@@ -1296,8 +1416,10 @@ class Component extends DCLogic {
         const on = eff === code;
         return { label: label, bd: on ? '#A9834A' : '#E0D2B4', bg: on ? '#8A6C40' : 'rgba(250,246,236,.9)', fg: on ? '#FFFDF7' : '#8A6C40', pick: () => this.setState({ adTone: code }) };
       }),
-      adClear: () => { this.setState({ adRaw: '' }); this.adSave('fr-admin-raw', ''); },
+      adClear: () => { clearTimeout(this.sbDeb); this.sbDirty = false; this.setState({ adRaw: '' }, this.sbFlush); this.adSave('fr-admin-raw', ''); },
       adCount: (() => { const k = this.adParse().length; return k === 0 ? 'Mbola tsy misy anarana' : k + ' rohy vonona'; })(),
+      adHasData: this.adParse().length > 0,
+      adTable: this.adParse().map((r, k) => ({ name: r.name, n: r.n || '—', rel: r.rel, tone: r.tone, bg: k % 2 ? '#FDFAF2' : '#FFFDF7' })),
       adTotalCards: String(this.adParse().length),
       adTotalGuests: String(this.adParse().reduce((s, r) => s + (parseInt(r.n, 10) || 1), 0)),
       adSearch: st.adSearch,
