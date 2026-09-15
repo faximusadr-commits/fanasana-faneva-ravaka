@@ -606,8 +606,8 @@
           </div>
         </div>
 
-        <div style="display:flex;gap:7px;">
-          <sc-for list="{{ adFilterOpts }}" as="o" hint-placeholder-count="3">
+        <div style="display:flex;flex-wrap:wrap;gap:7px;">
+          <sc-for list="{{ adFilterOpts }}" as="o" hint-placeholder-count="4">
             <button onClick="{{ o.pick }}" style="flex:1 1 0;min-width:0;border:1px solid {{ o.bd }};border-radius:999px;background:{{ o.bg }};padding:9px 12px;min-height:44px;font-family:'Jost',sans-serif;font-size:13px;color:{{ o.fg }};cursor:pointer;">{{ o.label }}</button>
           </sc-for>
         </div>
@@ -635,6 +635,14 @@
             </div>
           </sc-if>
 
+
+        <sc-if value="{{ adFilterNone }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-wrap:wrap;gap:9px;align-items:center;border:1px solid #C6AC7C;border-radius:2px;background:#FFFDF7;padding:12px 13px;">
+            <span style="flex:1 1 160px;min-width:0;font-family:'Jost',sans-serif;font-size:13px;line-height:1.5;color:#7A5A28;">{{ adNoneLabel }}</span>
+            <button onClick="{{ adAssignF }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(250,246,236,.9);padding:9px 15px;min-height:42px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;white-space:nowrap;" style-hover="background:#7A5A28;color:#FFFDF7;">→ Faneva</button>
+            <button onClick="{{ adAssignR }}" style="border:1px solid #C6AC7C;border-radius:999px;background:rgba(250,246,236,.9);padding:9px 15px;min-height:42px;font-family:'Jost',sans-serif;font-size:13px;color:#7A5A28;cursor:pointer;white-space:nowrap;" style-hover="background:#7A5A28;color:#FFFDF7;">→ Ravaka</button>
+          </div>
+        </sc-if>
 
         <sc-if value="{{ adNoteOn }}" hint-placeholder-val="{{ false }}">
           <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;border:1px solid #E0D2B4;border-radius:2px;background:#FFFDF7;padding:11px 13px;">
@@ -1066,9 +1074,15 @@ class Component extends DCLogic {
 
   adSave = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
 
-  adSided = (f) => this.adParse().filter((r) => f === 'all' || r.side === f);
+  adSided = (f) => this.adParse().filter((r) => f === 'all' || (f === 'none' ? !r.side : r.side === f));
+  adAssign = (side) => {
+    const all = this.adParse();
+    let n = 0;
+    this.adRewrite(all.map((r) => { if (r.side) return r; n++; return Object.assign({}, r, { side: side }); }));
+    this.setState({ adUndo: null, adNote: n + ' fanasana napetraka amin’i ' + (side === 'ravaka' ? 'Ravaka' : 'Faneva') + '.', adNoteBad: false });
+  };
   adSum = (f, title) => {
-    const rows = this.adSided(f);
+    const rows = f === 'all' ? this.adSided('faneva').concat(this.adSided('ravaka')) : this.adSided(f);
     const people = rows.reduce((s, r) => s + (parseInt(r.n, 10) || 1), 0);
     return { title: title, people: String(people), cards: rows.length + ' fanasana', bd: f === 'all' ? '#C6AC7C' : '#E0D2B4' };
   };
@@ -1545,7 +1559,11 @@ class Component extends DCLogic {
         const on = st.adSide === code;
         return { label: label, bd: on ? '#A9834A' : '#E0D2B4', bg: on ? '#7A5A28' : 'rgba(250,246,236,.9)', fg: on ? '#FFFDF7' : '#8A6C40', pick: () => this.setState({ adSide: code }) };
       }),
-      adFilterOpts: [['all', 'Daholo'], ['faneva', 'Faneva'], ['ravaka', 'Ravaka']].map(([code, label]) => {
+      adFilterNone: st.adFilter === 'none' && this.adSided('none').length > 0,
+      adNoneLabel: this.adSided('none').length + ' fanasana mbola tsy voafaritra. Apetraho daholo amin’i :',
+      adAssignF: () => this.adAssign('faneva'),
+      adAssignR: () => this.adAssign('ravaka'),
+      adFilterOpts: [['all', 'Daholo'], ['faneva', 'Faneva'], ['ravaka', 'Ravaka'], ['none', 'Tsy voafaritra']].map(([code, label]) => {
         const on = st.adFilter === code;
         return { label: label, bd: on ? '#A9834A' : '#E0D2B4', bg: on ? '#7A5A28' : 'rgba(255,253,247,.9)', fg: on ? '#FFFDF7' : '#8A6C40', pick: () => this.setState({ adFilter: code }) };
       }),
