@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=Jost:wght@300;400;500&amp;family=Pinyon+Script&amp;display=swap" rel="stylesheet">
 <style>
-  html, body { margin:0; padding:0; background:#DED6C6; }
+  html, body { margin:0; padding:0; background:var(--fr-desk,#DED6C6); }
   a { color:#7A5A28; text-decoration:none; }
   a:hover { color:#A9834A; }
   @keyframes fadeUp { from { opacity:0; transform:translateY(12px);} to { opacity:1; transform:none;} }
@@ -86,8 +86,8 @@
   @keyframes cardUnfold { 0% { opacity:0; transform:translateY(26px) scale(.9) rotateX(28deg);} 100% { opacity:1; transform:none;} }
 </style>
 </helmet>
-<div style="height:100dvh;display:flex;align-items:stretch;justify-content:center;background:#DED6C6;font-family:'Jost',sans-serif;overflow:hidden;">
-<div style="position: relative; width: 100%; max-width: none; height: 100dvh; overflow: hidden; background: #FAF6EC url('assets/bg-linen.png') no-repeat center; background-size: cover; box-shadow: 0 0 60px rgba(90,70,40,.2); filter: {{ skin }}">
+<div style="height:100dvh;display:flex;align-items:stretch;justify-content:center;background:var(--fr-desk,#DED6C6);font-family:'Jost',sans-serif;overflow:hidden;">
+<div style="position: relative; width: 100%; max-width: none; height: 100dvh; overflow: hidden; background: var(--fr-sheet,#FAF6EC) url('assets/bg-linen.png') no-repeat center; background-size: cover; box-shadow: 0 0 60px rgba(90,70,40,.2); filter: {{ skin }}">
 
   <div style="position: absolute; left: 0; right: 0; top: 0; height: 420px; overflow: hidden; pointer-events: none">
     <img src="assets/a-sun.png" alt="" style="position:absolute;top:{{ orbTop }};left:50%;width:{{ orbSize }};height:auto;opacity:.9;filter:{{ orbFilter }};-webkit-mask-image:radial-gradient(circle at 50% 48%,#000 56%,rgba(0,0,0,.5) 72%,transparent 86%);mask-image:radial-gradient(circle at 50% 48%,#000 56%,rgba(0,0,0,.5) 72%,transparent 86%);animation:orbFloat 17s ease-in-out infinite;">
@@ -317,7 +317,8 @@
           <div style="width:100%;display:flex;flex-direction:column;gap:9px;animation:fadeUp .35s ease both;">
             <input value="{{ name }}" onChange="{{ setName }}" disabled="{{ locked }}" placeholder="Anarana feno" style="min-height:48px;border:none;border-bottom:1px solid #C6AC7C;background:none;padding:0 2px;text-align:center;outline:none;font-family:'Jost',sans-serif;font-size:17px;color:#6E5024;">
             <sc-if value="{{ isYes }}" hint-placeholder-val="{{ true }}">
-              <input type="number" min="1" value="{{ guests }}" onChange="{{ setGuests }}" disabled="{{ locked }}" placeholder="Isan’ny olona" style="min-height:48px;border:none;border-bottom:1px solid #C6AC7C;background:none;padding:0 2px;text-align:center;outline:none;font-family:'Jost',sans-serif;font-size:17px;color:#6E5024;">
+              <input type="number" min="1" max="{{ guestsMax }}" value="{{ guests }}" onChange="{{ setGuests }}" disabled="{{ locked }}" placeholder="Isan’ny olona" style="min-height:48px;border:none;border-bottom:1px solid #C6AC7C;background:none;padding:0 2px;text-align:center;outline:none;font-family:'Jost',sans-serif;font-size:17px;color:#6E5024;">
+              <p style="margin:-2px 0 0;font-size:13px;letter-spacing:.06em;color:{{ guestsNoteColor }};">{{ guestsNote }}</p>
             </sc-if>
             <textarea value="{{ msg }}" onChange="{{ setMsg }}" disabled="{{ locked }}" rows="2" placeholder="Hafatra ho an’ny mpivady" style="border:none;border-bottom:1px solid #C6AC7C;background:none;padding:9px 2px;text-align:center;outline:none;font-family:'Jost',sans-serif;font-size:17px;color:#6E5024;resize:none;"></textarea>
           </div>
@@ -329,7 +330,14 @@
             <p style="margin:0 0 11px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Jost',sans-serif;font-size:15px;letter-spacing:.1em;color:{{ countdownColor }};">
               <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:{{ countdownColor }};animation:ctaGlow 2.4s ease-in-out infinite;"></span>{{ countdownLabel }}</p>
           </sc-if>
-          <button onClick="{{ submit }}" disabled="{{ cantSubmit }}" style="width:100%;min-height:52px;border:1px solid #A9834A;border-radius:2px;background:{{ submitBg }};color:{{ submitFg }};font-family:'Jost',sans-serif;font-size:15px;line-height:1.3;cursor:pointer;animation:ctaGlow 4.5s ease-in-out infinite;">Fifalianay ny fahatongavanao</button>
+          <button onClick="{{ submit }}" disabled="{{ cantSubmit }}" style="width:100%;min-height:52px;border:1px solid #A9834A;border-radius:2px;background:{{ submitBg }};color:{{ submitFg }};font-family:'Jost',sans-serif;font-size:15px;line-height:1.3;cursor:pointer;animation:ctaGlow 4.5s ease-in-out infinite;">{{ submitLabel }}</button>
+          <sc-if value="{{ choosing }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:10px;border:1px solid #E0D2B4;border-radius:2px;background:rgba(255,253,247,.86);padding:13px;display:flex;flex-direction:column;gap:8px;animation:fadeUp .35s ease both;">
+              <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#A9834A;">ALEFA AMIN’IZA?</p>
+              <button onClick="{{ sendFaneva }}" style="min-height:48px;border:1px solid #A9834A;border-radius:2px;background:#7A5A28;color:#FFFDF7;font-family:'Jost',sans-serif;font-size:16px;cursor:pointer;" style-hover="background:#6E5024;">Alefa amin’ny Faneva</button>
+              <button onClick="{{ sendRavaka }}" style="min-height:48px;border:1px solid #A9834A;border-radius:2px;background:rgba(255,253,247,.9);color:#7A5A28;font-family:'Jost',sans-serif;font-size:16px;cursor:pointer;" style-hover="background:#7A5A28;color:#FFFDF7;">Alefa amin’ny Ravaka</button>
+            </div>
+          </sc-if>
           <p style="margin:8px 0 0;font-size:13px;color:#B39A6E;">{{ hint }}</p>
           <sc-if value="{{ locked }}" hint-placeholder-val="{{ false }}">
             <p style="margin:10px 0 0;border:1px solid #E0D2B4;border-radius:2px;background:rgba(255,253,247,.86);padding:11px 13px;font-size:15px;line-height:1.65;color:#8A6C40;">{{ lockNote }}</p>
@@ -347,9 +355,9 @@
         <h2 style="margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:20px;letter-spacing:.04em;color:#6E5024;line-height:1.5;">Voaray ny valiteninao</h2>
         <p style="margin:0;font-size:17px;line-height:1.8;color:#8A6C40;max-width:290px;">{{ doneBody }}</p>
         <div style="align-self:stretch;display:flex;flex-direction:column;gap:8px;">
-          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#A9834A;">ALEFA AMIN’NY WHATSAPP</p>
-          <a href="{{ waA }}" target="_blank" rel="noopener" style="min-height:46px;border-radius:2px;background:#7A5A28;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:17px;color:#FFFDF7;" style-hover="background:#6E5024;">034 43 335 60</a>
-          <a href="{{ waB }}" target="_blank" rel="noopener" style="min-height:46px;border-radius:2px;border:1px solid #A9834A;background:rgba(255,253,247,.8);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:17px;color:#7A5A28;" style-hover="background:#7A5A28;color:#FFFDF7;">034 54 300 93</a>
+          <p style="margin:0;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:#A9834A;">ALEFA INDRAY AMIN’NY WHATSAPP</p>
+          <a href="{{ waA }}" target="_blank" rel="noopener" style="min-height:46px;border-radius:2px;background:#7A5A28;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:17px;color:#FFFDF7;" style-hover="background:#6E5024;">Faneva &middot; 034 43 335 60</a>
+          <a href="{{ waB }}" target="_blank" rel="noopener" style="min-height:46px;border-radius:2px;border:1px solid #A9834A;background:rgba(255,253,247,.8);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:17px;color:#7A5A28;" style-hover="background:#7A5A28;color:#FFFDF7;">Ravaka &middot; 034 54 300 93</a>
         </div>
         <img src="assets/p-flourish.png" alt="" style="width:58%;max-width:200px;height:auto;opacity:.85;">
         <p style="margin:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:#8A6C40;">Tahian'ny Tompo</p>
@@ -481,25 +489,37 @@
       <p style="margin:0;text-align:center;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.2em;color:rgba(255,253,247,.86);">{{ mapTitle }}</p>
     </div>
   </sc-if>
-  <audio ref="{{ audioRef }}" src="assets/music.mp3" loop="{{ true }}" preload="none"></audio>
   <audio ref="{{ sfxRef }}" src="assets/sfx-page.wav" preload="none"></audio>
-  <button onClick="{{ toggleMusic }}" aria-label="{{ musicLabel }}" style="position:absolute;top:16px;right:64px;width:40px;height:40px;border:1px solid rgba(169,131,74,.5);border-radius:50%;background:rgba(255,253,247,.72);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:6;opacity:{{ musicOpacity }};" style-hover="background:#FFFDF7;">
+  <sc-if value="{{ musicHint }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleMusic }}" data-music-btn="1" style="position:absolute;top:60px;right:16px;z-index:9;display:flex;align-items:center;gap:9px;max-width:230px;border:1px solid #C6AC7C;border-radius:999px;background:#FFFDF7;padding:9px 15px;min-height:44px;box-shadow:0 10px 22px -12px rgba(90,60,20,.5);cursor:pointer;animation:fadeUp .6s ease both;">
+      <span style="font-size:15px;line-height:1;color:#7A5A28;">♪</span>
+      <span style="font-family:'Jost',sans-serif;font-size:13px;line-height:1.35;color:#7A5A28;text-align:left;">Alefaso ny mozika mba hahatsara azy kokoa</span>
+    </button>
+  </sc-if>
+
+  <button onClick="{{ toggleMusic }}" data-music-btn="1" aria-label="{{ musicLabel }}" style="position:absolute;top:16px;right:64px;width:40px;height:40px;border:1px solid rgba(169,131,74,.5);border-radius:50%;background:rgba(255,253,247,.72);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:6;opacity:{{ musicOpacity }};" style-hover="background:#FFFDF7;">
     <span style="font-size:17px;line-height:1;color:#7A5A28;">{{ musicIcon }}</span>
   </button>
   <button onClick="{{ toggleSkin }}" onPointerDown="{{ adHoldStart }}" onPointerUp="{{ adHoldEnd }}" onPointerLeave="{{ adHoldEnd }}" aria-label="{{ skinLabel }}" style="position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; border: 1px solid rgba(169,131,74,.5); border-radius: 50%; background: rgba(255,253,247,.7); display: flex; align-items: center; justify-content: center; cursor: pointer" style-hover="background:#7A5A28;">
     <span style="display:block;width:15px;height:15px;border-radius:50%;background:{{ orbDot }};box-shadow:{{ orbDotShadow }};"></span>
   </button>
 
-  <div style="position:absolute;inset:13px;z-index:4;pointer-events:none;border:1px solid rgba(169,131,74,.3);">
-    <div style="position:absolute;inset:5px;border:1px solid rgba(169,131,74,.13);"></div>
-  </div>
-  <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
-    <p style="position:absolute;top:27px;left:0;right:0;z-index:4;margin:0;text-align:center;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.34em;color:#B39A6E;text-transform:uppercase;pointer-events:none;">{{ folio }}</p>
+  <sc-if value="{{ ornPlate }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:13px;z-index:4;pointer-events:none;border:1px solid rgba(169,131,74,.3);">
+      <sc-if value="{{ ornInner }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute;inset:5px;border:1px solid rgba(169,131,74,.13);"></div>
+      </sc-if>
+    </div>
+  </sc-if>
+  <sc-if value="{{ ornFolio }}" hint-placeholder-val="{{ true }}">
+    <p style="position:absolute;top:27px;left:0;right:0;z-index:4;margin:0;text-align:center;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.34em;color:#8A6C40;text-transform:uppercase;pointer-events:none;">{{ folio }}</p>
   </sc-if>
   <div style="position:absolute;inset:0;z-index:5;overflow:hidden;pointer-events:none;">
     <sc-for list="{{ epis }}" as="e" hint-placeholder-count="3">
       <div ref="{{ e.ref }}" style="position:absolute;left:{{ e.l }};top:{{ e.t }};width:{{ e.w }};pointer-events:none;filter:drop-shadow(0 6px 10px rgba(90,70,40,.18));transform-origin:bottom center;will-change:transform;">
-        <img src="{{ e.src }}" alt="" draggable="false" style="width:100%;height:auto;display:block;opacity:.6;backface-visibility:hidden;pointer-events:none;user-select:none;">
+        <sc-if value="{{ e.src }}" hint-placeholder-val="{{ false }}">
+          <img src="{{ e.src }}" alt="" draggable="false" style="width:100%;height:auto;display:block;opacity:.6;backface-visibility:hidden;pointer-events:none;user-select:none;">
+        </sc-if>
       </div>
     </sc-for>
   </div>
@@ -718,9 +738,9 @@
 </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:440,&quot;height&quot;:900},&quot;nombre&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Invitation&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:440,&quot;height&quot;:900},&quot;nombre&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Invitation&quot;},&quot;papier&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Lin&quot;,&quot;Ivoire&quot;,&quot;Sable&quot;,&quot;Cire&quot;],&quot;default&quot;:&quot;Lin&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Atmosphère&quot;},&quot;ornements&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Nu&quot;,&quot;Mesure&quot;,&quot;Riche&quot;],&quot;default&quot;:&quot;Mesure&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Atmosphère&quot;},&quot;rivotra&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0,&quot;max&quot;:2,&quot;step&quot;:0.1,&quot;default&quot;:1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Atmosphère&quot;}}">
 class Component extends DCLogic {
-  state = { adTab: 'add', adLock: false, adSide: 'faneva', adFilter: 'all', adDelK: null, adUndo: null, sbUrl: '', sbKey: '', sbState: 'off', remindOn: false, origin: '', geo: null, map: null, dir: 1, music: false, picked: 0, night: null, intro: true, opening: false, giftLift: false, giftOpen: false, i: 0, done: false, choice: null, name: '', guests: '2', msg: '', now: Date.now(), admin: false, adBase: '', adName: '', adN: '', adRaw: '', adRel: 'fam', adTone: '', adPass: '', adPassBad: false, adPassShown: false, adAuth: false, adSearch: '', adNote: '', adNoteBad: false, epiPos: null, adCopied: null, adCopiedAll: false };
+  state = { musicBlocked: false, adTab: 'add', adLock: false, adSide: 'faneva', adFilter: 'all', adDelK: null, adUndo: null, sbUrl: '', sbKey: '', sbState: 'off', remindOn: false, origin: '', geo: null, map: null, dir: 1, music: false, picked: 0, night: null, intro: true, opening: false, giftLift: false, giftOpen: false, i: 0, done: false, choice: null, name: '', guests: '2', msg: '', now: Date.now(), admin: false, adBase: '', adName: '', adN: '', adRaw: '', adRel: 'fam', adTone: '', adPass: '', adPassBad: false, adPassShown: false, adAuth: false, adSearch: '', adNote: '', adNoteBad: false, epiPos: null, adCopied: null, adCopiedAll: false };
   LAST = 5;
   FAMILIES_NEW = [
     ['Loko ny tany mena — ny fototra sy ny fianakaviana.', [['#674231', 'Terre cuite'], ['#6d3b24', 'Rouille'], ['#5b2525', 'Bordeaux']]],
@@ -776,16 +796,20 @@ class Component extends DCLogic {
     cancelAnimationFrame(this.fitRaf);
     this.fitRaf = requestAnimationFrame(() => { this.grow(); this.fit(); });
   };
-  componentDidUpdate() { this.fitSoon(); }
+  componentDidUpdate() { this.paint(); this.fitSoon(); }
   componentDidMount() {
     this.t = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    this.paint();
     this.fitSoon();
+    this.audioMake();
+    this.musicOn().then(this.musicDisarm).catch(this.musicArm);
     try {
       if (localStorage.getItem('fr-admin-lock')) this.setState({ adLock: true });
       const u = localStorage.getItem('fr-sb-url') || '';
       const k = localStorage.getItem('fr-sb-key') || '';
       if (u || k) this.setState({ sbUrl: u, sbKey: k }, this.sbPull);
     } catch (e) {}
+    this.musicT = setInterval(this.musicGuard, 1500);
     this.sbT = setInterval(() => { if (this.state.admin && this.state.adAuth) this.sbPull(); }, 12000);
     window.addEventListener('resize', this.fitSoon);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(this.fitSoon);
@@ -805,7 +829,7 @@ class Component extends DCLogic {
     } catch (e) {}
     try {
       const s = JSON.parse(localStorage.getItem('fr-rsvp-v2') || 'null');
-      if (s && s.choice) this.setState({ choice: s.choice, name: s.name || '', guests: s.guests || '2', msg: s.msg || '' });
+      if (s && s.choice) this.setState({ choice: s.choice, name: s.name || '', guests: String(Math.min(parseInt(s.guests, 10) || 1, parseInt(this.nombre(), 10) || 1)), msg: s.msg || '' });
       const o = localStorage.getItem('fr-origin-v2');
       if (o) this.setState({ origin: o });
       const ep = JSON.parse(localStorage.getItem('fr-epis-v1') || 'null');
@@ -836,12 +860,14 @@ class Component extends DCLogic {
     document.addEventListener('touchend', this.onUp, { passive: true });
   }
   componentWillUnmount() {
+    this.musicDisarm();
+    if (this.audio) { try { this.audio.pause(); this.audio.remove(); } catch (e) {} this.audio = null; }
+    clearInterval(this.musicT);
     clearInterval(this.sbT);
     clearTimeout(this.sbDeb);
     window.removeEventListener('resize', this.fitSoon);
     cancelAnimationFrame(this.fitRaf);
     clearInterval(this.fade);
-    if (this.audio) this.audio.pause();
     clearInterval(this.t);
     window.removeEventListener('pointermove', this.epiPush);
     window.removeEventListener('touchmove', this.epiTouch);
@@ -860,6 +886,30 @@ class Component extends DCLogic {
     return h < 6 || h >= 18;
   }
 
+  PAPERS = {
+    Lin:    { desk: '#DED6C6', sheet: '#FAF6EC' },
+    Ivoire: { desk: '#E4DFD2', sheet: '#FFFCF4' },
+    Sable:  { desk: '#D6CAB2', sheet: '#F6EEDC' },
+    Cire:   { desk: '#CFC0A6', sheet: '#F2E7D0' }
+  };
+
+  orn = () => {
+    const v = String(this.props.ornements || 'Mesure');
+    return { plate: v !== 'Nu', inner: v === 'Riche', folio: v !== 'Nu', epis: v === 'Nu' ? 0 : (v === 'Riche' ? 4 : 3) };
+  };
+
+  wind = () => {
+    const w = this.props.rivotra;
+    return Math.max(0, Math.min(2, w === undefined || w === null ? 1 : Number(w)));
+  };
+
+  paint = () => {
+    const p = this.PAPERS[String(this.props.papier || 'Lin')] || this.PAPERS.Lin;
+    const r = document.documentElement.style;
+    r.setProperty('--fr-desk', p.desk);
+    r.setProperty('--fr-sheet', p.sheet);
+  };
+
   toggleSkin = () => this.setState({ night: !this.isNight() });
 
   daysToDeadline = () => Math.max(0, Math.ceil((this.DEADLINE - Date.now()) / 864e5));
@@ -867,6 +917,15 @@ class Component extends DCLogic {
   DEADLINE = new Date('2026-10-26T23:59:59+03:00').getTime();
   WEDDING = new Date('2026-11-13T09:00:00+03:00').getTime();
   WA = ['261344333560', '261345430093'];
+
+  sendTo = (n) => {
+    const st = this.state;
+    try { localStorage.setItem('fr-rsvp-v2', JSON.stringify({ choice: st.choice, name: st.name, guests: st.guests, msg: st.msg, at: Date.now() })); } catch (e) {}
+    const url = this.waLink(n);
+    this.setState({ done: true, choosing: false });
+    const w = window.open(url, '_blank');
+    if (!w) location.href = url;
+  };
 
   waLink = (n) => {
     const st = this.state;
@@ -915,9 +974,10 @@ class Component extends DCLogic {
   epiRand = (seed) => { let s = (seed * 9301 + 49297) % 233280; return () => { s = (s * 9301 + 49297) % 233280; return s / 233280; }; };
 
   epiSet = (screen) => {
-    if (this.epiCache && this.epiCache.k === screen) return this.epiCache.v;
+    const n = this.orn().epis;
+    const key = screen + '|' + n;
+    if (this.epiCache && this.epiCache.k === key) return this.epiCache.v;
     const r = this.epiRand(screen + 11);
-    const n = 3;
     const v = [];
     for (let i = 0; i < n; i++) {
       const left = i === 0 ? true : (i === 1 ? false : r() < 0.5);
@@ -932,7 +992,7 @@ class Component extends DCLogic {
     }
     this.epiWind.length = n;
     this.epiNodes.length = n;
-    this.epiCache = { k: screen, v };
+    this.epiCache = { k: key, v };
     return v;
   };
 
@@ -968,7 +1028,8 @@ class Component extends DCLogic {
 
   epiLoop = () => {
     const t = performance.now() / 1000;
-    const gust = Math.max(0.25, 0.62 + 0.3 * Math.sin(t * 0.11) * Math.sin(t * 0.043 + 1.1) + 0.12 * Math.sin(t * 0.27 + 2.2));
+    const force = this.wind();
+    const gust = Math.max(0.25, 0.62 + 0.3 * Math.sin(t * 0.11) * Math.sin(t * 0.043 + 1.1) + 0.12 * Math.sin(t * 0.27 + 2.2)) * force;
     for (let i = 0; i < this.epiNodes.length; i++) {
       const el = this.epiNodes[i];
       if (!el) continue;
@@ -1285,20 +1346,78 @@ class Component extends DCLogic {
     }, 60);
   };
 
-  toggleMusic = () => {
+  audioMake = () => {
+    if (this.audio) return this.audio;
+    for (const a of document.querySelectorAll('audio[data-bg]')) { try { a.pause(); a.remove(); } catch (e) {} }
+    const el = document.createElement('audio');
+    el.src = 'assets/music.mp3';
+    el.loop = true;
+    el.preload = 'auto';
+    el.setAttribute('playsinline', '');
+    el.setAttribute('data-bg', '1');
+    el.volume = 0;
+    document.body.appendChild(el);
+    this.audio = el;
+    return el;
+  };
+
+  musicOn = () => {
+    const el = this.audioMake();
+    clearInterval(this.fade);
+    el.muted = false;
+    if (el.volume > 0.22) el.volume = 0.22;
+    const go = el.paused ? el.play() : Promise.resolve();
+    return go.then(() => { this.fadeIn(el, 0.22, 2400); if (!this.state.music) this.setState({ music: true }); });
+  };
+
+  musicOff = () => {
+    clearInterval(this.fade);
     const el = this.audio;
-    if (!el) return;
-    if (el.paused) { el.volume = 0; el.play().then(() => this.fadeIn(el, 0.22, 2600)).catch(() => {}); this.setState({ music: true }); }
-    else { clearInterval(this.fade); el.pause(); this.setState({ music: false }); }
+    if (el) { try { el.pause(); el.muted = false; } catch (e) {} }
+    if (this.state.music) this.setState({ music: false });
+  };
+
+  musicPrime = () => {
+    const el = this.audioMake();
+    el.muted = true;
+    el.volume = 0;
+    el.play().catch(() => {});
+  };
+
+  musicGuard = () => {
+    const el = this.audio;
+    if (!el || !this.state.music) return;
+    if (el.paused || el.muted) { el.muted = false; el.play().catch(() => {}); }
+  };
+
+  musicArm = () => {
+    this.musicPrime();
+    this.setState({ musicBlocked: true });
+    const go = (ev) => {
+      if (ev && ev.target && ev.target.closest && ev.target.closest('[data-music-btn]')) return;
+      this.musicOn().then(this.musicDisarm).catch(() => {});
+    };
+    this.musicGo = go;
+    for (const ev of ['pointerdown', 'touchstart', 'keydown']) document.addEventListener(ev, go, { passive: true });
+  };
+
+  musicDisarm = () => {
+    if (this.state.musicBlocked) this.setState({ musicBlocked: false });
+    if (!this.musicGo) return;
+    for (const ev of ['pointerdown', 'touchstart', 'keydown']) document.removeEventListener(ev, this.musicGo);
+    this.musicGo = null;
+  };
+
+  toggleMusic = (e) => {
+    if (e && e.stopPropagation) e.stopPropagation();
+    this.musicDisarm();
+    if (this.state.music) this.musicOff();
+    else this.musicOn().catch(() => {});
   };
 
   openSeal = () => {
     if (this.state.opening) return;
-    const el = this.audio;
-    if (el && el.paused) {
-      el.volume = 0;
-      el.play().then(() => { this.fadeIn(el, 0.22, 4000); this.setState({ music: true }); }).catch(() => {});
-    }
+    this.musicOn().then(this.musicDisarm).catch(() => {});
     this.setState({ opening: true });
     this.seal = setTimeout(() => {
       this.setState({ intro: false, opening: false, done: false, i: 0 });
@@ -1371,6 +1490,9 @@ class Component extends DCLogic {
     const night = this.isNight();
     return {
       night: night,
+      ornPlate: this.orn().plate,
+      ornInner: this.orn().inner,
+      ornFolio: this.orn().folio && !st.admin && !st.intro && !st.done,
       skin: night ? 'invert(1) hue-rotate(180deg)' : 'none',
       counterSkin: night ? 'invert(1) hue-rotate(180deg)' : 'none',
       orbTop: night ? '150px' : '158px',
@@ -1381,7 +1503,6 @@ class Component extends DCLogic {
       orbDotShadow: night ? 'inset -4px -1px 0 0 rgba(120,100,70,.85)' : '0 0 9px 2px rgba(201,138,90,.5)',
       skinLabel: night ? 'Mode andro' : 'Mode alina',
       toggleSkin: () => { if (this.adHeld) { this.adHeld = false; return; } this.toggleSkin(); },
-      audioRef: (el) => { this.audio = el; },
       sfxRef: (el) => { this.sfx = el; },
       mapOpen: !!st.map,
       isMapA: st.map === 'a',
@@ -1412,6 +1533,7 @@ class Component extends DCLogic {
       closeMap: () => this.setState({ map: null }),
       pageAnim: (st.dir === -1 ? 'pagePrev' : 'pageNext') + ' .58s cubic-bezier(.22,.61,.36,1) both',
       toggleMusic: this.toggleMusic,
+      musicHint: st.musicBlocked && !st.music && !st.admin,
       musicLabel: st.music ? 'Ajanony ny mozika' : 'Alefaso ny mozika',
       musicIcon: st.music ? '♪' : '♪̸',
       musicOpacity: st.music ? 1 : 0.42,
@@ -1498,19 +1620,33 @@ class Component extends DCLogic {
       hasChoice: !!st.choice, isYes: yes,
       name: st.name, guests: st.guests, msg: st.msg,
       setName: (e) => { if (!locked) this.setState({ name: e.target.value }); },
-      setGuests: (e) => { if (!locked) this.setState({ guests: e.target.value }); },
+      setGuests: (e) => {
+        if (locked) return;
+        const max = parseInt(this.nombre(), 10) || 1;
+        const raw = String(e.target.value).replace(/[^\d]/g, '');
+        if (raw === '') { this.setState({ guests: '', guestsOver: false }); return; }
+        const v = parseInt(raw, 10);
+        if (v > max) { this.setState({ guests: String(max), guestsOver: true }); return; }
+        this.setState({ guests: String(Math.max(1, v)), guestsOver: false });
+      },
+      guestsMax: parseInt(this.nombre(), 10) || 1,
+      guestsNote: st.guestsOver
+        ? 'Ny fanasana dia ho an’ny olona ' + (parseInt(this.nombre(), 10) || 1) + ' ihany.'
+        : 'Toerana voatokana: ' + (parseInt(this.nombre(), 10) || 1),
+      guestsNoteColor: st.guestsOver ? '#8A4E1E' : '#B39A6E',
       setMsg: (e) => { if (!locked) this.setState({ msg: e.target.value }); },
       cantSubmit: !ready,
       submitBg: ready ? '#7A5A28' : 'rgba(239,231,213,.85)',
       submitFg: ready ? '#FFFDF7' : '#B39A6E',
       hint: !st.choice ? 'Fidio “Afaka” na “Tsy afaka”.' : (ready ? '' : 'Ampidiro ny anaranao.'),
+      submitLabel: ready ? 'Alefa ny hafatra' : 'Fifalianay ny fahatongavanao',
+      choosing: st.choosing && ready && !locked,
       submit: () => {
         if (!ready || locked) return;
-        try { localStorage.setItem('fr-rsvp-v2', JSON.stringify({ choice: st.choice, name: st.name, guests: st.guests, msg: st.msg, at: Date.now() })); } catch (e) {}
-        this.setState({ done: true });
-        const w = window.open(this.waLink(0), '_blank');
-        if (!w) location.href = this.waLink(0);
+        this.setState({ choosing: true });
       },
+      sendFaneva: () => this.sendTo(0),
+      sendRavaka: () => this.sendTo(1),
       waA: this.waLink(0),
       waB: this.waLink(1),
       locked: locked,
