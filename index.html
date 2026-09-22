@@ -1068,10 +1068,10 @@ class Component extends DCLogic {
   RESPECT = ["rah","rap","raf"];
   VOC = { fam: 'Ry havana', ftam: 'Ry iray tampo', nam: 'Ry namana', ntam: 'Ry namana iray tampo', rah: 'Ry ray aman-dreny hajaina', rap: 'Ry ray aman-dreny ara-panahy', raf: 'Ry ray aman-dreny akaiky ny fo', mpi: 'Ry mpiara-miasa', ofi: 'Tompoko hajaina' };
   WAOPEN = {
-    t3: 'Tsy ho feno ny fifalianay raha tsy eo {you} 🥹💛',
-    t2: 'Misy anjara toerana manokana ho {an} eo 💛',
-    t1: 'Sitrakay indrindra ny fahatongavan{ao} 🤍',
-    t0: 'Faly izahay raha afaka manatrika {you} 🤍'
+    t3: 'Tsy ho feno ny fifalianay raha tsy eo {you} \uD83E\uDD79\uD83D\uDC9B',
+    t2: 'Misy anjara toerana manokana ho {an} eo \uD83D\uDC9B',
+    t1: 'Sitrakay indrindra ny fahatongavan{ao} \uD83E\uDD0D',
+    t0: 'Faly izahay raha afaka manatrika {you} \uD83E\uDD0D'
   };
 
   waText = (r, url) => {
@@ -1081,13 +1081,15 @@ class Component extends DCLogic {
     const ao = pl ? 'areo' : 'ao';
     const voc = this.VOC[r.rel] || 'Tompoko';
     const line = (this.WAOPEN[r.tone] || this.WAOPEN.t1).split('{you}').join(you).split('{an}').join(an).split('{ao}').join(ao);
-    return '💌 ' + voc + ' ' + r.name + ' !\n\n'
-      + 'Misy taratasy manokana natokanay ho ' + an + ' 🌾\n'
-      + 'Misy andro lehibe ho avy… fa mbola tsinjo eto 🤫\n'
-      + 'Nanorina ny dianay teo ambanin’ny fitahian’ny Tompo izahay 🙏\n'
+    return '\uD83D\uDC8C ' + voc + ' ' + r.name + ' !\n\n'
+      + 'Misy taratasy manokana natokanay ho ' + an + ' \uD83C\uDF3E\n'
+      + 'Misy andro lehibe ho avy\u2026 fa mbola tsinjo eto \uD83E\uDD2B\n'
+      + 'Nanorina ny dianay teo ambanin\u2019ny fitahian\u2019ny Tompo izahay \uD83D\uDE4F\n'
       + line + '\n\n'
-      + 'Tsindrio ity rohy ity hisokatra ny taratasinao 👇\n' + url + '\n\n'
-      + 'Andrasanay ' + you + ' ! ✨';
+      + 'Tsindrio ity rohy ity hisokatra ny taratasinao \uD83D\uDC47\n' + url + '\n\n'
+      + (this.RESPECT.indexOf(r.rel) >= 0 ? 'Ho tolorana ' + an + ' ihany koa ny fanasana vita pirinty amin\u2019ny fotoana voatokana, azafady \uD83D\uDCE9\n\n' : '')
+      + '\uD83D\uDD14 Pour une bonne exp\u00E9rience au moment de l\u2019ouverture du lien, il est conseill\u00E9 de mettre le son du t\u00E9l\u00E9phone.\n\n'
+      + 'Andrasanay ' + you + ' ! \u2728';
   };
   DEFTONE = { fam: 't2', ftam: 't3', nam: 't2', ntam: 't3', rah: 't2', rap: 't2', raf: 't3', mpi: 't1', ofi: 't0' };
 
